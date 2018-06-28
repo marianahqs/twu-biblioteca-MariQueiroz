@@ -2,17 +2,18 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Biblioteca {
-    public String listBooks() {
-        String booksListString = "Name                                                    Author                      Year\nI Know Why The Caged Bird Sings	                        Angelou, Maya	            1969\nParable of the Talents	                                Butler, Octavia	            1998\nPonciá Vicêncio	                                        Evaristo, Conceição	        2003\nPurple Hibiscus	                                        Adichie, Chimamanda Ngozi	2003\nQuarto de Despejo: diário de uma favelada	            de Jesus, Carolina Maria	1960\nSobre-viventes!	                                        da Silva, Cidinha	        2016\nThe Color Purple	                                    Walker, Alice	            1982\nThe Meaning of Freedom: And Other Difficult Dialogues	Davis, Angela	            2012\nUm Defeito de Cor	                                    Goncalves, Ana Maria	    2006";
 
-        return booksListString;
+    private final List<Book> books;
+
+    public Biblioteca(List<Book> books) {
+        this.books = books;
     }
 
-    public String mainMenu() {
-        String mainMenuString = "---- MAIN MENU ----\n(choose an option and insert its number)\n\n1 - List Books";
+    public List<Book> listBooks() {
 
-        return mainMenuString;
+        return books.stream().filter(p -> p.isAvailable()).collect(Collectors.toList());
     }
 }
