@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class BibliotecaTest {
 
     @Test
-    public void test() {
+    public void testListBookFormat() {
 
         Biblioteca biblioteca = new Biblioteca();
 
@@ -19,4 +19,15 @@ public class BibliotecaTest {
 
 
     }
+
+    @Test
+    public void testMainMenuFormat() {
+
+        Biblioteca biblioteca = new Biblioteca();
+
+        assertEquals("---- MAIN MENU ----\n(choose an option and insert its number)\n\n1 - List Books",biblioteca.mainMenu());
+
+
+    }
 }
+

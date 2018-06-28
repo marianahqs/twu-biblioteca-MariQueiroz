@@ -10,7 +10,7 @@ public class BibliotecaApp {
         System.out.println("\n########### WELCOME TO BIBLIOTECA #############\n");
 
         Biblioteca biblioteca = new Biblioteca();
-        System.out.println(biblioteca.listBooks());
+        System.out.println(biblioteca.mainMenu());
 
     }
 
