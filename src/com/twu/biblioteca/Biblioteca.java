@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Biblioteca {
@@ -14,21 +15,57 @@ public class Biblioteca {
         return books.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
     }
 
-    public void checkOutBook(String nameBookToCheckOut) {
-        Book bookToCheckOut = books.stream()
-                .filter(p -> p.getName().equals(nameBookToCheckOut))
-                .findFirst()
-                .get();
+    public String checkOutBook(String nameBookToCheckOut) {
+        String returnString = "";
 
-        bookToCheckOut.checkOutBook();
+        try {
+            Book bookToCheckOut = books.stream()
+                    .filter(p -> p.getName().equals(nameBookToCheckOut))
+                    .findFirst()
+                    .get();
+
+            if (bookToCheckOut.getIsAvailable()){
+                bookToCheckOut.checkOutBook();
+                returnString = "Thank you! Enjoy the book";
+
+            } else{
+                returnString = "That book is not available";
+            }
+
+            return returnString;
+
+        } catch (NoSuchElementException nexc){
+            returnString = "That is not a valid book name";
+
+        } finally {
+
+        }
+        return returnString;
+
     }
 
-    public void returnBook(String nameBookToReturn) {
-        Book bookToCheckOut = books.stream()
-                .filter(p -> p.getName().equals(nameBookToReturn))
-                .findFirst()
-                .get();
+    public String returnBook(String nameBookToReturn) {
+        String returnString = "";
+        try{
+            Book bookToReturn = books.stream()
+                    .filter(p -> p.getName().equals(nameBookToReturn))
+                    .findFirst()
+                    .get();
 
-        bookToCheckOut.returnBook();
+            if (!bookToReturn.getIsAvailable()){
+                bookToReturn.returnBook();
+                returnString = "Thank you for returning the book";
+
+            } else {
+                returnString = "That is not a valid book to return";
+            }
+
+        } catch (NoSuchElementException nexc){
+            returnString = "That is not a valid book name";
+
+        } finally {
+
+        }
+        return returnString;
     }
 }
