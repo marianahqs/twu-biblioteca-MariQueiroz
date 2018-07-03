@@ -19,6 +19,14 @@ public class BibliotecaApp {
         Biblioteca biblioteca = new Biblioteca(BOOKS);
 
         showWelcomeMessage();
+
+        UserInputScanner scanner = new UserInputScanner();
+        MainMenu menu = new MainMenu(biblioteca,scanner);
+
+        while (true) {
+            menu.showMenuOptions();
+            menu.handleUserOption(scanner.askUserInput());
+        }
     }
 
 

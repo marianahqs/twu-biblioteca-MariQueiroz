@@ -60,32 +60,6 @@ public class MainMenu {
         }
     }
 
-//    private void checkoutLoop() {
-//        boolean checkoutReturnError = true;
-//
-//        while (checkoutReturnError) {
-//            String nameOfBook = askNameOfBook();
-//            if (nameOfBook.equals("1")) {
-//                break;
-//            } else {
-//                checkoutReturnError = !biblioteca.checkoutBook(nameOfBook);
-//            }
-//        }
-//    }
-//
-//    private void returnLoop() {
-//        boolean returnReturnError = true;
-//
-//        while (returnReturnError) {
-//            String nameOfBook = askNameOfBook();
-//            if (nameOfBook.equals("1")) {
-//                break;
-//            } else {
-//                returnReturnError = !biblioteca.returnBook(nameOfBook);
-//            }
-//        }
-//    }
-
     public void showMenuOptions() {
         System.out.println(MAIN_MENU_HEADER);
 

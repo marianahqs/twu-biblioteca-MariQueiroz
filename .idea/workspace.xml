@@ -19,8 +19,8 @@
       <file leaf-file-name="BibliotecaApp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+            <state relative-caret-position="297">
+              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
               <folding>
                 <element signature="e#997#998#0" expanded="true" />
                 <element signature="e#1048#1049#0" expanded="true" />
@@ -70,8 +70,8 @@
       <file leaf-file-name="MainMenu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/MainMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+            <state relative-caret-position="-585">
+              <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -129,10 +129,10 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserInputScanner.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/Biblioteca.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/MainMenu.java" />
       </list>
     </option>
@@ -242,7 +242,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.test in biblioteca">
+  <component name="RunManager" selected="Application.BibliotecaApp">
+    <configuration name="BibliotecaApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.BibliotecaApp" />
+      <module name="biblioteca" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.twu.biblioteca.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -282,29 +293,6 @@
       <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.MainMenuTest" />
       <option name="METHOD_NAME" value="shouldPrintErrorMessageWhenTryReturnNonexistentBook" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="MainMenuTest.shouldPrintOkMessageWhenReturnBookOptionSucceed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="biblioteca" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.twu.biblioteca.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
-      <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.MainMenuTest" />
-      <option name="METHOD_NAME" value="shouldPrintOkMessageWhenReturnBookOptionSucceed" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -390,19 +378,19 @@
       <listeners />
     </configuration>
     <list>
-      <item itemvalue="JUnit.MainMenuTest.shouldPrintOkMessageWhenReturnBookOptionSucceed" />
       <item itemvalue="JUnit.MainMenuTest.shouldPrintErrorMessageWhenTryReturnNonexistentBook" />
       <item itemvalue="JUnit.MainMenuTest.shouldPrintErrorMessageWhenTryReturnBookAvailable" />
       <item itemvalue="JUnit.biblioteca in biblioteca" />
       <item itemvalue="JUnit.test in biblioteca" />
+      <item itemvalue="Application.BibliotecaApp" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BibliotecaApp" />
         <item itemvalue="JUnit.test in biblioteca" />
         <item itemvalue="JUnit.biblioteca in biblioteca" />
         <item itemvalue="JUnit.MainMenuTest.shouldPrintErrorMessageWhenTryReturnBookAvailable" />
         <item itemvalue="JUnit.MainMenuTest.shouldPrintErrorMessageWhenTryReturnNonexistentBook" />
-        <item itemvalue="JUnit.MainMenuTest.shouldPrintOkMessageWhenReturnBookOptionSucceed" />
       </list>
     </recent_temporary>
   </component>
@@ -420,9 +408,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainMenuTest_shouldPrintErrorMessageWhenTryCheckoutUnavailableBook - 2018.07.02 at 22h 37m 32s.xml">
-      <configuration name="MainMenuTest.shouldPrintErrorMessageWhenTryCheckoutUnavailableBook" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MainMenuTest_shouldHandleReturnBookOption - 2018.07.02 at 22h 39m 14s.xml">
       <configuration name="MainMenuTest.shouldHandleReturnBookOption" configurationId="JUnit" />
     </history-entry>
@@ -450,9 +435,13 @@
     <history-entry file="test_in_biblioteca - 2018.07.02 at 22h 48m 14s.xml">
       <configuration name="test in biblioteca" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="test_in_biblioteca - 2018.07.02 at 22h 51m 11s.xml">
+      <configuration name="test in biblioteca" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -463,11 +452,11 @@
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3291536" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37912813" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.37912813" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32893" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21244635" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21244635" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24892704" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32893" />
       <window_info id="Learn" order="5" weight="0.3297568" />
@@ -903,17 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-          <folding>
-            <element signature="e#997#998#0" expanded="true" />
-            <element signature="e#1048#1049#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserInputScanner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -966,10 +944,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <element signature="e#997#998#0" expanded="true" />
+            <element signature="e#1048#1049#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/MainMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+        <state relative-caret-position="-585">
+          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
