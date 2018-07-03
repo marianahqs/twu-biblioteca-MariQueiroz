@@ -7,7 +7,7 @@ import org.mockito.Mock;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -47,7 +47,6 @@ public class MainMenuTest {
     @Test
     public void shouldHandleListBooksOption() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
-
         mainMenu.handleUserOption("1");
 
         verify(mockBiblioteca).listBooks();
@@ -69,62 +68,43 @@ public class MainMenuTest {
 
     @Test
     public void shouldPrintOkMessageWhenCheckoutBookOptionSucceed() {
-        List<Book> books = List.of(new Book("Name Book 1", "Author Book 1", 1980, true),
-                new Book("Name Book 2", "Author Book 2",2003,true),
-                new Book("Name Book 3", "Author Book 3", 2017, false),
-                new Book("Name Book 4","Author Book 4",1999,false));
-
-        Biblioteca biblioteca = new Biblioteca(books);
-
-        MainMenu mainMenu = new MainMenu(biblioteca, mockScanner);
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
         String BOOK_NAME_TEST = "Name Book 2";
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockBiblioteca.checkoutBook(BOOK_NAME_TEST)).thenReturn(true);
 
         mainMenu.handleUserOption("2");
 
         assertThat(outContent.toString(), containsString("Thank you! Enjoy the book!"));
-
     }
 
     @Test
     public void shouldPrintErrorMessageWhenTryCheckoutNonexistentBook() {
-        List<Book> books = List.of(new Book("Name Book 1", "Author Book 1", 1980, true),
-                new Book("Name Book 2", "Author Book 2",2003,true),
-                new Book("Name Book 3", "Author Book 3", 2017, false),
-                new Book("Name Book 4","Author Book 4",1999,false));
-
-        Biblioteca biblioteca = new Biblioteca(books);
-
-        MainMenu mainMenu = new MainMenu(biblioteca, mockScanner);
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
         String BOOK_NAME_TEST = "Not valid book";
+        NoSuchElementException bookDoesNotExist = new NoSuchElementException("Error Message");
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockBiblioteca.checkoutBook(BOOK_NAME_TEST)).thenThrow(bookDoesNotExist);
 
         mainMenu.handleUserOption("2");
 
-        assertThat(outContent.toString(), containsString("That is not a valid book name"));
-
+        assertThat(outContent.toString(), containsString(bookDoesNotExist.getMessage()));
     }
 
     @Test
     public void shouldPrintErrorMessageWhenTryCheckoutUnavailableBook() {
-        List<Book> books = List.of(new Book("Name Book 1", "Author Book 1", 1980, true),
-                new Book("Name Book 2", "Author Book 2",2003,true),
-                new Book("Name Book 3", "Author Book 3", 2017, false),
-                new Book("Name Book 4","Author Book 4",1999,false));
-
-        Biblioteca biblioteca = new Biblioteca(books);
-
-        MainMenu mainMenu = new MainMenu(biblioteca, mockScanner);
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
         String BOOK_NAME_TEST = "Name Book 4";
+        IllegalArgumentException bookIsNotAvailable = new IllegalArgumentException("different error message");
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockBiblioteca.checkoutBook(BOOK_NAME_TEST)).thenThrow(bookIsNotAvailable);
 
         mainMenu.handleUserOption("2");
 
-        assertThat(outContent.toString(), containsString("That book is not available"));
-
+        assertThat(outContent.toString(), containsString(bookIsNotAvailable.getMessage()));
     }
 
 
@@ -143,61 +123,42 @@ public class MainMenuTest {
 
     @Test
     public void shouldPrintOkMessageWhenReturnBookOptionSucceed() {
-        List<Book> books = List.of(new Book("Name Book 1", "Author Book 1", 1980, true),
-                new Book("Name Book 2", "Author Book 2",2003,true),
-                new Book("Name Book 3", "Author Book 3", 2017, false),
-                new Book("Name Book 4","Author Book 4",1999,false));
-
-        Biblioteca biblioteca = new Biblioteca(books);
-
-        MainMenu mainMenu = new MainMenu(biblioteca, mockScanner);
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
         String BOOK_NAME_TEST = "Name Book 3";
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockBiblioteca.returnBook(BOOK_NAME_TEST)).thenReturn(true);
 
         mainMenu.handleUserOption("3");
 
         assertThat(outContent.toString(), containsString("Thank you for returning the book!"));
-
     }
 
     @Test
     public void shouldPrintErrorMessageWhenTryReturnNonexistentBook() {
-        List<Book> books = List.of(new Book("Name Book 1", "Author Book 1", 1980, true),
-                new Book("Name Book 2", "Author Book 2",2003,true),
-                new Book("Name Book 3", "Author Book 3", 2017, false),
-                new Book("Name Book 4","Author Book 4",1999,false));
-
-        Biblioteca biblioteca = new Biblioteca(books);
-
-        MainMenu mainMenu = new MainMenu(biblioteca, mockScanner);
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
         String BOOK_NAME_TEST = "Not valid book";
+        NoSuchElementException bookDoesNotExist = new NoSuchElementException("Error Message");
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockBiblioteca.returnBook(BOOK_NAME_TEST)).thenThrow(bookDoesNotExist);
 
         mainMenu.handleUserOption("3");
 
-        assertThat(outContent.toString(), containsString("That is not a valid book name"));
-
+        assertThat(outContent.toString(), containsString(bookDoesNotExist.getMessage()));
     }
 
     @Test
     public void shouldPrintErrorMessageWhenTryReturnBookAvailable() {
-        List<Book> books = List.of(new Book("Name Book 1", "Author Book 1", 1980, true),
-                new Book("Name Book 2", "Author Book 2",2003,true),
-                new Book("Name Book 3", "Author Book 3", 2017, false),
-                new Book("Name Book 4","Author Book 4",1999,false));
-
-        Biblioteca biblioteca = new Biblioteca(books);
-
-        MainMenu mainMenu = new MainMenu(biblioteca, mockScanner);
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
         String BOOK_NAME_TEST = "Name Book 1";
+        IllegalArgumentException bookIsAvailable = new IllegalArgumentException("Error Message");
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockBiblioteca.returnBook(BOOK_NAME_TEST)).thenThrow(bookIsAvailable);
 
         mainMenu.handleUserOption("3");
 
-        assertThat(outContent.toString(), containsString("That is not a valid book to return"));
-
+        assertThat(outContent.toString(), containsString(bookIsAvailable.getMessage()));
     }
 }

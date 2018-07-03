@@ -12,7 +12,7 @@ public class MainMenu {
     private static final List<String> MENU_OPTIONS = List.of("1 - List Books",
             "2 - Checkout Book",
             "3 - Return Book",
-            "4 - Exit");
+            "4 - Quit");
 
     private final UserInputScanner scanner;
 

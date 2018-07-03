@@ -5,7 +5,12 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Biblioteca {
+
     private final List<Book> books;
+
+    public List<Book> getBooks() {
+        return books;
+    }
 
     public Biblioteca(List<Book> books) {
         this.books = books;
@@ -47,17 +52,20 @@ public class Biblioteca {
                     .findFirst()
                     .get();
 
-            if (!bookToReturn.getIsAvailable()){
-                bookToReturn.returnBook();
-                returnFlag = true;
-
-            } else {
+            if (bookToReturn.getIsAvailable()){
                 throw new IllegalArgumentException("That is not a valid book to return");
             }
 
+            bookToReturn.returnBook();
+            returnFlag = true;
         } catch (NoSuchElementException nexc){
             throw new NoSuchElementException("That is not a valid book name");
         }
+
         return returnFlag;
     }
+
+
+
+
 }
