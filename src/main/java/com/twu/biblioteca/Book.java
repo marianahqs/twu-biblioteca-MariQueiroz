@@ -45,7 +45,7 @@ public class Book {
         return Objects.hash(name, author, yearPublished);
     }
 
-    public void checkOutBook() {
+    public void checkoutBook() {
         isAvailable = false;
     }
 

@@ -31,5 +31,7 @@ public class BibliotecaAppTest {
     public void shouldPrintWelcomeMessage() {
         BibliotecaApp.showWelcomeMessage();
         assertThat(outContent.toString(), containsString("\n########### WELCOME TO BIBLIOTECA #############\n"));
+
     }
+
 }
