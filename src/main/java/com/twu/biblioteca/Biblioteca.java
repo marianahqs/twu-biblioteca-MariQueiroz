@@ -35,7 +35,6 @@ public class Biblioteca {
             return returnFlag;
 
         } catch (NoSuchElementException nexc){
-            nexc.getMessage();
             throw new NoSuchElementException("That is not a valid book name");
         }
     }
@@ -57,7 +56,6 @@ public class Biblioteca {
             }
 
         } catch (NoSuchElementException nexc){
-            nexc.getMessage();
             throw new NoSuchElementException("That is not a valid book name");
         }
         return returnFlag;

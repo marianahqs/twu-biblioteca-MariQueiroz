@@ -19,7 +19,6 @@ public class BibliotecaApp {
         Biblioteca biblioteca = new Biblioteca(BOOKS);
 
         showWelcomeMessage();
-
     }
 
 

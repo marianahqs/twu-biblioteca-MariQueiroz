@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BibliotecaAppTest {
 
-    //Prepare Print Test
+    //Config Print Test
     private PrintStream sysOut;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
@@ -31,7 +31,5 @@ public class BibliotecaAppTest {
     public void shouldPrintWelcomeMessage() {
         BibliotecaApp.showWelcomeMessage();
         assertThat(outContent.toString(), containsString("\n########### WELCOME TO BIBLIOTECA #############\n"));
-
     }
-
 }
