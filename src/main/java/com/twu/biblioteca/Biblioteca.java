@@ -8,10 +8,6 @@ public class Biblioteca {
 
     private final List<Book> books;
 
-    public List<Book> getBooks() {
-        return books;
-    }
-
     public Biblioteca(List<Book> books) {
         this.books = books;
     }
@@ -20,52 +16,42 @@ public class Biblioteca {
         return books.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
     }
 
-    public boolean checkoutBook(String nameOfBookToCheckout) throws NoSuchElementException {
-        boolean returnFlag;
 
-        try {
-            Book bookToCheckout = books.stream()
-                    .filter(p -> p.getName().equals(nameOfBookToCheckout))
-                    .findFirst()
-                    .get();
+    public boolean checkoutBook(String nameOfBookToCheckout) throws NoSuchElementException, IllegalArgumentException {
+        boolean returnFlag = true;
 
-            if (bookToCheckout.getIsAvailable()){
-                bookToCheckout.checkoutBook();
-                returnFlag = true;
+        Book bookToCheckout = getBook(nameOfBookToCheckout);
 
-            } else{
-                throw new IllegalArgumentException("That book is not available");
-            }
-
-            return returnFlag;
-
-        } catch (NoSuchElementException nexc){
-            throw new NoSuchElementException("That is not a valid book name");
+        if (bookToCheckout.getIsAvailable()){
+            bookToCheckout.checkoutBook();
+        } else{
+            throw new IllegalArgumentException("That book is not available");
         }
-    }
-
-    public boolean returnBook(String nameOfBookToReturn) throws NoSuchElementException, IllegalArgumentException {
-        boolean returnFlag;
-        try{
-            Book bookToReturn = books.stream()
-                    .filter(p -> p.getName().equals(nameOfBookToReturn))
-                    .findFirst()
-                    .get();
-
-            if (bookToReturn.getIsAvailable()){
-                throw new IllegalArgumentException("That is not a valid book to return");
-            }
-
-            bookToReturn.returnBook();
-            returnFlag = true;
-        } catch (NoSuchElementException nexc){
-            throw new NoSuchElementException("That is not a valid book name");
-        }
-
         return returnFlag;
     }
 
 
+    public boolean returnBook(String nameOfBookToReturn) throws NoSuchElementException, IllegalArgumentException {
+        boolean returnFlag = true;
+        Book bookToReturn = getBook(nameOfBookToReturn);
 
+        if (bookToReturn.getIsAvailable()){
+            throw new IllegalArgumentException("That is not a valid book to return");
+        }
+        bookToReturn.returnBook();
+        return returnFlag;
+    }
+
+
+    public Book getBook(String nameOfBookToCheckout) throws NoSuchElementException {
+        try {
+            return books.stream()
+                    .filter(p -> p.getName().equals(nameOfBookToCheckout))
+                    .findFirst()
+                    .get();
+        } catch (NoSuchElementException nexc) {
+            throw new NoSuchElementException("That is not a valid book name");
+        }
+    }
 
 }

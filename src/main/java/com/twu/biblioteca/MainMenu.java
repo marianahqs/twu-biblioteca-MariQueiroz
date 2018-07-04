@@ -15,7 +15,6 @@ public class MainMenu {
             "4 - Quit");
 
     private final UserInputScanner scanner;
-
     private final Biblioteca biblioteca;
 
     public MainMenu(Biblioteca biblioteca, UserInputScanner scanner) {
@@ -27,7 +26,8 @@ public class MainMenu {
     public void handleUserOption(String userInput) {
         switch (userInput) {
             case (LIST_BOOKS):
-                System.out.println(biblioteca.listBooks());
+                ColumnsFormatter formatter = new ColumnsFormatter(biblioteca.listBooks());
+                System.out.println("\n"+String.join("\n",formatter.formatColumns()));
                 break;
 
             case (EXIT_OPTION):
@@ -53,6 +53,7 @@ public class MainMenu {
                     }
                 } catch (NoSuchElementException nseException) {
                     System.out.println(nseException.getMessage());
+
                 }catch (IllegalArgumentException iaeException){
                     System.out.println(iaeException.getMessage());
                 }
@@ -62,7 +63,6 @@ public class MainMenu {
 
     public void showMenuOptions() {
         System.out.println(MAIN_MENU_HEADER);
-
         System.out.println(String.join("\n", MENU_OPTIONS));
     }
 
@@ -71,5 +71,4 @@ public class MainMenu {
 
         return scanner.askUserInput();
     }
-
 }

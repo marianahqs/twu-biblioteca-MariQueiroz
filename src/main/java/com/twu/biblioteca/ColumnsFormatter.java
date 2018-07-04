@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ColumnsFormatter {
 
@@ -10,26 +12,32 @@ public class ColumnsFormatter {
         this.books = books;
     }
 
-    public Book formatColumns(){
-        Book bookWithBiggestName = books.stream()
-                .max((current, book) -> {
-                    Integer length = current.getName().length();
-                    return length.compareTo(book.getName().length());
-                })
-                .get();
+    public List<String> formatColumns(){
+        int COLUMN_DISTANCE = 5;
+        int nameColumnSize = getSizeBiggestItem(books.stream().map(Book::getName).collect(Collectors.toList()))
+                +COLUMN_DISTANCE;
+        int authorColumnSize = getSizeBiggestItem(books.stream().map(Book::getAuthor).collect(Collectors.toList()))
+                +COLUMN_DISTANCE;
+        List<String > returnList = new ArrayList<>();
 
-        int length = bookWithBiggestName.getName().length();
+        for (int line = 0; line <books.size();line++){
 
-        return bookWithBiggestName;
+            returnList.add(String.format("%-"+nameColumnSize+"s%-"+authorColumnSize+"s%s",
+                    books.get(line).getName(),
+                    books.get(line).getAuthor(),
+                    books.get(line).getYearPublished()));
 
-//        System.out.println(String.format("%-15s %-20s %s", BOOKS.get(i).getName(),
-//                BOOKS.get(i).getAuthor(),
-//                BOOKS.get(i).getYearPublished())); */
+        }
+        return returnList;
     }
 
 
+    public int getSizeBiggestItem(List<String> listToTest) {
+        String maxString = listToTest.stream().max((current, other) -> {
+            Integer length = current.length();
+            return length.compareTo(other.length());
+        }).get();
 
-
-
-
+        return maxString.length();
+    }
 }

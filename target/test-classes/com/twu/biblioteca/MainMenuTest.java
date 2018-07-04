@@ -7,6 +7,7 @@ import org.mockito.Mock;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -46,10 +47,22 @@ public class MainMenuTest {
 
     @Test
     public void shouldHandleListBooksOption() {
-        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
+        List<Book> BOOK_LIST =  List.of(new Book("small", "author small", 1988, true),
+                new Book("big","author", 1987, true),
+                new Book("really big name", "author", 1987, true));
+        Biblioteca biblioteca = new Biblioteca(BOOK_LIST);
+        MainMenu mainMenu = new MainMenu(biblioteca, mockScanner);
+
         mainMenu.handleUserOption("1");
 
-        verify(mockBiblioteca).listBooks();
+      //  when(mockBiblioteca.listBooks()).thenReturn(BOOK_LIST);
+
+      //  verify(mockBiblioteca).listBooks();
+
+        assertThat(outContent.toString(), containsString("small               author small     1988\n" +
+                "big                 author           1987\n" +
+                "really big name     author           1987"));
+
     }
 
 
@@ -132,7 +145,6 @@ public class MainMenuTest {
         mainMenu.handleUserOption("3");
 
         assertThat(outContent.toString(), containsString("Thank you for returning the book!"));
-
     }
 
     @Test
