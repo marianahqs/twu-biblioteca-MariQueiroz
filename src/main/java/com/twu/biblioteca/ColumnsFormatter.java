@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class ColumnsFormatter {
@@ -32,12 +33,16 @@ public class ColumnsFormatter {
     }
 
 
-    public int getSizeBiggestItem(List<String> listToTest) {
-        String maxString = listToTest.stream().max((current, other) -> {
-            Integer length = current.length();
-            return length.compareTo(other.length());
-        }).get();
+    public int getSizeBiggestItem(List<String> listToTest)throws NoSuchElementException {
+        try {
+            String maxString = listToTest.stream().max((current, other) -> {
+                Integer length = current.length();
+                return length.compareTo(other.length());
+            }).get();
 
-        return maxString.length();
+            return maxString.length();
+        }catch (NoSuchElementException noItem){
+            throw new NoSuchElementException("Books list is empty");
+        }
     }
 }

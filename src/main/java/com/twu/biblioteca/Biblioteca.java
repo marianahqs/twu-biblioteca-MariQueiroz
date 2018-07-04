@@ -16,7 +16,6 @@ public class Biblioteca {
         return books.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
     }
 
-
     public boolean checkoutBook(String nameOfBookToCheckout) throws NoSuchElementException, IllegalArgumentException {
         boolean returnFlag = true;
 

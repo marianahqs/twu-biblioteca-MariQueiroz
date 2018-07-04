@@ -27,7 +27,12 @@ public class MainMenu {
         switch (userInput) {
             case (LIST_BOOKS):
                 ColumnsFormatter formatter = new ColumnsFormatter(biblioteca.listBooks());
-                System.out.println("\n"+String.join("\n",formatter.formatColumns()));
+                try{
+                    System.out.println("\n"+String.join("\n",formatter.formatColumns()));
+                } catch (NoSuchElementException exception){
+                    System.out.println(exception.getMessage());
+                }
+
                 break;
 
             case (EXIT_OPTION):
@@ -38,11 +43,8 @@ public class MainMenu {
                     if (biblioteca.checkoutBook(askNameOfBook())){
                         System.out.println("Thank you! Enjoy the book!");
                     }
-                } catch (NoSuchElementException nseException){
-                    System.out.println(nseException.getMessage());
-
-                }catch (IllegalArgumentException iaeException){
-                    System.out.println(iaeException.getMessage());
+                } catch (NoSuchElementException | IllegalArgumentException exception){
+                    System.out.println(exception.getMessage());
                 }
                 break;
 
@@ -51,13 +53,12 @@ public class MainMenu {
                     if (biblioteca.returnBook(askNameOfBook())){
                         System.out.println("Thank you for returning the book!");
                     }
-                } catch (NoSuchElementException nseException) {
-                    System.out.println(nseException.getMessage());
-
-                }catch (IllegalArgumentException iaeException){
-                    System.out.println(iaeException.getMessage());
+                } catch (NoSuchElementException | IllegalArgumentException exception) {
+                    System.out.println(exception.getMessage());
                 }
                 break;
+                default:
+                    System.out.println("Select a valid option");
         }
     }
 
@@ -67,7 +68,7 @@ public class MainMenu {
     }
 
     private String askNameOfBook() {
-        System.out.println("\nWhat is the book's name? (Type '1' to quit)");
+        System.out.println("\nWhat is the book's name? (Insert '1' to quit)");
 
         return scanner.askUserInput();
     }

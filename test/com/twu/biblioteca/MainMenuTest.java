@@ -46,7 +46,28 @@ public class MainMenuTest {
 
 
     @Test
+    public void shouldHandleInvalidOption() {
+
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
+
+        mainMenu.handleUserOption("5");
+
+        assertThat(outContent.toString(), containsString("Select a valid option"));
+    }
+
+
+    // List Books Tests
+    @Test
     public void shouldHandleListBooksOption() {
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
+
+        mainMenu.handleUserOption("1");
+
+        verify(mockBiblioteca).listBooks();
+    }
+
+    @Test
+    public void shouldFormatListOfBooks() {
         List<Book> BOOK_LIST =  List.of(new Book("small", "author small", 1988, true),
                 new Book("big","author", 1987, true),
                 new Book("really big name", "author", 1987, true));
@@ -55,14 +76,18 @@ public class MainMenuTest {
 
         mainMenu.handleUserOption("1");
 
-      //  when(mockBiblioteca.listBooks()).thenReturn(BOOK_LIST);
-
-      //  verify(mockBiblioteca).listBooks();
-
         assertThat(outContent.toString(), containsString("small               author small     1988\n" +
                 "big                 author           1987\n" +
                 "really big name     author           1987"));
+    }
 
+    @Test
+    public void shouldPrintErrorIfBooksLiostEmpty() {
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
+
+        mainMenu.handleUserOption("1");
+
+        assertThat(outContent.toString(), containsString("Books list is empty"));
     }
 
 
