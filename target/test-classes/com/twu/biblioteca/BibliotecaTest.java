@@ -18,11 +18,6 @@ public class BibliotecaTest {
             new Item("Name Item 4","Author Item 4",1999,false));
     Biblioteca biblioteca = new Biblioteca(BOOKS);
 
-    @Test
-    public void shouldUpdateUserLoggedInInformation (){
-//        Biblioteca biblioteca = new Biblioteca();
-
-    }
 
     //List Books
     @Test

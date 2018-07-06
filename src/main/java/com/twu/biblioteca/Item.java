@@ -45,11 +45,11 @@ public class Item {
         return Objects.hash(name, author, yearPublished);
     }
 
-    public void checkoutBook() {
+    public void checkoutItem() {
         isAvailable = false;
     }
 
-    public void returnBook(){
+    public void returnItem(){
         isAvailable = true;
     }
 

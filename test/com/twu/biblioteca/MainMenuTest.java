@@ -67,7 +67,7 @@ public class MainMenuTest {
     }
 
     @Test
-    public void shouldFormatListOfBooks() {
+    public void shouldFormatListOfItems() {
         List<Item> BOOK_LIST =  List.of(new Item("small", "author small", 1988, true),
                 new Item("big","author", 1987, true),
                 new Item("really big name", "author", 1987, true));

@@ -22,7 +22,7 @@ public class Biblioteca {
         Item itemToCheckout = getBook(nameOfBookToCheckout);
 
         if (itemToCheckout.getIsAvailable()){
-            itemToCheckout.checkoutBook();
+            itemToCheckout.checkoutItem();
         } else{
             throw new IllegalArgumentException("That book is not available");
         }
@@ -37,15 +37,15 @@ public class Biblioteca {
         if (itemToReturn.getIsAvailable()){
             throw new IllegalArgumentException("That is not a valid book to return");
         }
-        itemToReturn.returnBook();
+        itemToReturn.returnItem();
         return returnFlag;
     }
 
 
-    public Item getBook(String nameOfBook) throws NoSuchElementException {
+    public Item getBook(String nameOfItem) throws NoSuchElementException {
         try {
             return items.stream()
-                    .filter(p -> p.getName().equals(nameOfBook))
+                    .filter(p -> p.getName().equals(nameOfItem))
                     .findFirst()
                     .get();
         } catch (NoSuchElementException nexc) {
