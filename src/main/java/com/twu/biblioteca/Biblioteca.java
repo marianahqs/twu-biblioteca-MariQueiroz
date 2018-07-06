@@ -6,23 +6,23 @@ import java.util.stream.Collectors;
 
 public class Biblioteca {
 
-    private final List<Book> books;
+    private final List<Item> items;
 
-    public Biblioteca(List<Book> books) {
-        this.books = books;
+    public Biblioteca(List<Item> items) {
+        this.items = items;
     }
 
-    public List<Book> listBooks() {
-        return books.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
+    public List<Item> listBooks() {
+        return items.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
     }
 
     public boolean checkoutBook(String nameOfBookToCheckout) throws NoSuchElementException, IllegalArgumentException {
         boolean returnFlag = true;
 
-        Book bookToCheckout = getBook(nameOfBookToCheckout);
+        Item itemToCheckout = getBook(nameOfBookToCheckout);
 
-        if (bookToCheckout.getIsAvailable()){
-            bookToCheckout.checkoutBook();
+        if (itemToCheckout.getIsAvailable()){
+            itemToCheckout.checkoutBook();
         } else{
             throw new IllegalArgumentException("That book is not available");
         }
@@ -32,20 +32,20 @@ public class Biblioteca {
 
     public boolean returnBook(String nameOfBookToReturn) throws NoSuchElementException, IllegalArgumentException {
         boolean returnFlag = true;
-        Book bookToReturn = getBook(nameOfBookToReturn);
+        Item itemToReturn = getBook(nameOfBookToReturn);
 
-        if (bookToReturn.getIsAvailable()){
+        if (itemToReturn.getIsAvailable()){
             throw new IllegalArgumentException("That is not a valid book to return");
         }
-        bookToReturn.returnBook();
+        itemToReturn.returnBook();
         return returnFlag;
     }
 
 
-    public Book getBook(String nameOfBookToCheckout) throws NoSuchElementException {
+    public Item getBook(String nameOfBook) throws NoSuchElementException {
         try {
-            return books.stream()
-                    .filter(p -> p.getName().equals(nameOfBookToCheckout))
+            return items.stream()
+                    .filter(p -> p.getName().equals(nameOfBook))
                     .findFirst()
                     .get();
         } catch (NoSuchElementException nexc) {

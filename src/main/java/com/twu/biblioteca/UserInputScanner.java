@@ -6,13 +6,8 @@ public class UserInputScanner {
 
     private Scanner keypad;
 
-    public UserInputScanner() {
-        this.keypad = new Scanner(System.in);
-    }
-
     public String askUserInput() {
+        this.keypad = new Scanner(System.in);        
         return keypad.nextLine();
     }
-
-
 }

@@ -7,27 +7,26 @@ import java.util.stream.Collectors;
 
 public class ColumnsFormatter {
 
-    private static List<Book> books;
+    private static List<Item> items;
 
-    public ColumnsFormatter(List<Book> books) {
-        this.books = books;
+    public ColumnsFormatter(List<Item> items) {
+        this.items = items;
     }
 
     public List<String> formatColumns(){
         int COLUMN_DISTANCE = 5;
-        int nameColumnSize = getSizeBiggestItem(books.stream().map(Book::getName).collect(Collectors.toList()))
+        int nameColumnSize = getSizeBiggestItem(items.stream().map(Item::getName).collect(Collectors.toList()))
                 +COLUMN_DISTANCE;
-        int authorColumnSize = getSizeBiggestItem(books.stream().map(Book::getAuthor).collect(Collectors.toList()))
+        int authorColumnSize = getSizeBiggestItem(items.stream().map(Item::getAuthor).collect(Collectors.toList()))
                 +COLUMN_DISTANCE;
         List<String > returnList = new ArrayList<>();
 
-        for (int line = 0; line <books.size();line++){
+        for (int line = 0; line < items.size(); line++){
 
             returnList.add(String.format("%-"+nameColumnSize+"s%-"+authorColumnSize+"s%s",
-                    books.get(line).getName(),
-                    books.get(line).getAuthor(),
-                    books.get(line).getYearPublished()));
-
+                    items.get(line).getName(),
+                    items.get(line).getAuthor(),
+                    items.get(line).getYearPublished()));
         }
         return returnList;
     }
@@ -42,7 +41,7 @@ public class ColumnsFormatter {
 
             return maxString.length();
         }catch (NoSuchElementException noItem){
-            throw new NoSuchElementException("Books list is empty");
+            throw new NoSuchElementException("Items list is empty");
         }
     }
 }

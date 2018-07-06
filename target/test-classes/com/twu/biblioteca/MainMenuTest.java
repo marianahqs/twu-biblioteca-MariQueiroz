@@ -68,9 +68,9 @@ public class MainMenuTest {
 
     @Test
     public void shouldFormatListOfBooks() {
-        List<Book> BOOK_LIST =  List.of(new Book("small", "author small", 1988, true),
-                new Book("big","author", 1987, true),
-                new Book("really big name", "author", 1987, true));
+        List<Item> BOOK_LIST =  List.of(new Item("small", "author small", 1988, true),
+                new Item("big","author", 1987, true),
+                new Item("really big name", "author", 1987, true));
         Biblioteca biblioteca = new Biblioteca(BOOK_LIST);
         MainMenu mainMenu = new MainMenu(biblioteca, mockScanner);
 
@@ -87,7 +87,7 @@ public class MainMenuTest {
 
         mainMenu.handleUserOption("1");
 
-        assertThat(outContent.toString(), containsString("Books list is empty"));
+        assertThat(outContent.toString(), containsString("Items list is empty"));
     }
 
 
@@ -95,7 +95,7 @@ public class MainMenuTest {
     @Test
     public void shouldHandleCheckoutBookOption() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
-        String BOOK_NAME_TEST = "Book Name";
+        String BOOK_NAME_TEST = "Item Name";
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
 
@@ -107,7 +107,7 @@ public class MainMenuTest {
     @Test
     public void shouldPrintOkMessageWhenCheckoutBookOptionSucceed() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
-        String BOOK_NAME_TEST = "Name Book 2";
+        String BOOK_NAME_TEST = "Name Item 2";
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
         when(mockBiblioteca.checkoutBook(BOOK_NAME_TEST)).thenReturn(true);
@@ -134,7 +134,7 @@ public class MainMenuTest {
     @Test
     public void shouldPrintErrorMessageWhenTryCheckoutUnavailableBook() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
-        String BOOK_NAME_TEST = "Name Book 4";
+        String BOOK_NAME_TEST = "Name Item 4";
         IllegalArgumentException bookIsNotAvailable = new IllegalArgumentException("different error message");
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
@@ -150,7 +150,7 @@ public class MainMenuTest {
     @Test
     public void shouldHandleReturnBookOption() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
-        String BOOK_NAME_TEST = "Book Name";
+        String BOOK_NAME_TEST = "Item Name";
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
 
@@ -162,7 +162,7 @@ public class MainMenuTest {
     @Test
     public void shouldPrintOkMessageWhenReturnBookOptionSucceed() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
-        String BOOK_NAME_TEST = "Name Book 3";
+        String BOOK_NAME_TEST = "Name Item 3";
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
         when(mockBiblioteca.returnBook(BOOK_NAME_TEST)).thenReturn(true);
@@ -189,7 +189,7 @@ public class MainMenuTest {
     @Test
     public void shouldPrintErrorMessageWhenTryReturnBookAvailable() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner);
-        String BOOK_NAME_TEST = "Name Book 1";
+        String BOOK_NAME_TEST = "Name Item 1";
         IllegalArgumentException bookIsAvailable = new IllegalArgumentException("Error Message");
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);

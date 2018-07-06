@@ -2,13 +2,13 @@ package com.twu.biblioteca;
 
 import java.util.Objects;
 
-public class Book {
+public class Item {
     private String name;
     private String author;
     private Integer yearPublished;
     private boolean isAvailable;
 
-    public Book(String name, String author, Integer yearPublished, boolean isAvailable) {
+    public Item(String name, String author, Integer yearPublished, boolean isAvailable) {
         this.name = name;
         this.author = author;
         this.yearPublished = yearPublished;
@@ -34,10 +34,10 @@ public class Book {
             return false;
         }
 
-        Book otherBook = (Book) otherObject;
-        return name.equals(otherBook.name) &&
-                author.equals(otherBook.author) &&
-                yearPublished.equals(otherBook.yearPublished);
+        Item otherItem = (Item) otherObject;
+        return name.equals(otherItem.name) &&
+                author.equals(otherItem.author) &&
+                yearPublished.equals(otherItem.yearPublished);
     }
 
     @Override
