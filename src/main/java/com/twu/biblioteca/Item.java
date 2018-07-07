@@ -102,4 +102,12 @@ public class Item {
     public String getKind(){
         return kind;
     }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public String getRating() {
+        return rating;
+    }
 }

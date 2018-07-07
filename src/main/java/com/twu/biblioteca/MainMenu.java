@@ -38,74 +38,54 @@ public class MainMenu {
         this.userManager = userManager;
     }
 
-    public void handleUserOption(String userInput){
+    public void handleUserOption(String userInput) {
 
-        try{
+        try {
             String userSelection = getCurrentMenu().get(Integer.parseInt(userInput));
 
             switch (userSelection) {
                 case (LIST_BOOKS):
-                    try{
-                        ColumnsFormatter booksListFormatter = new ColumnsFormatter(biblioteca.listBooks());
-                        System.out.println("\n"+String.join("\n",booksListFormatter.formatColumns()));
-                    } catch (NoSuchElementException exception){
-                        System.out.println(exception.getMessage());
-                    }
+                    ColumnsFormatter booksListFormatter = new ColumnsFormatter(biblioteca.listBooks(),"books");
+                    System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
                     break;
 
                 case (LIST_MOVIES):
-                    try{
-                        ColumnsFormatter moviesListFormatter = new ColumnsFormatter(biblioteca.listMovies());
-                        System.out.println("\n"+String.join("\n",moviesListFormatter.formatColumns()));
-                    } catch (NoSuchElementException exception){
-                        System.out.println(exception.getMessage());
-                    }
+                    ColumnsFormatter moviesListFormatter = new ColumnsFormatter(biblioteca.listMovies(),"movies");
+                    System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
                     break;
 
                 case (QUIT):
                     System.exit(0);
 
                 case (CHECKOUT_ITEM):
-                    try{
-                        if (biblioteca.checkoutItem(askForInput("Enter the name of item to checkout:"))){
-                            System.out.println("Thank you! Enjoy the book!");
-                        }
-                    } catch (NoSuchElementException | IllegalArgumentException exception){
-                        System.out.println(exception.getMessage());
+                    if (biblioteca.checkoutItem(askForInput("Enter the name of item to checkout:"), userManager.getUserLoggedID())) {
+                        System.out.println("Thank you! Enjoy the it!");
                     }
                     break;
 
                 case (RETURN_ITEM):
-                    try{
-                        if (biblioteca.returnItem(askForInput("Enter the name of item to return:"))){
-                            System.out.println("Thank you for returning the book!");
-                        }
-                    } catch (NoSuchElementException | IllegalArgumentException exception) {
-                        System.out.println(exception.getMessage());
+                    if (biblioteca.returnItem(askForInput("Enter the name of item to return:"))) {
+                        System.out.println("Thank you for returning the it!");
                     }
                     break;
 
                 case (LOGIN):
-                    try {
-                        String userIdInput = askForInput("User ID:");
-                        String passwordInput = askForInput("Password:");
-
-                        userManager.login(userIdInput, passwordInput);
-
-                    }catch (NoSuchElementException | IllegalArgumentException exception){
-                        System.out.println(exception.getMessage());
-                    }
+                    String userIdInput = askForInput("User ID:");
+                    String passwordInput = askForInput("Password:");
+                    userManager.login(userIdInput, passwordInput);
                     break;
 
-                case(LOGOUT):
+                case (LOGOUT):
                     userManager.logout();
                     break;
 
-                case(USER_INFORMATION):
+                case (USER_INFORMATION):
                     System.out.println(userManager.getUserInformation());
             }
-        } catch (IndexOutOfBoundsException iobExc){
+        } catch (IndexOutOfBoundsException iobExc) {
             System.out.println("Select a valid option");
+        } catch (NoSuchElementException | IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
         }
     }
 

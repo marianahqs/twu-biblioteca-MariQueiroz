@@ -8,29 +8,63 @@ import java.util.stream.Collectors;
 public class ColumnsFormatter {
 
     private static List<Item> items;
+    private static String itemKind;
 
-    public ColumnsFormatter(List<Item> items) {
+    public ColumnsFormatter(List<Item> items, String itemKind) {
         this.items = items;
+        this.itemKind = itemKind;
     }
 
     public List<String> formatColumns(){
         int COLUMN_DISTANCE = 5;
-        int nameColumnSize = getSizeBiggestItem(items.stream().map(Item::getName).collect(Collectors.toList()))
-                +COLUMN_DISTANCE;
-        int authorColumnSize = getSizeBiggestItem(items.stream().map(Item::getAuthor).collect(Collectors.toList()))
-                +COLUMN_DISTANCE;
         List<String > returnList = new ArrayList<>();
 
-        for (int line = 0; line < items.size(); line++){
+        if (itemKind.equals("books")){
+            int nameColumnSize = getSizeBiggestItem(items.stream().
+                    map(Item::getName).
+                    collect(Collectors.toList()))
+                    +COLUMN_DISTANCE;
 
-            returnList.add(String.format("%-"+nameColumnSize+"s%-"+authorColumnSize+"s%s",
-                    items.get(line).getName(),
-                    items.get(line).getAuthor(),
-                    items.get(line).getYear()));
+            int authorColumnSize = getSizeBiggestItem(items.stream().
+                    map(Item::getAuthor).
+                    collect(Collectors.toList()))
+                    +COLUMN_DISTANCE;
+
+
+            for (int line = 0; line < items.size(); line++) {
+
+                returnList.add(String.format("%-" + nameColumnSize + "s%-" + authorColumnSize + "s%s",
+                        items.get(line).getName(),
+                        items.get(line).getAuthor(),
+                        items.get(line).getYear()));
+            }
+        } else{
+            int nameColumnSize = getSizeBiggestItem(items.stream().
+                    map(Item::getName).
+                    collect(Collectors.toList()))
+                    +COLUMN_DISTANCE;
+
+            int directorColumnSize = getSizeBiggestItem(items.stream().
+                    map(Item::getDirector).
+                    collect(Collectors.toList()))
+                    +COLUMN_DISTANCE;
+
+            int ratingColumnSize = getSizeBiggestItem(items.stream().
+                    map(Item::getRating).
+                    collect(Collectors.toList()))
+                    +COLUMN_DISTANCE;
+
+            for (int line = 0; line < items.size(); line++){
+
+                returnList.add(String.format("%-" + nameColumnSize + "s%-" + directorColumnSize+"s%-" + ratingColumnSize + "s%s",
+                        items.get(line).getName(),
+                        items.get(line).getDirector(),
+                        items.get(line).getRating(),
+                        items.get(line).getYear()));
+            }
         }
         return returnList;
     }
-
 
     public int getSizeBiggestItem(List<String> listToTest)throws NoSuchElementException {
         try {

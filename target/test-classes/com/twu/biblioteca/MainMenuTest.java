@@ -46,6 +46,11 @@ public class MainMenuTest {
         System.setOut(sysOut);
     }
 
+    String ITEM_NAME_TEST = "Item Name";
+    String USER_ID_TEST = "333-4444";
+
+
+    // Show Menu Tests
     @Test
     public void shouldShowMenuForLoggedOutCondition(){
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner,mockUserManager);
@@ -126,7 +131,6 @@ public class MainMenuTest {
     }
 
 
-
     // User Information Tests
     @Test
     public void shoudPrintUserInformation(){
@@ -172,26 +176,26 @@ public class MainMenuTest {
 
     // Checkout Tests
     @Test
-    public void shouldHandleCheckoutBookOption() {
+    public void shouldHandleCheckoutItemOption() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner,mockUserManager);
-        String BOOK_NAME_TEST = "Item Name";
 
-        when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
+        when(mockUserManager.getUserLoggedID()).thenReturn(USER_ID_TEST);
 
         mainMenu.handleUserOption("2");
 
-        verify(mockBiblioteca).checkoutItem(BOOK_NAME_TEST);
+        verify(mockBiblioteca).checkoutItem(ITEM_NAME_TEST,USER_ID_TEST);
     }
 
     @Test
-    public void shouldPrintOkMessageWhenCheckoutBookOptionSucceed() {
+    public void shouldPrintOkMessageWhenCheckoutItemOptionSucceed() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
-        String BOOK_NAME_TEST = "Name Item 2";
 
-        when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
-        when(mockBiblioteca.checkoutItem(BOOK_NAME_TEST)).thenReturn(true);
+        when(mockUserManager.getUserLoggedID()).thenReturn(USER_ID_TEST);
+        when(mockBiblioteca.checkoutItem(ITEM_NAME_TEST,USER_ID_TEST)).thenReturn(true);
 
         mainMenu.handleUserOption("2");
 
@@ -199,14 +203,14 @@ public class MainMenuTest {
     }
 
     @Test
-    public void shouldPrintErrorMessageWhenTryCheckoutNonexistentBook() {
+    public void shouldPrintErrorMessageWhenTryCheckoutNonexistentItem() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
-        String BOOK_NAME_TEST = "Not valid book";
         NoSuchElementException bookDoesNotExist = new NoSuchElementException("Error Message");
 
-        when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
-        when(mockBiblioteca.checkoutItem(BOOK_NAME_TEST)).thenThrow(bookDoesNotExist);
+        when(mockUserManager.getUserLoggedID()).thenReturn(USER_ID_TEST);
+        when(mockBiblioteca.checkoutItem(ITEM_NAME_TEST,USER_ID_TEST)).thenThrow(bookDoesNotExist);
 
         mainMenu.handleUserOption("2");
 
@@ -214,14 +218,14 @@ public class MainMenuTest {
     }
 
     @Test
-    public void shouldPrintErrorMessageWhenTryCheckoutUnavailableBook() {
+    public void shouldPrintErrorMessageWhenTryCheckoutUnavailableItem() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
-        String BOOK_NAME_TEST = "Name Item 4";
         IllegalArgumentException bookIsNotAvailable = new IllegalArgumentException("different error message");
 
-        when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
-        when(mockBiblioteca.checkoutItem(BOOK_NAME_TEST)).thenThrow(bookIsNotAvailable);
+        when(mockUserManager.getUserLoggedID()).thenReturn(USER_ID_TEST);
+        when(mockBiblioteca.checkoutItem(ITEM_NAME_TEST,USER_ID_TEST)).thenThrow(bookIsNotAvailable);
 
         mainMenu.handleUserOption("2");
 
@@ -231,26 +235,24 @@ public class MainMenuTest {
 
     // Return Tests
     @Test
-    public void shouldHandleReturnBookOption() {
+    public void shouldHandleReturnItemOption() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner,mockUserManager);
-        String BOOK_NAME_TEST = "Item Name";
 
-        when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
 
         mainMenu.handleUserOption("3");
 
-        verify(mockBiblioteca).returnItem(BOOK_NAME_TEST);
+        verify(mockBiblioteca).returnItem(ITEM_NAME_TEST);
     }
 
     @Test
-    public void shouldPrintOkMessageWhenReturnBookOptionSucceed() {
+    public void shouldPrintOkMessageWhenReturnItemOptionSucceed() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner,mockUserManager);
-        String BOOK_NAME_TEST = "Name Item 3";
 
-        when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
-        when(mockBiblioteca.returnItem(BOOK_NAME_TEST)).thenReturn(true);
+        when(mockBiblioteca.returnItem(ITEM_NAME_TEST)).thenReturn(true);
 
         mainMenu.handleUserOption("3");
 
@@ -258,14 +260,13 @@ public class MainMenuTest {
     }
 
     @Test
-    public void shouldPrintErrorMessageWhenTryReturnNonexistentBook() {
+    public void shouldPrintErrorMessageWhenTryReturnNonexistentItem() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
-        String BOOK_NAME_TEST = "Not valid book";
         NoSuchElementException bookDoesNotExist = new NoSuchElementException("Error Message");
 
-        when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
-        when(mockBiblioteca.returnItem(BOOK_NAME_TEST)).thenThrow(bookDoesNotExist);
+        when(mockBiblioteca.returnItem(ITEM_NAME_TEST)).thenThrow(bookDoesNotExist);
 
         mainMenu.handleUserOption("3");
 
@@ -273,14 +274,13 @@ public class MainMenuTest {
     }
 
     @Test
-    public void shouldPrintErrorMessageWhenTryReturnBookAvailable() {
+    public void shouldPrintErrorMessageWhenTryReturnItemAvailable() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
-        String BOOK_NAME_TEST = "Name Item 1";
         IllegalArgumentException bookIsAvailable = new IllegalArgumentException("Error Message");
 
-        when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
+        when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
-        when(mockBiblioteca.returnItem(BOOK_NAME_TEST)).thenThrow(bookIsAvailable);
+        when(mockBiblioteca.returnItem(ITEM_NAME_TEST)).thenThrow(bookIsAvailable);
 
         mainMenu.handleUserOption("3");
 
