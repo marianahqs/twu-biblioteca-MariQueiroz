@@ -51,4 +51,10 @@ public class UserManagerTest {
         assertFalse(userManager.isLoggedIn());
         assertEquals(null,userManager.getUserLoggedID());
     }
+
+    @Test
+    public void shouldReturnUserInformation(){
+        userManager.login("222-3456", "password");
+        assertEquals("Name: Ze das Couves\nPhone Number: 3333-4456\nEmail Address: zeze@email.com",userManager.getUserInformation());
+    }
 }

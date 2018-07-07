@@ -7,7 +7,6 @@ import org.mockito.Mock;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -98,21 +97,6 @@ public class MainMenuTest {
     }
 
     @Test
-    public void shouldFormatListOfItems() {
-        List<Item> BOOK_LIST =  List.of(new Item("small", "author small", 1988, true),
-                new Item("big","author", 1987, true),
-                new Item("really big name", "author", 1987, true));
-        Biblioteca biblioteca = new Biblioteca(BOOK_LIST);
-        MainMenu mainMenu = new MainMenu(biblioteca, mockScanner, mockUserManager);
-
-        mainMenu.handleUserOption("0");
-
-        assertThat(outContent.toString(), containsString("small               author small     1988\n" +
-                "big                 author           1987\n" +
-                "really big name     author           1987"));
-    }
-
-    @Test
     public void shouldPrintErrorIfBooksListEmpty() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
 
@@ -120,6 +104,49 @@ public class MainMenuTest {
 
         assertThat(outContent.toString(), containsString("Items list is empty"));
     }
+
+
+    // User Information Tests
+    @Test
+    public void shoudPrintUserInformation(){
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
+        String OUTPUT_EXPECTED = "Name: name\nPhone: phone\nEmail: email";
+
+        when(mockUserManager.getUserInformation()).thenReturn(OUTPUT_EXPECTED);
+        when(mockUserManager.isLoggedIn()).thenReturn(true);
+
+        mainMenu.handleUserOption("4");
+
+        assertThat(outContent.toString(), containsString(OUTPUT_EXPECTED));
+    }
+
+
+    // Login/Logout Tests
+    @Test
+    public void shouldHandleLogout(){
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
+        when(mockUserManager.isLoggedIn()).thenReturn(true);
+        mainMenu.handleUserOption("5");
+
+        verify(mockUserManager).logout();
+
+    }
+
+
+//    @Test  -  MOCK IS NOT WORKING
+//    public void shoudHandleLoginOption(){
+//        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
+//        String ID_TEST = "221-4567";
+//        String PASSWORD_TEST = "123123";
+//
+//        when(mockUserManager.isLoggedIn()).thenReturn(false);
+//
+//        mainMenu.handleUserOption("2");
+//        when(mockScanner.askUserInput()).thenReturn(ID_TEST);
+//        when(mockScanner.askUserInput()).thenReturn(PASSWORD_TEST);
+//
+//        verify(mockUserManager).login(ID_TEST,PASSWORD_TEST);
+//    }
 
 
     // Checkout Tests

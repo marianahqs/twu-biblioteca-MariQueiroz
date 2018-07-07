@@ -38,4 +38,13 @@ public class UserManager {
     public String getUserLoggedID() {
         return userLoggedID;
     }
+
+    public String getUserInformation() {
+        User userLoggedIn = users.stream()
+                .filter(p -> p.getUserID().equals(this.userLoggedID))
+                .findFirst()
+                .get();
+
+        return userLoggedIn.toString();
+    }
 }

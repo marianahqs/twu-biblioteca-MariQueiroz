@@ -57,7 +57,7 @@ public class MainMenu {
 
                 case (CHECKOUT_ITEM):
                     try{
-                        if (biblioteca.checkoutItem(askNameOfBook())){
+                        if (biblioteca.checkoutItem(askForInput("Enter the name of item to checkout:"))){
                             System.out.println("Thank you! Enjoy the book!");
                         }
                     } catch (NoSuchElementException | IllegalArgumentException exception){
@@ -67,7 +67,7 @@ public class MainMenu {
 
                 case (RETURN_ITEM):
                     try{
-                        if (biblioteca.returnItem(askNameOfBook())){
+                        if (biblioteca.returnItem(askForInput("Enter the name of item to return:"))){
                             System.out.println("Thank you for returning the book!");
                         }
                     } catch (NoSuchElementException | IllegalArgumentException exception) {
@@ -77,11 +77,8 @@ public class MainMenu {
 
                 case (LOGIN):
                     try {
-                        System.out.println("User ID:");
-                        String userIdInput = scanner.askUserInput();
-
-                        System.out.println("Password");
-                        String passwordInput = scanner.askUserInput();
+                        String userIdInput = askForInput("User ID:");
+                        String passwordInput = askForInput("Password:");
 
                         userManager.login(userIdInput, passwordInput);
 
@@ -95,7 +92,7 @@ public class MainMenu {
                     break;
 
                 case(USER_INFORMATION):
-                    System.out.println(userManager.toString());
+                    System.out.println(userManager.getUserInformation());
             }
         } catch (IndexOutOfBoundsException iobExc){
             System.out.println("Select a valid option");
@@ -109,8 +106,8 @@ public class MainMenu {
         }
     }
 
-    private String askNameOfBook() {
-        System.out.println("\nWhat is the name of the book or movie? (Press '1' to quit)");
+    private String askForInput(String question) {
+        System.out.println("\n"+question);
 
         return scanner.askUserInput();
     }

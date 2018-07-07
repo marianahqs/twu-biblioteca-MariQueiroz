@@ -19,7 +19,7 @@ public class User {
 
     @Override
     public String toString(){
-        return String.format("%s \n %s \n %s",name,phoneNumber,emailAddress);
+        return String.format("Name: %s\nPhone Number: %s\nEmail Address: %s",name,phoneNumber,emailAddress);
     }
 
     @Override
