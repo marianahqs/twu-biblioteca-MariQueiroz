@@ -59,13 +59,13 @@ public class MainMenu {
 
                 case (CHECKOUT_ITEM):
                     if (biblioteca.checkoutItem(askForInput("Enter the name of item to checkout:"), userManager.getUserLoggedID())) {
-                        System.out.println("Thank you! Enjoy the it!");
+                        System.out.println("Thank you! Enjoy it!");
                     }
                     break;
 
                 case (RETURN_ITEM):
                     if (biblioteca.returnItem(askForInput("Enter the name of item to return:"))) {
-                        System.out.println("Thank you for returning the it!");
+                        System.out.println("Thank you for returning it!");
                     }
                     break;
 

@@ -199,7 +199,7 @@ public class MainMenuTest {
 
         mainMenu.handleUserOption("2");
 
-        assertThat(outContent.toString(), containsString("Thank you! Enjoy the book!"));
+        assertThat(outContent.toString(), containsString("Thank you! Enjoy it!"));
     }
 
     @Test
@@ -256,7 +256,7 @@ public class MainMenuTest {
 
         mainMenu.handleUserOption("3");
 
-        assertThat(outContent.toString(), containsString("Thank you for returning the book!"));
+        assertThat(outContent.toString(), containsString("Thank you for returning it!"));
     }
 
     @Test
