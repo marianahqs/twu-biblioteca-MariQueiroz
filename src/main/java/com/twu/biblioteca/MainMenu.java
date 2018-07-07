@@ -39,14 +39,24 @@ public class MainMenu {
     }
 
     public void handleUserOption(String userInput){
+
         try{
             String userSelection = getCurrentMenu().get(Integer.parseInt(userInput));
 
             switch (userSelection) {
                 case (LIST_BOOKS):
-                    ColumnsFormatter formatter = new ColumnsFormatter(biblioteca.listBooks());
                     try{
-                        System.out.println("\n"+String.join("\n",formatter.formatColumns()));
+                        ColumnsFormatter booksListFormatter = new ColumnsFormatter(biblioteca.listBooks());
+                        System.out.println("\n"+String.join("\n",booksListFormatter.formatColumns()));
+                    } catch (NoSuchElementException exception){
+                        System.out.println(exception.getMessage());
+                    }
+                    break;
+
+                case (LIST_MOVIES):
+                    try{
+                        ColumnsFormatter moviesListFormatter = new ColumnsFormatter(biblioteca.listMovies());
+                        System.out.println("\n"+String.join("\n",moviesListFormatter.formatColumns()));
                     } catch (NoSuchElementException exception){
                         System.out.println(exception.getMessage());
                     }

@@ -42,7 +42,7 @@ public class BibliotecaTest {
     @Test
     public void shouldReturnOnlyAvailableMovies(){
         List<Item> EXPECTED_RETURN_LIST = List.of(Item.createMovie("Name Movie 1", "Director Movie 1", 1980,"8.1" ,true),
-                Item.createMovie("Name Movie 4","Author Item 4",1999,"none",true));
+                Item.createMovie("Name Movie 4","Director Movie 4",1999,"none",true));
 
         assertEquals(EXPECTED_RETURN_LIST, biblioteca.listMovies());
     }
@@ -133,7 +133,7 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void shouldThrowIllegalArgumentExceptionWhenTryReturnBookAvailable(){
+    public void shouldThrowIllegalArgumentExceptionWhenTryReturnItemAvailable(){
         IllegalArgumentException testedBookException = assertThrows(IllegalArgumentException.class,
                 () -> {
                     biblioteca.returnItem("Name Book 1");

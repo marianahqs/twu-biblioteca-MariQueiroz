@@ -106,6 +106,27 @@ public class MainMenuTest {
     }
 
 
+    // List Movies Tests
+    @Test
+    public void shouldHandleListMoviesOption() {
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner,mockUserManager);
+
+        mainMenu.handleUserOption("1");
+
+        verify(mockBiblioteca).listMovies();
+    }
+
+    @Test
+    public void shouldPrintErrorIfMoviesListEmpty() {
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
+
+        mainMenu.handleUserOption("1");
+
+        assertThat(outContent.toString(), containsString("Items list is empty"));
+    }
+
+
+
     // User Information Tests
     @Test
     public void shoudPrintUserInformation(){
