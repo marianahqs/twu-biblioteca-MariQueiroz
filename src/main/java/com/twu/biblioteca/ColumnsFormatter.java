@@ -26,7 +26,7 @@ public class ColumnsFormatter {
             returnList.add(String.format("%-"+nameColumnSize+"s%-"+authorColumnSize+"s%s",
                     items.get(line).getName(),
                     items.get(line).getAuthor(),
-                    items.get(line).getYearPublished()));
+                    items.get(line).getYear()));
         }
         return returnList;
     }

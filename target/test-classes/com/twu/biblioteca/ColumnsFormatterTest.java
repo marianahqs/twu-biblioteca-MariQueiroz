@@ -7,9 +7,9 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class ColumnsFormatterTest {
-    List<Item> BOOKS = List.of(new Item("small", "author small", 1988, true),
-            new Item("big","author", 1987, true),
-            new Item("really big name", "author", 1987, true));
+    List<Item> BOOKS = List.of(Item.createBook("small", "author small", 1988, true),
+            Item.createBook("big","author", 1987, true),
+            Item.createBook("really big name", "author", 1987, true));
     ColumnsFormatter formatter = new ColumnsFormatter(BOOKS);
 
     @Test

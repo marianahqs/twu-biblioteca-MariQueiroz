@@ -13,7 +13,11 @@ public class Biblioteca {
     }
 
     public List<Item> listBooks() {
-        return items.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
+        return items.stream().filter(p -> p.getIsAvailable() && p.getKind().equals("book")).collect(Collectors.toList());
+    }
+
+    public List<Item> listMovies() {
+        return items.stream().filter(p -> p.getIsAvailable()&& p.getKind().equals("movie")).collect(Collectors.toList());
     }
 
     public boolean checkoutItem(String nameOfBookToCheckout) throws NoSuchElementException, IllegalArgumentException {
@@ -24,7 +28,7 @@ public class Biblioteca {
         if (itemToCheckout.getIsAvailable()){
             itemToCheckout.checkoutItem();
         } else{
-            throw new IllegalArgumentException("That book is not available");
+            throw new IllegalArgumentException("That item is not available");
         }
         return returnFlag;
     }
@@ -35,7 +39,7 @@ public class Biblioteca {
         Item itemToReturn = getBook(nameOfBookToReturn);
 
         if (itemToReturn.getIsAvailable()){
-            throw new IllegalArgumentException("That is not a valid book to return");
+            throw new IllegalArgumentException("That is not a valid item to return");
         }
         itemToReturn.returnItem();
         return returnFlag;
@@ -49,7 +53,7 @@ public class Biblioteca {
                     .findFirst()
                     .get();
         } catch (NoSuchElementException nexc) {
-            throw new NoSuchElementException("That is not a valid book name");
+            throw new NoSuchElementException("That is not a valid item name");
         }
     }
 

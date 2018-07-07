@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -12,105 +14,140 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class BibliotecaTest {
-    List<Item> BOOKS = List.of(new Item("Name Item 1", "Author Item 1", 1980, true),
-            new Item("Name Item 2", "Author Item 2",2003,true),
-            new Item("Name Item 3", "Author Item 3", 2017, false),
-            new Item("Name Item 4","Author Item 4",1999,false));
-    Biblioteca biblioteca = new Biblioteca(BOOKS);
+    List<Item> BOOKS = List.of(Item.createBook("Name Book 1", "Author Book 1", 1980, true),
+            Item.createBook("Name Book 2", "Author Book 2",2003,true),
+            Item.createBook("Name Book 3", "Author Book 3", 2017, false),
+            Item.createBook("Name Book 4","Author Book 4",1999,false));
 
+    List<Item> MOVIES = List.of(Item.createMovie("Name Movie 1", "Director Movie 1", 1980,"8.1" ,true),
+            Item.createMovie("Name Movie 2", "Director Movie 2",2003,"none",false),
+            Item.createMovie("Name Movie 3", "Director Movie 3", 2017,"9", false),
+            Item.createMovie("Name Movie 4","Director Movie 4",1999,"none",true));
+
+    List < Item> ITEMS = Stream.concat(BOOKS.stream(), MOVIES.stream()).collect(Collectors.toList());
+
+    Biblioteca biblioteca = new Biblioteca(ITEMS);
 
     //List Books
     @Test
-    public void shouldReturnTheListOfBooks() {
-        List<Item> BOOKS_ALL_AVAILABLE = List.of(new Item("Name Item 1", "Author Item 1", 2018, true),
-                new Item("Name Item 2", "Author Item 2", 2017, true));
-
-        Biblioteca biblioteca = new Biblioteca(BOOKS_ALL_AVAILABLE);
-
-        assertEquals(BOOKS_ALL_AVAILABLE, biblioteca.listBooks());
-    }
-
-    @Test
-    public void shouldReturnOnlyAvailableBook(){
-        List<Item> EXPECTED_RETURN_LIST = List.of(new Item("Name Item 1", "Author Item 1", 1980, true),
-                new Item("Name Item 2", "Author Item 2",2003,true));
+    public void shouldReturnOnlyAvailableBooks(){
+        List<Item> EXPECTED_RETURN_LIST = List.of(Item.createBook("Name Book 1", "Author Book 1", 1980, true),
+                Item.createBook("Name Book 2", "Author Book 2",2003,true));
 
         assertEquals(EXPECTED_RETURN_LIST, biblioteca.listBooks());
     }
 
 
-    //Checkout Books
+    //List Movies
+    @Test
+    public void shouldReturnOnlyAvailableMovies(){
+        List<Item> EXPECTED_RETURN_LIST = List.of(Item.createMovie("Name Movie 1", "Director Movie 1", 1980,"8.1" ,true),
+                Item.createMovie("Name Movie 4","Author Item 4",1999,"none",true));
+
+        assertEquals(EXPECTED_RETURN_LIST, biblioteca.listMovies());
+    }
+
+
+    //Checkout Items
     @Test
     public void shouldReturnTrueWhenCheckoutSucceed(){
-        assertTrue(biblioteca.checkoutItem("Name Item 1"));
+        assertTrue(biblioteca.checkoutItem("Name Book 1"));
+        assertTrue(biblioteca.checkoutItem("Name Movie 4"));
     }
 
     @Test
-    public void shouldReturnListWithoutCheckedOutBook(){
-        List<Item> EXPECTED_RETURN_LIST = List.of(new Item("Name Item 1", "Author Item 1", 1980, true));
-
-        biblioteca.checkoutItem("Name Item 2");
-        assertEquals(EXPECTED_RETURN_LIST, biblioteca.listBooks());
-    }
-
-    @Test
-    public void shouldThrowNoSuchElementExceptionWhenTryCheckoutNonexistentBook(){
+    public void shouldThrowNoSuchElementExceptionWhenTryCheckoutNonexistentItem(){
         NoSuchElementException testedException = assertThrows(NoSuchElementException.class,
                 () -> {
                     biblioteca.checkoutItem("Not In The List");
                 });
 
-        assertEquals("That is not a valid book name",testedException.getMessage());
+        assertEquals("That is not a valid item name",testedException.getMessage());
 
     }
 
     @Test
-    public void shouldThrowIllegalArgumentExceptionWhenTryCheckoutUnavailableBook(){
-        IllegalArgumentException testedException = assertThrows(IllegalArgumentException.class,
+    public void shouldReturnListWithoutCheckedOutItem(){
+        List<Item> EXPECTED_BOOK_RETURN_LIST = List.of(Item.createBook("Name Book 1", "Author Book 1", 1980, true));
+
+        biblioteca.checkoutItem("Name Book 2");
+        assertEquals(EXPECTED_BOOK_RETURN_LIST, biblioteca.listBooks());
+
+        List<Item> EXPECTED_MOVIE_RETURN_LIST = List.of( Item.createMovie("Name Movie 4","Director Movie 4",1999,"none",true));
+
+        biblioteca.checkoutItem("Name Movie 1");
+        assertEquals(EXPECTED_MOVIE_RETURN_LIST, biblioteca.listMovies());
+    }
+
+    @Test
+    public void shouldThrowIllegalArgumentExceptionWhenTryCheckoutUnavailableItem(){
+        IllegalArgumentException testedBookException = assertThrows(IllegalArgumentException.class,
                 () -> {
-                    biblioteca.checkoutItem("Name Item 4");
+                    biblioteca.checkoutItem("Name Book 4");
                 });
 
-        assertEquals("That book is not available",testedException.getMessage());
+        assertEquals("That item is not available",testedBookException.getMessage());
 
+
+        IllegalArgumentException testedMovieException = assertThrows(IllegalArgumentException.class,
+        () -> {
+            biblioteca.checkoutItem("Name Movie 2");
+        });
+
+        assertEquals("That item is not available",testedMovieException.getMessage());
     }
 
 
-    //Return Books
+    //Return Items
     @Test
     public void shouldReturnTrueWhenReturnSucceed(){
-        assertTrue(biblioteca.returnItem("Name Item 3"));
+        assertTrue(biblioteca.returnItem("Name Book 3"));
+        assertTrue(biblioteca.returnItem("Name Movie 2"));
     }
 
     @Test
-    public void shouldReturnListWithReturnedBook(){
-        List<Item> EXPECTED_RETURN_LIST = List.of(new Item("Name Item 1", "Author Item 1", 1980, true),
-                new Item("Name Item 2", "Author Item 2",2003,true),
-                new Item("Name Item 4", "Author Item 4", 1999, true));
+    public void shouldReturnListWithReturnedItem(){
+        List<Item> EXPECTED_BOOK_RETURN_LIST = List.of(Item.createBook("Name Book 1", "Author Book 1", 1980, true),
+               Item.createBook("Name Book 2", "Author Book 2",2003,true),
+                Item.createBook("Name Book 4", "Author Book 4", 1999, true));
 
-        biblioteca.returnItem("Name Item 4");
-        assertEquals(EXPECTED_RETURN_LIST, biblioteca.listBooks());
+        biblioteca.returnItem("Name Book 4");
+        assertEquals(EXPECTED_BOOK_RETURN_LIST, biblioteca.listBooks());
+
+        List<Item> EXPECTED_MOVIE_RETURN_LIST = List.of(Item.createMovie("Name Movie 1", "Director Movie 1", 1980,"8.1" ,true),
+                Item.createMovie("Name Movie 3", "Director Movie 3", 2017,"9", true),
+                Item.createMovie("Name Movie 4","Director Movie 4",1999,"none",true));
+
+        biblioteca.returnItem("Name Movie 3");
+        assertEquals(EXPECTED_MOVIE_RETURN_LIST, biblioteca.listMovies());
     }
 
     @Test
-    public void shouldThrowNoSuchElementExceptionWhenTryReturnNonexistentBook(){
+    public void shouldThrowNoSuchElementExceptionWhenTryReturnNonexistentItem(){
         NoSuchElementException testedException = assertThrows(NoSuchElementException.class,
                 () -> {
                     biblioteca.returnItem("Not In The List");
                 });
 
-        assertEquals("That is not a valid book name",testedException.getMessage());
-
+        assertEquals("That is not a valid item name",testedException.getMessage());
     }
 
     @Test
     public void shouldThrowIllegalArgumentExceptionWhenTryReturnBookAvailable(){
-        IllegalArgumentException testedException = assertThrows(IllegalArgumentException.class,
+        IllegalArgumentException testedBookException = assertThrows(IllegalArgumentException.class,
                 () -> {
-                    biblioteca.returnItem("Name Item 1");
+                    biblioteca.returnItem("Name Book 1");
                 });
 
-        assertEquals("That is not a valid book to return",testedException.getMessage());
+        assertEquals("That is not a valid item to return",testedBookException.getMessage());
+
+
+        IllegalArgumentException testedMovieException = assertThrows(IllegalArgumentException.class,
+                () -> {
+                    biblioteca.returnItem("Name Movie 1");
+                });
+
+        assertEquals("That is not a valid item to return",testedMovieException.getMessage());
     }
 
 }
