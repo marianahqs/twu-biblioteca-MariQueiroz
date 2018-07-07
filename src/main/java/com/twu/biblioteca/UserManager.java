@@ -12,16 +12,16 @@ public class UserManager {
         this.users = users;
     }
 
-    public void login(String userLogginID, String password) throws NoSuchElementException, IllegalArgumentException {
+    public void login(String userLoggedInId, String password) throws NoSuchElementException, IllegalArgumentException {
         try {
-            User userLoggin = users.stream()
-                    .filter(p -> p.getUserID().equals(userLogginID))
+            User userLoggedIn = users.stream()
+                    .filter(p -> p.getUserID().equals(userLoggedInId))
                     .findFirst()
                     .get();
-            if (userLoggin.getPassword() != password) {
+            if (!password.equals(userLoggedIn.getPassword())) {
                 throw new IllegalArgumentException("That is not a valid password");
             }
-            userLoggedID = userLogginID;
+            userLoggedID = userLoggedInId;
         } catch (NoSuchElementException nexc) {
             throw new NoSuchElementException("That user is not valid");
         }

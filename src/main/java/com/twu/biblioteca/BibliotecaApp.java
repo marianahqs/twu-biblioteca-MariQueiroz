@@ -19,10 +19,15 @@ public class BibliotecaApp {
         new Item("Um Defeito de Cor","Goncalves, Ana Maria",2006,true));
     }
 
+    private static List<User> USERS = List.of(new User("123-4567", "ITAsTeacher", "Sonia Guimaraes", "7655-3434","sonia@mail.com"),
+            new User("222-8765", "Astrophysicist", "Neil deGrasse Tyson", "3333-4456", "neil@email.com"),
+            new User("345-9955", "PretaHacker", "Lorenna Villas Boas", "6565-0099","lorenna@email.com"));
+
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca(BOOKS);
         UserInputScanner scanner = new UserInputScanner();
-        MainMenu menu = new MainMenu(biblioteca,scanner);
+        UserManager userManager = new UserManager(USERS);
+        MainMenu menu = new MainMenu(biblioteca,scanner, userManager);
 
         showWelcomeMessage();
 

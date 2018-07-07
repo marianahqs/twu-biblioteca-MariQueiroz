@@ -1,75 +1,130 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 public class MainMenu {
-    private static final String LIST_BOOKS = "1";
-    private static final String EXIT_OPTION = "4";
-    private static final String CHECKOUT_BOOK = "2";
-    private static final String RETURN_BOOK = "3";
+
+    private static final String LIST_BOOKS = "List Books";
+    private static final String LIST_MOVIES = "List Movies";
+    private static final String QUIT = "Quit";
+    private static final String CHECKOUT_ITEM = "Checkout Item";
+    private static final String RETURN_ITEM = "Return Item";
+    private static final String LOGIN = "Login";
+    private static final String LOGOUT = "Logout";
+    private static final String USER_INFORMATION = "User Information";
     private static final String MAIN_MENU_HEADER = "\n\n---- MAIN MENU ---- \n(choose an option and insert its number)\n";
-    private static final List<String> MENU_OPTIONS = List.of("1 - List Books",
-            "2 - Checkout Item",
-            "3 - Return Item",
-            "4 - Quit");
+    private static final List<String> MENU_LOGGED_OUT_OPTIONS = List.of("List Books",
+            "List Movies",
+            "Login",
+            "Quit");
+
+    private static final List<String> MENU_LOGGED_IN_OPTIONS = List.of("List Books",
+            "List Movies",
+            "Checkout Item",
+            "Return Item",
+            "User Information",
+            "Logout",
+            "Quit");
 
     private final UserInputScanner scanner;
     private final Biblioteca biblioteca;
+    private final UserManager userManager;
 
-    public MainMenu(Biblioteca biblioteca, UserInputScanner scanner) {
+    public MainMenu(Biblioteca biblioteca, UserInputScanner scanner, UserManager userManager) {
         this.biblioteca = biblioteca;
         this.scanner = scanner;
+        this.userManager = userManager;
     }
 
+    public void handleUserOption(String userInput){
+        try{
+            String userSelection = getCurrentMenu().get(Integer.parseInt(userInput));
 
-    public void handleUserOption(String userInput) {
-        switch (userInput) {
-            case (LIST_BOOKS):
-                ColumnsFormatter formatter = new ColumnsFormatter(biblioteca.listBooks());
-                try{
-                    System.out.println("\n"+String.join("\n",formatter.formatColumns()));
-                } catch (NoSuchElementException exception){
-                    System.out.println(exception.getMessage());
-                }
-
-                break;
-
-            case (EXIT_OPTION):
-                System.exit(0);
-
-            case (CHECKOUT_BOOK):
-                try{
-                    if (biblioteca.checkoutBook(askNameOfBook())){
-                        System.out.println("Thank you! Enjoy the book!");
+            switch (userSelection) {
+                case (LIST_BOOKS):
+                    ColumnsFormatter formatter = new ColumnsFormatter(biblioteca.listBooks());
+                    try{
+                        System.out.println("\n"+String.join("\n",formatter.formatColumns()));
+                    } catch (NoSuchElementException exception){
+                        System.out.println(exception.getMessage());
                     }
-                } catch (NoSuchElementException | IllegalArgumentException exception){
-                    System.out.println(exception.getMessage());
-                }
-                break;
+                    break;
 
-            case (RETURN_BOOK):
-                try{
-                    if (biblioteca.returnBook(askNameOfBook())){
-                        System.out.println("Thank you for returning the book!");
+                case (QUIT):
+                    System.exit(0);
+
+                case (CHECKOUT_ITEM):
+                    try{
+                        if (biblioteca.checkoutItem(askNameOfBook())){
+                            System.out.println("Thank you! Enjoy the book!");
+                        }
+                    } catch (NoSuchElementException | IllegalArgumentException exception){
+                        System.out.println(exception.getMessage());
                     }
-                } catch (NoSuchElementException | IllegalArgumentException exception) {
-                    System.out.println(exception.getMessage());
-                }
-                break;
-                default:
-                    System.out.println("Select a valid option");
+                    break;
+
+                case (RETURN_ITEM):
+                    try{
+                        if (biblioteca.returnItem(askNameOfBook())){
+                            System.out.println("Thank you for returning the book!");
+                        }
+                    } catch (NoSuchElementException | IllegalArgumentException exception) {
+                        System.out.println(exception.getMessage());
+                    }
+                    break;
+
+                case (LOGIN):
+                    try {
+                        System.out.println("User ID:");
+                        String userIdInput = scanner.askUserInput();
+
+                        System.out.println("Password");
+                        String passwordInput = scanner.askUserInput();
+
+                        userManager.login(userIdInput, passwordInput);
+
+                    }catch (NoSuchElementException | IllegalArgumentException exception){
+                        System.out.println(exception.getMessage());
+                    }
+                    break;
+
+                case(LOGOUT):
+                    userManager.logout();
+                    break;
+
+                case(USER_INFORMATION):
+                    System.out.println(userManager.toString());
+            }
+        } catch (IndexOutOfBoundsException iobExc){
+            System.out.println("Select a valid option");
         }
     }
 
     public void showMenuOptions() {
         System.out.println(MAIN_MENU_HEADER);
-        System.out.println(String.join("\n", MENU_OPTIONS));
+        for (int index = 0; index<getCurrentMenu().size();index++){
+            System.out.println(index+" - "+ getCurrentMenu().get(index));
+        }
     }
 
     private String askNameOfBook() {
-        System.out.println("\nWhat is the book's name? (Insert '1' to quit)");
+        System.out.println("\nWhat is the name of the book or movie? (Press '1' to quit)");
 
         return scanner.askUserInput();
+    }
+
+    private List<String> getCurrentMenu(){
+        List<String> returnListCurrentMenu = new ArrayList<>();
+      //  returnListCurrentMenu.clear();  ?????
+
+        if (userManager.isLoggedIn()){
+            returnListCurrentMenu.addAll(MENU_LOGGED_IN_OPTIONS);
+
+        } else {
+            returnListCurrentMenu.addAll(MENU_LOGGED_OUT_OPTIONS);
+        }
+        return returnListCurrentMenu;
     }
 }

@@ -16,7 +16,7 @@ public class Biblioteca {
         return items.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
     }
 
-    public boolean checkoutBook(String nameOfBookToCheckout) throws NoSuchElementException, IllegalArgumentException {
+    public boolean checkoutItem(String nameOfBookToCheckout) throws NoSuchElementException, IllegalArgumentException {
         boolean returnFlag = true;
 
         Item itemToCheckout = getBook(nameOfBookToCheckout);
@@ -30,7 +30,7 @@ public class Biblioteca {
     }
 
 
-    public boolean returnBook(String nameOfBookToReturn) throws NoSuchElementException, IllegalArgumentException {
+    public boolean returnItem(String nameOfBookToReturn) throws NoSuchElementException, IllegalArgumentException {
         boolean returnFlag = true;
         Item itemToReturn = getBook(nameOfBookToReturn);
 
