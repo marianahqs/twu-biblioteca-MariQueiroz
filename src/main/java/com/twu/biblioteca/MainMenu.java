@@ -81,8 +81,11 @@ public class MainMenu {
 
                 case (USER_INFORMATION):
                     System.out.println(userManager.getUserInformation());
+
+                default:
+                    System.out.println("Select a valid option");
             }
-        } catch (IndexOutOfBoundsException iobExc) {
+        } catch (IndexOutOfBoundsException | NumberFormatException iobExc) {
             System.out.println("Select a valid option");
         } catch (NoSuchElementException | IllegalArgumentException exception) {
             System.out.println(exception.getMessage());

@@ -85,8 +85,11 @@ public class MainMenuTest {
 
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
 
-        mainMenu.handleUserOption("5");
+      //  mainMenu.handleUserOption("5");
 
+       // assertThat(outContent.toString(), containsString("Select a valid option"));
+
+        mainMenu.handleUserOption("ytdhfg");
         assertThat(outContent.toString(), containsString("Select a valid option"));
     }
 
