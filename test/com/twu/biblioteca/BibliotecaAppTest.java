@@ -1,36 +1,21 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.BibliotecaControl.BibliotecaApp;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.SystemOutRule;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class BibliotecaAppTest {
 
     //Config Print Test
-    private PrintStream sysOut;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-
-    @Before
-    public void setUpStreams() {
-        sysOut = System.out;
-        System.setOut(new PrintStream(outContent));
-    }
-
-    @After
-    public void revertStreams() {
-        System.setOut(sysOut);
-    }
+    @Rule
+    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
     @Test
     public void shouldPrintWelcomeMessage() {
         BibliotecaApp.showWelcomeMessage();
-        assertThat(outContent.toString(), containsString("\n########### WELCOME TO BIBLIOTECA #############\n"));
+        assertEquals("\n########### WELCOME TO BIBLIOTECA #############\n\n",systemOutRule.getLog());
     }
 }

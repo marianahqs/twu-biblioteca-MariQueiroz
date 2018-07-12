@@ -98,7 +98,8 @@ public class MainMenu {
                     break;
 
                 case (USER_INFORMATION):
-                    System.out.println(userManager.getUserInformation());
+                    System.out.print(userManager.getUserInformation());
+                    break;
 
                 default:
                     System.out.println("Select a valid option");
