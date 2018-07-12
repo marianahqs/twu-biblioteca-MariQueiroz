@@ -1,4 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.BibliotecaControl;
+
+import com.twu.biblioteca.ColumnsFormatter.BooksColumnsFormatter;
+import com.twu.biblioteca.ColumnsFormatter.MovieColumnsFormatter;
+import com.twu.biblioteca.UserInputScanner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +13,10 @@ public class MainMenu {
     private static final String LIST_BOOKS = "List Books";
     private static final String LIST_MOVIES = "List Movies";
     private static final String QUIT = "Quit";
-    private static final String CHECKOUT_ITEM = "Checkout Item";
-    private static final String RETURN_ITEM = "Return Item";
+    private static final String CHECKOUT_BOOK = "Checkout Book";
+    private static final String RETURN_BOOK = "Return Book";
+    private static final String CHECKOUT_MOVIE = "Checkout Movie";
+    private static final String RETURN_MOVIE = "Return Movie";
     private static final String LOGIN = "Login";
     private static final String LOGOUT = "Logout";
     private static final String USER_INFORMATION = "User Information";
@@ -22,8 +28,10 @@ public class MainMenu {
 
     private static final List<String> MENU_LOGGED_IN_OPTIONS = List.of("List Books",
             "List Movies",
-            "Checkout Item",
-            "Return Item",
+            "Checkout Book",
+            "Return Book",
+            "Checkout Movie",
+            "Return Movie",
             "User Information",
             "Logout",
             "Quit");
@@ -45,34 +53,44 @@ public class MainMenu {
 
             switch (userSelection) {
                 case (LIST_BOOKS):
-                    ColumnsFormatter booksListFormatter = new ColumnsFormatter(biblioteca.listBooks(),"books");
+                    BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(biblioteca.listBooks());
                     System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
                     break;
 
                 case (LIST_MOVIES):
-                    ColumnsFormatter moviesListFormatter = new ColumnsFormatter(biblioteca.listMovies(),"movies");
+                    MovieColumnsFormatter moviesListFormatter = new MovieColumnsFormatter(biblioteca.listMovies());
                     System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
                     break;
 
                 case (QUIT):
                     System.exit(0);
 
-                case (CHECKOUT_ITEM):
-                    if (biblioteca.checkoutItem(askForInput("Enter the name of item to checkout:"), userManager.getUserLoggedID())) {
-                        System.out.println("Thank you! Enjoy it!");
+                case (CHECKOUT_BOOK):
+                    if (biblioteca.checkoutBook(askForInput("Enter the name of a book to checkout:"), userManager.getUserLoggedID())) {
+                        System.out.println("Thank you! Enjoy the book!");
                     }
                     break;
 
-                case (RETURN_ITEM):
-                    if (biblioteca.returnItem(askForInput("Enter the name of item to return:"))) {
-                        System.out.println("Thank you for returning it!");
+                case (RETURN_BOOK):
+                    if (biblioteca.returnBook(askForInput("Enter the name of a book to return:"))) {
+                        System.out.println("Thank you for returning the book!");
+                    }
+                    break;
+
+                case (CHECKOUT_MOVIE):
+                    if (biblioteca.checkoutMovie(askForInput("Enter the name of a movie to checkout:"), userManager.getUserLoggedID())) {
+                        System.out.println("Thank you! Enjoy the movie!");
+                    }
+                    break;
+
+                case (RETURN_MOVIE):
+                    if (biblioteca.returnMovie(askForInput("Enter the name of a movie to return:"))) {
+                        System.out.println("Thank you for returning the movie!");
                     }
                     break;
 
                 case (LOGIN):
-                    String userIdInput = askForInput("User ID:");
-                    String passwordInput = askForInput("Password:");
-                    userManager.login(userIdInput, passwordInput);
+                        userManager.login(askForInput("User ID:"),askForInput("Password:"));
                     break;
 
                 case (LOGOUT):
@@ -94,14 +112,14 @@ public class MainMenu {
 
     public void showMenuOptions() {
         System.out.println(MAIN_MENU_HEADER);
-        for (int index = 0; index<getCurrentMenu().size();index++){
-            System.out.println(index+" - "+ getCurrentMenu().get(index));
+        List<String> currentMenuList = getCurrentMenu();
+        for (int index = 0; index<currentMenuList.size();index++){
+            System.out.println(index+" - "+ currentMenuList.get(index));
         }
     }
 
     private String askForInput(String question) {
         System.out.println("\n"+question);
-
         return scanner.askUserInput();
     }
 

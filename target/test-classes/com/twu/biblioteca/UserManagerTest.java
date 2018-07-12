@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.BibliotecaControl.UserManager;
+import com.twu.biblioteca.Components.User;
 import org.junit.Test;
 
 import java.util.List;

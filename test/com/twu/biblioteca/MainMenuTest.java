@@ -1,8 +1,13 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.BibliotecaControl.Biblioteca;
+import com.twu.biblioteca.BibliotecaControl.MainMenu;
+import com.twu.biblioteca.BibliotecaControl.UserManager;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.mockito.Mock;
 
 import java.io.ByteArrayOutputStream;
@@ -15,7 +20,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
+
 public class MainMenuTest {
+
+    @Rule
+    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
     @Mock
     private Biblioteca mockBiblioteca;
@@ -46,7 +55,7 @@ public class MainMenuTest {
         System.setOut(sysOut);
     }
 
-    String ITEM_NAME_TEST = "Item Name";
+    String ITEM_NAME_TEST = "Book Name";
     String USER_ID_TEST = "333-4444";
 
 
@@ -73,24 +82,29 @@ public class MainMenuTest {
 
         assertThat(outContent.toString(), containsString("0 - List Books\n" +
                 "1 - List Movies\n" +
-                "2 - Checkout Item\n" +
-                "3 - Return Item\n" +
-                "4 - User Information\n" +
-                "5 - Logout\n" +
-                "6 - Quit"));
+                "2 - Checkout Book\n" +
+                "3 - Return Book\n" +
+                "4 - Checkout Movie\n" +
+                "5 - Return Movie\n" +
+                "6 - User Information\n" +
+                "7 - Logout\n" +
+                "8 - Quit"));
     }
 
     @Test
-    public void shouldHandleInvalidOption() {
-
+    public void shouldHandleInvalidOptionWhenInputNotNumber() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
-
-      //  mainMenu.handleUserOption("5");
-
-       // assertThat(outContent.toString(), containsString("Select a valid option"));
 
         mainMenu.handleUserOption("ytdhfg");
         assertThat(outContent.toString(), containsString("Select a valid option"));
+    }
+
+    @Test
+    public void shouldHandleInvalidOptionWhenInputNumberOutOfRange() {
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
+
+          mainMenu.handleUserOption("5");
+         assertThat(outContent.toString(), containsString("Select a valid option"));
     }
 
 
@@ -110,7 +124,7 @@ public class MainMenuTest {
 
         mainMenu.handleUserOption("0");
 
-        assertThat(outContent.toString(), containsString("Items list is empty"));
+        assertThat(outContent.toString(), containsString("Books list is empty"));
     }
 
 
@@ -130,7 +144,7 @@ public class MainMenuTest {
 
         mainMenu.handleUserOption("1");
 
-        assertThat(outContent.toString(), containsString("Items list is empty"));
+        assertThat(outContent.toString(), containsString("Movies list is empty"));
     }
 
 
@@ -143,7 +157,7 @@ public class MainMenuTest {
         when(mockUserManager.getUserInformation()).thenReturn(OUTPUT_EXPECTED);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
 
-        mainMenu.handleUserOption("4");
+        mainMenu.handleUserOption("6");
 
         assertThat(outContent.toString(), containsString(OUTPUT_EXPECTED));
     }
@@ -154,27 +168,25 @@ public class MainMenuTest {
     public void shouldHandleLogout(){
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
-        mainMenu.handleUserOption("5");
+        mainMenu.handleUserOption("7");
 
         verify(mockUserManager).logout();
-
     }
 
 
-//    @Test  -  MOCK IS NOT WORKING
-//    public void shoudHandleLoginOption(){
-//        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
-//        String ID_TEST = "221-4567";
-//        String PASSWORD_TEST = "123123";
-//
-//        when(mockUserManager.isLoggedIn()).thenReturn(false);
-//
-//        mainMenu.handleUserOption("2");
-//        when(mockScanner.askUserInput()).thenReturn(ID_TEST);
-//        when(mockScanner.askUserInput()).thenReturn(PASSWORD_TEST);
-//
-//        verify(mockUserManager).login(ID_TEST,PASSWORD_TEST);
-//    }
+   @Test
+    public void shouldHandleLoginOption(){
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
+        String ID_TEST = "221-4567";
+        String PASSWORD_TEST = "123123";
+
+        when(mockUserManager.isLoggedIn()).thenReturn(false);
+
+        when(mockScanner.askUserInput()).thenReturn(ID_TEST,PASSWORD_TEST);
+        mainMenu.handleUserOption("2");
+        verify(mockUserManager).login(ID_TEST,PASSWORD_TEST);
+
+    }
 
 
     // Checkout Tests
@@ -188,7 +200,7 @@ public class MainMenuTest {
 
         mainMenu.handleUserOption("2");
 
-        verify(mockBiblioteca).checkoutItem(ITEM_NAME_TEST,USER_ID_TEST);
+        verify(mockBiblioteca).checkoutBook(ITEM_NAME_TEST,USER_ID_TEST);
     }
 
     @Test
@@ -198,11 +210,11 @@ public class MainMenuTest {
         when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
         when(mockUserManager.getUserLoggedID()).thenReturn(USER_ID_TEST);
-        when(mockBiblioteca.checkoutItem(ITEM_NAME_TEST,USER_ID_TEST)).thenReturn(true);
+        when(mockBiblioteca.checkoutBook(ITEM_NAME_TEST,USER_ID_TEST)).thenReturn(true);
 
         mainMenu.handleUserOption("2");
 
-        assertThat(outContent.toString(), containsString("Thank you! Enjoy it!"));
+        assertThat(outContent.toString(), containsString("Thank you! Enjoy the book!"));
     }
 
     @Test
@@ -213,7 +225,7 @@ public class MainMenuTest {
         when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
         when(mockUserManager.getUserLoggedID()).thenReturn(USER_ID_TEST);
-        when(mockBiblioteca.checkoutItem(ITEM_NAME_TEST,USER_ID_TEST)).thenThrow(bookDoesNotExist);
+        when(mockBiblioteca.checkoutBook(ITEM_NAME_TEST,USER_ID_TEST)).thenThrow(bookDoesNotExist);
 
         mainMenu.handleUserOption("2");
 
@@ -228,7 +240,7 @@ public class MainMenuTest {
         when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
         when(mockUserManager.getUserLoggedID()).thenReturn(USER_ID_TEST);
-        when(mockBiblioteca.checkoutItem(ITEM_NAME_TEST,USER_ID_TEST)).thenThrow(bookIsNotAvailable);
+        when(mockBiblioteca.checkoutBook(ITEM_NAME_TEST,USER_ID_TEST)).thenThrow(bookIsNotAvailable);
 
         mainMenu.handleUserOption("2");
 
@@ -246,7 +258,7 @@ public class MainMenuTest {
 
         mainMenu.handleUserOption("3");
 
-        verify(mockBiblioteca).returnItem(ITEM_NAME_TEST);
+        verify(mockBiblioteca).returnBook(ITEM_NAME_TEST);
     }
 
     @Test
@@ -255,11 +267,11 @@ public class MainMenuTest {
 
         when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
-        when(mockBiblioteca.returnItem(ITEM_NAME_TEST)).thenReturn(true);
+        when(mockBiblioteca.returnBook(ITEM_NAME_TEST)).thenReturn(true);
 
         mainMenu.handleUserOption("3");
 
-        assertThat(outContent.toString(), containsString("Thank you for returning it!"));
+        assertThat(outContent.toString(), containsString("Thank you for returning the book!"));
     }
 
     @Test
@@ -269,7 +281,7 @@ public class MainMenuTest {
 
         when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
-        when(mockBiblioteca.returnItem(ITEM_NAME_TEST)).thenThrow(bookDoesNotExist);
+        when(mockBiblioteca.returnBook(ITEM_NAME_TEST)).thenThrow(bookDoesNotExist);
 
         mainMenu.handleUserOption("3");
 
@@ -283,7 +295,7 @@ public class MainMenuTest {
 
         when(mockScanner.askUserInput()).thenReturn(ITEM_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
-        when(mockBiblioteca.returnItem(ITEM_NAME_TEST)).thenThrow(bookIsAvailable);
+        when(mockBiblioteca.returnBook(ITEM_NAME_TEST)).thenThrow(bookIsAvailable);
 
         mainMenu.handleUserOption("3");
 

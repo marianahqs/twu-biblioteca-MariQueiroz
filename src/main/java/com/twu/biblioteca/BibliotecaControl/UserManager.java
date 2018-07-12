@@ -1,4 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.BibliotecaControl;
+
+import com.twu.biblioteca.Components.User;
 
 import java.util.List;
 import java.util.NoSuchElementException;

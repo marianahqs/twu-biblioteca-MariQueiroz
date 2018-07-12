@@ -25,4 +25,9 @@
       <module name="biblioteca" target="10" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="biblioteca" options="--add-exports=jdk.internal.vm.compiler/org.graalvm.compiler.core=ALL-UNNAMED" />
+    </option>
+  </component>
 </project>
