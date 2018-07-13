@@ -50,12 +50,14 @@ public class Movie implements Item {
         return Objects.hash(name,director, year, rating);
     }
 
-    public void checkoutMovie() {
+    public void makeItUnavailable(String userId) {
         isAvailable = false;
+        this.userId = userId;
     }
 
-    public void returnMovie(){
+    public void makeItAvailable(){
         isAvailable = true;
+        this.userId = null;
     }
 
     public String getName() {
@@ -64,10 +66,6 @@ public class Movie implements Item {
 
     public int getYear() {
         return year;
-    }
-
-    public void setUserId(String userId){
-        this.userId = userId;
     }
 
     public String getUserId (){

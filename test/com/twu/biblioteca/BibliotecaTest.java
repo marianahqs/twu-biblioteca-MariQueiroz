@@ -61,18 +61,18 @@ public class BibliotecaTest {
     public void shouldUpdateUserIdForCheckedOutBook() {
         String USER_ID_TEST = "222-3344";
 
-        assertEquals(null, biblioteca.getBook("Name Book 1").getUserId());
+        assertEquals(null, biblioteca.getItem("Name Book 1",BOOKS).getUserId());
         biblioteca.checkoutBook("Name Book 1", USER_ID_TEST);
-        assertEquals(USER_ID_TEST, biblioteca.getBook("Name Book 1").getUserId());
+        assertEquals(USER_ID_TEST, biblioteca.getItem("Name Book 1",BOOKS).getUserId());
     }
 
     @Test
     public void shouldUpdateUserIdForCheckedOutMovie(){
         String USER_ID_TEST = "222-3344";
 
-        assertEquals(null,biblioteca.getMovie("Name Movie 4").getUserId());
+        assertEquals(null,biblioteca.getItem("Name Movie 4",MOVIES).getUserId());
         biblioteca.checkoutMovie("Name Movie 4",USER_ID_TEST);
-        assertEquals(USER_ID_TEST,biblioteca.getMovie("Name Movie 4").getUserId());
+        assertEquals(USER_ID_TEST,biblioteca.getItem("Name Movie 4",MOVIES).getUserId());
     }
 
     @Test
@@ -132,9 +132,9 @@ public class BibliotecaTest {
         String USER_ID_TEST = "222-3344";
 
         biblioteca.checkoutBook("Name Book 1", USER_ID_TEST);
-        assertEquals(USER_ID_TEST, biblioteca.getBook("Name Book 1").getUserId());
+        assertEquals(USER_ID_TEST, biblioteca.getItem("Name Book 1",BOOKS).getUserId());
         biblioteca.returnBook("Name Book 1");
-        assertEquals(null, biblioteca.getBook("Name Book 1").getUserId());
+        assertEquals(null, biblioteca.getItem("Name Book 1",BOOKS).getUserId());
     }
 
     @Test
@@ -142,9 +142,9 @@ public class BibliotecaTest {
         String USER_ID_TEST = "222-3344";
 
         biblioteca.checkoutMovie("Name Movie 4",USER_ID_TEST);
-        assertEquals(USER_ID_TEST,biblioteca.getMovie("Name Movie 4").getUserId());
+        assertEquals(USER_ID_TEST,biblioteca.getItem("Name Movie 4",MOVIES).getUserId());
         biblioteca.returnMovie("Name Movie 4");
-        assertEquals(null,biblioteca.getMovie("Name Movie 4").getUserId());
+        assertEquals(null,biblioteca.getItem("Name Movie 4",MOVIES).getUserId());
     }
 
 

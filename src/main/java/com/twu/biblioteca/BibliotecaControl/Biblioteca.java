@@ -26,75 +26,53 @@ public class Biblioteca {
         return movies.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
     }
 
-    private List<Item> listItems() {
-        return books.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
-    }
-
     public boolean checkoutBook(String nameOfBookToCheckout, String loggedUserId) throws NoSuchElementException, IllegalArgumentException {
-        Book bookToCheckout = getBook(nameOfBookToCheckout);
-
-        if (!bookToCheckout.getIsAvailable()){
-            throw new IllegalArgumentException("That book is not available");
-        }
-        bookToCheckout.checkoutBook();
-        bookToCheckout.setUserId(loggedUserId);
-        return true;
+        Item bookToCheckout = getItem(nameOfBookToCheckout,books);
+        return checkoutItem(loggedUserId, bookToCheckout);
     }
 
     public boolean returnBook(String nameOfBookToReturn) throws NoSuchElementException, IllegalArgumentException {
-        Book bookToReturn = getBook(nameOfBookToReturn);
-
-        if (bookToReturn.getIsAvailable()){
-            throw new IllegalArgumentException("That is not a valid book to return");
-        }
-        bookToReturn.returnBook();
-        bookToReturn.setUserId(null);
-        return true;
-    }
-
-
-    public Book getBook(String nameOfBook) throws NoSuchElementException {
-        try {
-            return books.stream()
-                    .filter(p -> p.getName().equals(nameOfBook))
-                    .findFirst()
-                    .get();
-        } catch (NoSuchElementException nexc) {
-            throw new NoSuchElementException("That is not a valid book name");
-        }
+        Item bookToReturn = getItem(nameOfBookToReturn,books);
+        return returnItem(bookToReturn);
     }
 
     public boolean checkoutMovie(String nameOfMovieToCheckout, String loggedUserId) throws NoSuchElementException, IllegalArgumentException {
-        Movie movieToCheckout = getMovie(nameOfMovieToCheckout);
-
-        if (!movieToCheckout.getIsAvailable()){
-            throw new IllegalArgumentException("That movie is not available");
-        }
-        movieToCheckout.checkoutMovie();
-        movieToCheckout.setUserId(loggedUserId);
-        return true;
+        Item movieToCheckout = getItem(nameOfMovieToCheckout,movies);
+        return checkoutItem(loggedUserId,movieToCheckout);
     }
-
 
     public boolean returnMovie(String nameOfMovieToReturn) throws NoSuchElementException, IllegalArgumentException {
-        Movie movieToReturn = getMovie(nameOfMovieToReturn);
-        if (movieToReturn.getIsAvailable()){
-            throw new IllegalArgumentException("That is not a valid movie to return");
-        }
-        movieToReturn.returnMovie();
-        movieToReturn.setUserId(null);
-        return true;
+        Item movieToReturn = getItem(nameOfMovieToReturn,movies);
+        return returnItem(movieToReturn);
     }
 
-
-    public Movie getMovie(String nameOfMovie) throws NoSuchElementException {
+    public Item getItem(String nameOfItem, List<? extends Item> listToSearch) throws NoSuchElementException {
         try {
-            return movies.stream()
-                    .filter(p -> p.getName().equals(nameOfMovie))
+            return listToSearch.stream()
+                    .filter(p -> p.getName().equals(nameOfItem))
                     .findFirst()
                     .get();
         } catch (NoSuchElementException nexc) {
-            throw new NoSuchElementException("That is not a valid movie name");
+            String message = String.format("That is not a valid %s name", listToSearch.get(0).getClass().getSimpleName().toLowerCase());
+            throw new NoSuchElementException(message);
         }
+    }
+
+    private boolean returnItem(Item itemToReturn) {
+        if (itemToReturn.getIsAvailable()){
+            String message = String.format("That is not a valid %s to return", itemToReturn.getClass().getSimpleName().toLowerCase());
+            throw new IllegalArgumentException(message);
+        }
+        itemToReturn.makeItAvailable();
+        return true;
+    }
+
+    private boolean checkoutItem(String loggedUserId, Item itemToCheckout) {
+        if (!itemToCheckout.getIsAvailable()){
+            String message = String.format("That %s is not available", itemToCheckout.getClass().getSimpleName().toLowerCase());
+            throw new IllegalArgumentException(message);
+        }
+        itemToCheckout.makeItUnavailable(loggedUserId);
+        return true;
     }
 }

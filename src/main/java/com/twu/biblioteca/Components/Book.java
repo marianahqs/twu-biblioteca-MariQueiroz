@@ -46,12 +46,14 @@ public class Book implements Item {
         return Objects.hash(name, author, year);
     }
 
-    public void checkoutBook() {
+    public void makeItUnavailable(String userId) {
         isAvailable = false;
+        this.userId = userId;
     }
 
-    public void returnBook(){
+    public void makeItAvailable(){
         isAvailable = true;
+        this.userId = null;
     }
 
     public String getName() {
@@ -64,10 +66,6 @@ public class Book implements Item {
 
     public int getYear() {
         return year;
-    }
-
-    public void setUserId(String userId){
-        this.userId = userId;
     }
 
     public String getUserId (){

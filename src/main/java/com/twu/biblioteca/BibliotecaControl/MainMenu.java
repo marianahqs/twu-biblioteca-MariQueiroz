@@ -66,7 +66,7 @@ public class MainMenu {
                     System.exit(0);
 
                 case (CHECKOUT_BOOK):
-                    if (biblioteca.checkoutBook(askForInput("Enter the name of a book to checkout:"), userManager.getUserLoggedID())) {
+                    if (biblioteca.checkoutBook(askForInput("Enter the name of a book to makeItUnavailable:"), userManager.getUserLoggedID())) {
                         System.out.println("Thank you! Enjoy the book!");
                     }
                     break;
@@ -78,7 +78,7 @@ public class MainMenu {
                     break;
 
                 case (CHECKOUT_MOVIE):
-                    if (biblioteca.checkoutMovie(askForInput("Enter the name of a movie to checkout:"), userManager.getUserLoggedID())) {
+                    if (biblioteca.checkoutMovie(askForInput("Enter the name of a movie to makeItUnavailable:"), userManager.getUserLoggedID())) {
                         System.out.println("Thank you! Enjoy the movie!");
                     }
                     break;
