@@ -1,8 +1,8 @@
 package com.twu.biblioteca.BibliotecaControl;
 
-import com.twu.biblioteca.Components.Book;
-import com.twu.biblioteca.Components.Item;
-import com.twu.biblioteca.Components.Movie;
+import com.twu.biblioteca.BibliotecaComponents.Book;
+import com.twu.biblioteca.BibliotecaComponents.Item;
+import com.twu.biblioteca.BibliotecaComponents.Movie;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -18,11 +18,11 @@ public class Biblioteca {
         this.movies = movies;
     }
 
-    public List<Book> listBooks() {
+    public List<Book> listAvailableBooks() {
         return books.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
     }
 
-    public List<Movie> listMovies() {
+    public List<Movie> listAvailableMovies() {
         return movies.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
     }
 
@@ -74,5 +74,13 @@ public class Biblioteca {
         }
         itemToCheckout.makeItUnavailable(loggedUserId);
         return true;
+    }
+
+    public List<Book> listAllBooks() {
+        return books;
+    }
+
+    public List<Movie> listAllMovies() {
+        return movies;
     }
 }

@@ -1,6 +1,6 @@
 package com.twu.biblioteca.BibliotecaControl;
 
-import com.twu.biblioteca.Components.User;
+import com.twu.biblioteca.BibliotecaComponents.User;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -8,7 +8,10 @@ import java.util.NoSuchElementException;
 public class UserManager {
 
     private String userLoggedID;
+    private String userLoggedPrivilege;
     private List<User> users;
+
+
 
     public UserManager(List<User> users) {
         this.users = users;
@@ -24,6 +27,7 @@ public class UserManager {
                 throw new IllegalArgumentException("That is not a valid password");
             }
             userLoggedID = userLoggedInId;
+            userLoggedPrivilege = userLoggedIn.getUserPrivileges();
         } catch (NoSuchElementException nexc) {
             throw new NoSuchElementException("That user is not valid");
         }
@@ -48,5 +52,9 @@ public class UserManager {
                 .get();
 
         return userLoggedIn.toString();
+    }
+
+    public String getUserLoggedPrivilege() {
+        return userLoggedPrivilege;
     }
 }

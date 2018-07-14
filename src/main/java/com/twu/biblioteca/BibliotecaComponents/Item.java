@@ -1,4 +1,4 @@
-package com.twu.biblioteca.Components;
+package com.twu.biblioteca.BibliotecaComponents;
 
 public interface Item {
     boolean getIsAvailable();

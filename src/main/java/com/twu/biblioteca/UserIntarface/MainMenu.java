@@ -1,8 +1,9 @@
-package com.twu.biblioteca.BibliotecaControl;
+package com.twu.biblioteca.UserIntarface;
 
-import com.twu.biblioteca.ColumnsFormatter.BooksColumnsFormatter;
-import com.twu.biblioteca.ColumnsFormatter.MovieColumnsFormatter;
-import com.twu.biblioteca.UserInputScanner;
+import com.twu.biblioteca.BibliotecaControl.Biblioteca;
+import com.twu.biblioteca.BibliotecaControl.UserManager;
+import com.twu.biblioteca.UserIntarface.ColumnsFormatter.BooksColumnsFormatter;
+import com.twu.biblioteca.UserIntarface.ColumnsFormatter.MovieColumnsFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,13 +54,23 @@ public class MainMenu {
 
             switch (userSelection) {
                 case (LIST_BOOKS):
-                    BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(biblioteca.listBooks());
-                    System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
+                    if (userManager.getUserLoggedPrivilege()=="customer") {
+                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(biblioteca.listAvailableBooks());
+                        System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
+                    } else {
+                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(biblioteca.listAllBooks());
+                        System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
+                    }
                     break;
 
                 case (LIST_MOVIES):
-                    MovieColumnsFormatter moviesListFormatter = new MovieColumnsFormatter(biblioteca.listMovies());
-                    System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
+                    if (userManager.getUserLoggedPrivilege()=="customer") {
+                        MovieColumnsFormatter moviesListFormatter = new MovieColumnsFormatter(biblioteca.listAvailableMovies());
+                        System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
+                    } else {
+                        MovieColumnsFormatter moviesListFormatter = new MovieColumnsFormatter(biblioteca.listAllMovies());
+                        System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
+                    }
                     break;
 
                 case (QUIT):

@@ -1,26 +1,24 @@
-package com.twu.biblioteca.Components;
+package com.twu.biblioteca.BibliotecaComponents;
 
 import java.util.Objects;
 
-public class Movie implements Item {
+public class Book implements Item {
     private String name;
-    private String director;
-    private Integer year;
-    private String rating;
+    private String author;
+    private String year;
     private String userId;
     private boolean isAvailable;
 
-    public Movie(String name, String director, Integer year, String rating, boolean isAvailable) {
+    public Book(String name, String author, String year, boolean isAvailable) {
         this.name = name;
-        this.director = director;
+        this.author = author;
         this.year = year;
-        this.rating = rating;
         this.isAvailable = isAvailable;
     }
 
     @Override
     public String toString(){
-        return String.format("%s / %s% / %d / %s",name,director, year,rating);
+        return String.format("%s / %s% / %d / %s",name,author, year);
     }
 
     public boolean getIsAvailable() {
@@ -37,17 +35,15 @@ public class Movie implements Item {
             return false;
         }
 
-        Movie otherBook = (Movie) otherObject;
-
+        Book otherBook = (Book) otherObject;
         return name.equals(otherBook.name) &&
-                director.equals(otherBook.director) &&
-                year.equals(otherBook.year) &&
-                rating.equals(otherBook.rating);
+                author.equals(otherBook.author) &&
+                year.equals(otherBook.year);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name,director, year, rating);
+        return Objects.hash(name, author, year);
     }
 
     public void makeItUnavailable(String userId) {
@@ -64,7 +60,11 @@ public class Movie implements Item {
         return name;
     }
 
-    public int getYear() {
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getYear() {
         return year;
     }
 
@@ -72,11 +72,6 @@ public class Movie implements Item {
         return userId;
     }
 
-    public String getDirector() {
-        return director;
-    }
 
-    public String getRating() {
-        return rating;
-    }
 }
+

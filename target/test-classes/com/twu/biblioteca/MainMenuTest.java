@@ -1,8 +1,9 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.BibliotecaControl.Biblioteca;
-import com.twu.biblioteca.BibliotecaControl.MainMenu;
+import com.twu.biblioteca.UserIntarface.MainMenu;
 import com.twu.biblioteca.BibliotecaControl.UserManager;
+import com.twu.biblioteca.UserIntarface.UserInputScanner;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -105,12 +106,25 @@ public class MainMenuTest {
 
     // List Books Tests
     @Test
-    public void shouldHandleListBooksOption() {
+    public void shouldHandleListAvailableBooksOption() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner,mockUserManager);
+
+        when(mockUserManager.getUserLoggedPrivilege()).thenReturn("customer");
 
         mainMenu.handleUserOption("0");
 
-        verify(mockBiblioteca).listBooks();
+        verify(mockBiblioteca).listAvailableBooks();
+    }
+
+    @Test
+    public void shouldHandleListAllBooksOption() {
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner,mockUserManager);
+
+        when(mockUserManager.getUserLoggedPrivilege()).thenReturn("librarian");
+
+        mainMenu.handleUserOption("0");
+
+        verify(mockBiblioteca).listAllBooks();
     }
 
     @Test
@@ -125,12 +139,25 @@ public class MainMenuTest {
 
     // List Movies Tests
     @Test
-    public void shouldHandleListMoviesOption() {
+    public void shouldHandleListAvailableMoviesOption() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner,mockUserManager);
+
+        when(mockUserManager.getUserLoggedPrivilege()).thenReturn("customer");
 
         mainMenu.handleUserOption("1");
 
-        verify(mockBiblioteca).listMovies();
+        verify(mockBiblioteca).listAvailableMovies();
+    }
+
+    @Test
+    public void shouldHandleListAllMoviesOption() {
+        MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner,mockUserManager);
+
+        when(mockUserManager.getUserLoggedPrivilege()).thenReturn("librarian");
+
+        mainMenu.handleUserOption("1");
+
+        verify(mockBiblioteca).listAllMovies();
     }
 
     @Test

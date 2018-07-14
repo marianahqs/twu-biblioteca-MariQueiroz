@@ -1,4 +1,4 @@
-package com.twu.biblioteca.Components;
+package com.twu.biblioteca.BibliotecaComponents;
 
 import java.util.Objects;
 
@@ -8,14 +8,17 @@ public class User {
     private String name;
     private String phoneNumber;
     private String emailAddress;
+    private String userPrivileges;
 
-    public User(String userID, String password, String name, String phoneNumber, String emailAddress) {
+    public User(String userID, String password, String name, String phoneNumber, String emailAddress, String userPrivileges) {
         this.userID = userID;
         this.password = password;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
+        this.userPrivileges = userPrivileges;
     }
+
 
     @Override
     public String toString(){
@@ -57,4 +60,9 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    public String getUserPrivileges() {
+        return userPrivileges;
+    }
+
 }

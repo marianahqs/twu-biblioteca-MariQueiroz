@@ -1,8 +1,8 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.BibliotecaControl.Biblioteca;
-import com.twu.biblioteca.Components.Book;
-import com.twu.biblioteca.Components.Movie;
+import com.twu.biblioteca.BibliotecaComponents.Book;
+import com.twu.biblioteca.BibliotecaComponents.Movie;
 import org.junit.Test;
 
 import java.util.List;
@@ -14,37 +14,46 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class BibliotecaTest {
-    List<Book> BOOKS = List.of(new Book("Name Book 1", "Author Book 1", 1980, true),
-            new Book("Name Book 2", "Author Book 2",2003,true),
-            new Book("Name Book 3", "Author Book 3", 2017, false),
-            new Book("Name Book 4","Author Book 4",1999,false));
+    List<Book> BOOKS = List.of(new Book("Name Book 1", "Author Book 1", "1980", true),
+            new Book("Name Book 2", "Author Book 2","2003",true),
+            new Book("Name Book 3", "Author Book 3", "2017", false),
+            new Book("Name Book 4","Author Book 4","1999",false));
 
-    List<Movie> MOVIES = List.of(new Movie("Name Movie 1", "Director Movie 1", 1980,"8.1" ,true),
-            new Movie("Name Movie 2", "Director Movie 2",2003,"none",false),
-            new Movie("Name Movie 3", "Director Movie 3", 2017,"9", false),
-            new Movie("Name Movie 4","Director Movie 4",1999,"none",true));
+    List<Movie> MOVIES = List.of(new Movie("Name Movie 1", "Director Movie 1", "1980","8.1" ,true),
+            new Movie("Name Movie 2", "Director Movie 2","2003","none",false),
+            new Movie("Name Movie 3", "Director Movie 3", "2017","9", false),
+            new Movie("Name Movie 4","Director Movie 4","1999","none",true));
 
     Biblioteca biblioteca = new Biblioteca(BOOKS,MOVIES);
 
     //List Books
     @Test
     public void shouldReturnOnlyAvailableBooks(){
-        List<Book> EXPECTED_RETURN_LIST = List.of(new Book("Name Book 1", "Author Book 1", 1980, true),
-                new Book("Name Book 2", "Author Book 2",2003,true));
+        List<Book> EXPECTED_RETURN_LIST = List.of(new Book("Name Book 1", "Author Book 1", "1980", true),
+                new Book("Name Book 2", "Author Book 2","2003",true));
 
-        assertEquals(EXPECTED_RETURN_LIST, biblioteca.listBooks());
+        assertEquals(EXPECTED_RETURN_LIST, biblioteca.listAvailableBooks());
+    }
+
+    @Test
+    public void shouldReturnAllBooks(){
+        assertEquals(BOOKS, biblioteca.listAllBooks());
     }
 
 
     //List Movies
     @Test
     public void shouldReturnOnlyAvailableMovies(){
-        List<Movie> EXPECTED_RETURN_LIST = List.of(new Movie("Name Movie 1", "Director Movie 1", 1980,"8.1" ,true),
-                new Movie("Name Movie 4","Director Movie 4",1999,"none",true));
+        List<Movie> EXPECTED_RETURN_LIST = List.of(new Movie("Name Movie 1", "Director Movie 1", "1980","8.1" ,true),
+                new Movie("Name Movie 4","Director Movie 4","1999","none",true));
 
-        assertEquals(EXPECTED_RETURN_LIST, biblioteca.listMovies());
+        assertEquals(EXPECTED_RETURN_LIST, biblioteca.listAvailableMovies());
     }
 
+    @Test
+    public void shouldReturnAllMovies(){
+        assertEquals(MOVIES, biblioteca.listAllMovies());
+    }
 
     //Checkout Items
     @Test

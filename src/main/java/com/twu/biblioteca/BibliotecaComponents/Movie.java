@@ -1,24 +1,26 @@
-package com.twu.biblioteca.Components;
+package com.twu.biblioteca.BibliotecaComponents;
 
 import java.util.Objects;
 
-public class Book implements Item {
+public class Movie implements Item {
     private String name;
-    private String author;
-    private Integer year;
+    private String director;
+    private String year;
+    private String rating;
     private String userId;
     private boolean isAvailable;
 
-    public Book(String name, String author, Integer year, boolean isAvailable) {
+    public Movie(String name, String director, String year, String rating, boolean isAvailable) {
         this.name = name;
-        this.author = author;
+        this.director = director;
         this.year = year;
+        this.rating = rating;
         this.isAvailable = isAvailable;
     }
 
     @Override
     public String toString(){
-        return String.format("%s / %s% / %d / %s",name,author, year);
+        return String.format("%s / %s% / %d / %s",name,director, year,rating);
     }
 
     public boolean getIsAvailable() {
@@ -35,15 +37,17 @@ public class Book implements Item {
             return false;
         }
 
-        Book otherBook = (Book) otherObject;
+        Movie otherBook = (Movie) otherObject;
+
         return name.equals(otherBook.name) &&
-                author.equals(otherBook.author) &&
-                year.equals(otherBook.year);
+                director.equals(otherBook.director) &&
+                year.equals(otherBook.year) &&
+                rating.equals(otherBook.rating);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, author, year);
+        return Objects.hash(name,director, year, rating);
     }
 
     public void makeItUnavailable(String userId) {
@@ -60,11 +64,7 @@ public class Book implements Item {
         return name;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
@@ -72,6 +72,11 @@ public class Book implements Item {
         return userId;
     }
 
+    public String getDirector() {
+        return director;
+    }
 
+    public String getRating() {
+        return rating;
+    }
 }
-

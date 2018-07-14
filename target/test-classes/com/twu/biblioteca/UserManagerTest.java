@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.BibliotecaControl.UserManager;
-import com.twu.biblioteca.Components.User;
+import com.twu.biblioteca.BibliotecaComponents.User;
 import org.junit.Test;
 
 import java.util.List;
@@ -11,9 +11,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserManagerTest {
-    List<User> USERS = List.of(new User("123-4567", "123abc", "Fulana de tal", "2343-3434","fulana@mail.com"),
-            new User("222-3456", "password", "Ze das Couves", "3333-4456", "zeze@email.com"),
-            new User("345-6789", "password1234", "Mari", "6565-0099","mari@email.com"));
+    List<User> USERS = List.of(new User("123-4567", "123abc", "Fulana de tal", "2343-3434","fulana@mail.com","customer"),
+            new User("222-3456", "password", "Ze das Couves", "3333-4456", "zeze@email.com", "customer"),
+            new User("345-6789", "password1234", "Mari", "6565-0099","mari@email.com","librarian"));
     UserManager userManager = new UserManager(USERS);
 
     @Test
