@@ -1,6 +1,5 @@
 package com.twu.biblioteca.UserIntarface.ColumnsFormatter;
 
-import com.twu.biblioteca.BibliotecaComponents.Item;
 import com.twu.biblioteca.BibliotecaComponents.Movie;
 
 import java.util.ArrayList;
@@ -27,6 +26,11 @@ public class MovieColumnsFormatter {
         int directorColumnSize = getColumnSize(COLUMN_DISTANCE, Movie::getDirector);
         int ratingColumnSize = getColumnSize(COLUMN_DISTANCE, Movie::getRating);
         int yearColumnSize = getColumnSize(COLUMN_DISTANCE, Movie::getYear);
+
+        returnList.add(String.format("%-" + nameColumnSize +
+                        "s%-" + directorColumnSize+
+                        "s%-" + ratingColumnSize+
+                        "s%-" + yearColumnSize + "s%s","NAME","DIRECTOR","RATING","YEAR","USER ID"));
 
         for (Movie movie : movies){
 

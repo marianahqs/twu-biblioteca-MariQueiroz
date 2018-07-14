@@ -2,29 +2,23 @@ package com.twu.biblioteca.BibliotecaComponents;
 
 import java.util.Objects;
 
-public class Movie implements Item {
-    private String name;
+public class Movie extends Item {
     private String director;
-    private String year;
     private String rating;
-    private String userId;
-    private boolean isAvailable;
 
-    public Movie(String name, String director, String year, String rating, boolean isAvailable) {
-        this.name = name;
-        this.director = director;
-        this.year = year;
-        this.rating = rating;
-        this.isAvailable = isAvailable;
+    public Movie() {
     }
+
+    public Movie(String name, String director, String year, String rating, boolean isAvailable, String userId) {
+        super(name, year, isAvailable,userId );
+        this.director = director;
+        this.rating = rating;
+    }
+
 
     @Override
     public String toString(){
-        return String.format("%s / %s% / %d / %s",name,director, year,rating);
-    }
-
-    public boolean getIsAvailable() {
-        return this.isAvailable;
+        return String.format("%s / %s% / %d / %s",super.getName(),director, super.getYear(),rating);
     }
 
     @Override
@@ -39,37 +33,15 @@ public class Movie implements Item {
 
         Movie otherBook = (Movie) otherObject;
 
-        return name.equals(otherBook.name) &&
+        return super.getName().equals(otherBook.getName()) &&
                 director.equals(otherBook.director) &&
-                year.equals(otherBook.year) &&
+                super.getYear().equals(otherBook.getYear()) &&
                 rating.equals(otherBook.rating);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name,director, year, rating);
-    }
-
-    public void makeItUnavailable(String userId) {
-        isAvailable = false;
-        this.userId = userId;
-    }
-
-    public void makeItAvailable(){
-        isAvailable = true;
-        this.userId = null;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public String getUserId (){
-        return userId;
+        return Objects.hash(super.getName(),director, super.getYear(), rating);
     }
 
     public String getDirector() {

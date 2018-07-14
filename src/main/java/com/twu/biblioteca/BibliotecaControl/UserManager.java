@@ -55,6 +55,9 @@ public class UserManager {
     }
 
     public String getUserLoggedPrivilege() {
+        if (userLoggedID == null){
+            userLoggedPrivilege = null;
+        }
         return userLoggedPrivilege;
     }
 }

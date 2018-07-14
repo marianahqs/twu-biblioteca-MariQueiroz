@@ -18,48 +18,61 @@ public class Biblioteca {
         this.movies = movies;
     }
 
+    // Books
+
     public List<Book> listAvailableBooks() {
-        return books.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
+        return books.stream().filter(p -> p.isAvailable()).collect(Collectors.toList());
     }
 
-    public List<Movie> listAvailableMovies() {
-        return movies.stream().filter(p -> p.getIsAvailable()).collect(Collectors.toList());
+    public List<Book> listAllBooks() {
+        return books;
     }
 
     public boolean checkoutBook(String nameOfBookToCheckout, String loggedUserId) throws NoSuchElementException, IllegalArgumentException {
-        Item bookToCheckout = getItem(nameOfBookToCheckout,books);
-        return checkoutItem(loggedUserId, bookToCheckout);
+        return checkoutItem(loggedUserId, findItem(nameOfBookToCheckout,books));
     }
 
     public boolean returnBook(String nameOfBookToReturn) throws NoSuchElementException, IllegalArgumentException {
-        Item bookToReturn = getItem(nameOfBookToReturn,books);
-        return returnItem(bookToReturn);
+        return returnItem(findItem(nameOfBookToReturn,books));
+    }
+
+
+    //Movies
+
+    public List<Movie> listAvailableMovies() {
+        return movies.stream().filter(p -> p.isAvailable()).collect(Collectors.toList());
+    }
+
+    public List<Movie> listAllMovies() {
+        return movies;
     }
 
     public boolean checkoutMovie(String nameOfMovieToCheckout, String loggedUserId) throws NoSuchElementException, IllegalArgumentException {
-        Item movieToCheckout = getItem(nameOfMovieToCheckout,movies);
-        return checkoutItem(loggedUserId,movieToCheckout);
+        return checkoutItem(loggedUserId, findItem(nameOfMovieToCheckout,movies));
     }
 
     public boolean returnMovie(String nameOfMovieToReturn) throws NoSuchElementException, IllegalArgumentException {
-        Item movieToReturn = getItem(nameOfMovieToReturn,movies);
-        return returnItem(movieToReturn);
+        return returnItem(findItem(nameOfMovieToReturn,movies));
     }
 
-    public Item getItem(String nameOfItem, List<? extends Item> listToSearch) throws NoSuchElementException {
+
+    // Generic
+
+    public Item findItem(String nameOfItem, List<? extends Item> listToSearch) throws NoSuchElementException {
         try {
             return listToSearch.stream()
                     .filter(p -> p.getName().equals(nameOfItem))
                     .findFirst()
                     .get();
         } catch (NoSuchElementException nexc) {
-            String message = String.format("That is not a valid %s name", listToSearch.get(0).getClass().getSimpleName().toLowerCase());
+            String message = String.format("That is not a valid %s name",
+                    listToSearch.get(0).getClass().getSimpleName().toLowerCase());
             throw new NoSuchElementException(message);
         }
     }
 
     private boolean returnItem(Item itemToReturn) {
-        if (itemToReturn.getIsAvailable()){
+        if (itemToReturn.isAvailable()){
             String message = String.format("That is not a valid %s to return", itemToReturn.getClass().getSimpleName().toLowerCase());
             throw new IllegalArgumentException(message);
         }
@@ -68,19 +81,11 @@ public class Biblioteca {
     }
 
     private boolean checkoutItem(String loggedUserId, Item itemToCheckout) {
-        if (!itemToCheckout.getIsAvailable()){
+        if (!itemToCheckout.isAvailable()){
             String message = String.format("That %s is not available", itemToCheckout.getClass().getSimpleName().toLowerCase());
             throw new IllegalArgumentException(message);
         }
         itemToCheckout.makeItUnavailable(loggedUserId);
         return true;
-    }
-
-    public List<Book> listAllBooks() {
-        return books;
-    }
-
-    public List<Movie> listAllMovies() {
-        return movies;
     }
 }

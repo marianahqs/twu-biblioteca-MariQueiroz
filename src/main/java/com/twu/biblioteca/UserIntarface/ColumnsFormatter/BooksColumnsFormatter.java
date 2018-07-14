@@ -27,6 +27,9 @@ public class BooksColumnsFormatter {
         int authorColumnSize = getColumnSize(COLUMN_DISTANCE, Book::getAuthor);
         int yearColumnSize = getColumnSize(COLUMN_DISTANCE, Book::getYear);
 
+        returnList.add(String.format("%-" + nameColumnSize +
+                "s%-" + authorColumnSize +
+                "s%-" + yearColumnSize + "s%s","NAME","AUTHOR","YEAR","USER ID"));
 
         for (Book book : books) {
 

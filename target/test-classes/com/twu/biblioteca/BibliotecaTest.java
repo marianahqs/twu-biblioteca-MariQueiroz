@@ -14,23 +14,23 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class BibliotecaTest {
-    List<Book> BOOKS = List.of(new Book("Name Book 1", "Author Book 1", "1980", true),
-            new Book("Name Book 2", "Author Book 2","2003",true),
-            new Book("Name Book 3", "Author Book 3", "2017", false),
-            new Book("Name Book 4","Author Book 4","1999",false));
+    List<Book> BOOKS = List.of(new Book("Name Book 1", "Author Book 1", "1980", true, null),
+            new Book("Name Book 2", "Author Book 2","2003",true, null),
+            new Book("Name Book 3", "Author Book 3", "2017", false, null),
+            new Book("Name Book 4","Author Book 4","1999",false, null));
 
-    List<Movie> MOVIES = List.of(new Movie("Name Movie 1", "Director Movie 1", "1980","8.1" ,true),
-            new Movie("Name Movie 2", "Director Movie 2","2003","none",false),
-            new Movie("Name Movie 3", "Director Movie 3", "2017","9", false),
-            new Movie("Name Movie 4","Director Movie 4","1999","none",true));
+    List<Movie> MOVIES = List.of(new Movie("Name Movie 1", "Director Movie 1", "1980","8.1" ,true, null),
+            new Movie("Name Movie 2", "Director Movie 2","2003","none",false, null),
+            new Movie("Name Movie 3", "Director Movie 3", "2017","9", false, null),
+            new Movie("Name Movie 4","Director Movie 4","1999","none",true, null));
 
     Biblioteca biblioteca = new Biblioteca(BOOKS,MOVIES);
 
     //List Books
     @Test
     public void shouldReturnOnlyAvailableBooks(){
-        List<Book> EXPECTED_RETURN_LIST = List.of(new Book("Name Book 1", "Author Book 1", "1980", true),
-                new Book("Name Book 2", "Author Book 2","2003",true));
+        List<Book> EXPECTED_RETURN_LIST = List.of(new Book("Name Book 1", "Author Book 1", "1980", true, null),
+                new Book("Name Book 2", "Author Book 2","2003",true, null));
 
         assertEquals(EXPECTED_RETURN_LIST, biblioteca.listAvailableBooks());
     }
@@ -44,8 +44,8 @@ public class BibliotecaTest {
     //List Movies
     @Test
     public void shouldReturnOnlyAvailableMovies(){
-        List<Movie> EXPECTED_RETURN_LIST = List.of(new Movie("Name Movie 1", "Director Movie 1", "1980","8.1" ,true),
-                new Movie("Name Movie 4","Director Movie 4","1999","none",true));
+        List<Movie> EXPECTED_RETURN_LIST = List.of(new Movie("Name Movie 1", "Director Movie 1", "1980","8.1" ,true, null),
+                new Movie("Name Movie 4","Director Movie 4","1999","none",true, null));
 
         assertEquals(EXPECTED_RETURN_LIST, biblioteca.listAvailableMovies());
     }
@@ -70,18 +70,18 @@ public class BibliotecaTest {
     public void shouldUpdateUserIdForCheckedOutBook() {
         String USER_ID_TEST = "222-3344";
 
-        assertEquals(null, biblioteca.getItem("Name Book 1",BOOKS).getUserId());
+        assertEquals(null, biblioteca.findItem("Name Book 1",BOOKS).getUserId());
         biblioteca.checkoutBook("Name Book 1", USER_ID_TEST);
-        assertEquals(USER_ID_TEST, biblioteca.getItem("Name Book 1",BOOKS).getUserId());
+        assertEquals(USER_ID_TEST, biblioteca.findItem("Name Book 1",BOOKS).getUserId());
     }
 
     @Test
     public void shouldUpdateUserIdForCheckedOutMovie(){
         String USER_ID_TEST = "222-3344";
 
-        assertEquals(null,biblioteca.getItem("Name Movie 4",MOVIES).getUserId());
+        assertEquals(null,biblioteca.findItem("Name Movie 4",MOVIES).getUserId());
         biblioteca.checkoutMovie("Name Movie 4",USER_ID_TEST);
-        assertEquals(USER_ID_TEST,biblioteca.getItem("Name Movie 4",MOVIES).getUserId());
+        assertEquals(USER_ID_TEST,biblioteca.findItem("Name Movie 4",MOVIES).getUserId());
     }
 
     @Test
@@ -141,9 +141,9 @@ public class BibliotecaTest {
         String USER_ID_TEST = "222-3344";
 
         biblioteca.checkoutBook("Name Book 1", USER_ID_TEST);
-        assertEquals(USER_ID_TEST, biblioteca.getItem("Name Book 1",BOOKS).getUserId());
+        assertEquals(USER_ID_TEST, biblioteca.findItem("Name Book 1",BOOKS).getUserId());
         biblioteca.returnBook("Name Book 1");
-        assertEquals(null, biblioteca.getItem("Name Book 1",BOOKS).getUserId());
+        assertEquals(null, biblioteca.findItem("Name Book 1",BOOKS).getUserId());
     }
 
     @Test
@@ -151,9 +151,9 @@ public class BibliotecaTest {
         String USER_ID_TEST = "222-3344";
 
         biblioteca.checkoutMovie("Name Movie 4",USER_ID_TEST);
-        assertEquals(USER_ID_TEST,biblioteca.getItem("Name Movie 4",MOVIES).getUserId());
+        assertEquals(USER_ID_TEST,biblioteca.findItem("Name Movie 4",MOVIES).getUserId());
         biblioteca.returnMovie("Name Movie 4");
-        assertEquals(null,biblioteca.getItem("Name Movie 4",MOVIES).getUserId());
+        assertEquals(null,biblioteca.findItem("Name Movie 4",MOVIES).getUserId());
     }
 
 

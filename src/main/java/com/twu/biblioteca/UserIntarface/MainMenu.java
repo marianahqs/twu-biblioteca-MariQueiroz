@@ -54,21 +54,21 @@ public class MainMenu {
 
             switch (userSelection) {
                 case (LIST_BOOKS):
-                    if (userManager.getUserLoggedPrivilege()=="customer") {
-                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(biblioteca.listAvailableBooks());
+                    if (userManager.getUserLoggedPrivilege()=="librarian") {
+                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(biblioteca.listAllBooks());
                         System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
                     } else {
-                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(biblioteca.listAllBooks());
+                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(biblioteca.listAvailableBooks());
                         System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
                     }
                     break;
 
                 case (LIST_MOVIES):
-                    if (userManager.getUserLoggedPrivilege()=="customer") {
-                        MovieColumnsFormatter moviesListFormatter = new MovieColumnsFormatter(biblioteca.listAvailableMovies());
+                    if (userManager.getUserLoggedPrivilege()=="librarian") {
+                        MovieColumnsFormatter moviesListFormatter = new MovieColumnsFormatter(biblioteca.listAllMovies());
                         System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
                     } else {
-                        MovieColumnsFormatter moviesListFormatter = new MovieColumnsFormatter(biblioteca.listAllMovies());
+                        MovieColumnsFormatter moviesListFormatter = new MovieColumnsFormatter(biblioteca.listAvailableMovies());
                         System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
                     }
                     break;
@@ -77,7 +77,7 @@ public class MainMenu {
                     System.exit(0);
 
                 case (CHECKOUT_BOOK):
-                    if (biblioteca.checkoutBook(askForInput("Enter the name of a book to makeItUnavailable:"), userManager.getUserLoggedID())) {
+                    if (biblioteca.checkoutBook(askForInput("Enter the name of a book to checkout:"), userManager.getUserLoggedID())) {
                         System.out.println("Thank you! Enjoy the book!");
                     }
                     break;
@@ -89,7 +89,7 @@ public class MainMenu {
                     break;
 
                 case (CHECKOUT_MOVIE):
-                    if (biblioteca.checkoutMovie(askForInput("Enter the name of a movie to makeItUnavailable:"), userManager.getUserLoggedID())) {
+                    if (biblioteca.checkoutMovie(askForInput("Enter the name of a movie to checkout:"), userManager.getUserLoggedID())) {
                         System.out.println("Thank you! Enjoy the movie!");
                     }
                     break;

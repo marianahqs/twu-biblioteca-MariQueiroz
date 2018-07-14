@@ -227,7 +227,7 @@ public class MainMenuTest {
     @Test
     public void shouldPrintOkMessageWhenCheckoutBookOptionSucceed() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
-        String OUTPUT_EXPECTED = "\nEnter the name of a book to makeItUnavailable:\nThank you! Enjoy the book!\n";
+        String OUTPUT_EXPECTED = "\nEnter the name of a book to checkout:\nThank you! Enjoy the book!\n";
 
         when(mockScanner.askUserInput()).thenReturn(BOOK_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
@@ -243,7 +243,7 @@ public class MainMenuTest {
     public void shouldPrintErrorMessageWhenTryCheckoutNonexistentBook() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
         NoSuchElementException bookDoesNotExist = new NoSuchElementException("Error Message");
-        String OUTPUT_EXPECTED = "\nEnter the name of a book to makeItUnavailable:\n"
+        String OUTPUT_EXPECTED = "\nEnter the name of a book to checkout:\n"
                 +bookDoesNotExist.getMessage()+
                 "\n";
 
@@ -261,7 +261,7 @@ public class MainMenuTest {
     public void shouldPrintErrorMessageWhenTryCheckoutUnavailableBook() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
         IllegalArgumentException bookIsNotAvailable = new IllegalArgumentException("different error message");
-        String OUTPUT_EXPECTED = "\nEnter the name of a book to makeItUnavailable:\n"
+        String OUTPUT_EXPECTED = "\nEnter the name of a book to checkout:\n"
                 +bookIsNotAvailable.getMessage()+
                 "\n";
 
@@ -294,7 +294,7 @@ public class MainMenuTest {
     @Test
     public void shouldPrintOkMessageWhenCheckoutMovieOptionSucceed() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
-        String OUTPUT_EXPECTED = "\nEnter the name of a movie to makeItUnavailable:\nThank you! Enjoy the movie!\n";
+        String OUTPUT_EXPECTED = "\nEnter the name of a movie to checkout:\nThank you! Enjoy the movie!\n";
 
         when(mockScanner.askUserInput()).thenReturn(MOVIE_NAME_TEST);
         when(mockUserManager.isLoggedIn()).thenReturn(true);
@@ -310,7 +310,7 @@ public class MainMenuTest {
     public void shouldPrintErrorMessageWhenTryCheckoutNonexistentMovie() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
         NoSuchElementException movieDoesNotExist = new NoSuchElementException("Error Message");
-        String OUTPUT_EXPECTED = "\nEnter the name of a movie to makeItUnavailable:\n"
+        String OUTPUT_EXPECTED = "\nEnter the name of a movie to checkout:\n"
                 +movieDoesNotExist.getMessage()+
                 "\n";
 
@@ -328,7 +328,7 @@ public class MainMenuTest {
     public void shouldPrintErrorMessageWhenTryCheckoutUnavailableMovie() {
         MainMenu mainMenu = new MainMenu(mockBiblioteca, mockScanner, mockUserManager);
         IllegalArgumentException movieIsNotAvailable = new IllegalArgumentException("different error message");
-        String OUTPUT_EXPECTED = "\nEnter the name of a movie to makeItUnavailable:\n"
+        String OUTPUT_EXPECTED = "\nEnter the name of a movie to checkout:\n"
                 +movieIsNotAvailable.getMessage()+
                 "\n";
 

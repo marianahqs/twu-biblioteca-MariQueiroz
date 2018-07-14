@@ -2,27 +2,21 @@ package com.twu.biblioteca.BibliotecaComponents;
 
 import java.util.Objects;
 
-public class Book implements Item {
-    private String name;
+public class Book extends Item{
     private String author;
-    private String year;
-    private String userId;
-    private boolean isAvailable;
 
-    public Book(String name, String author, String year, boolean isAvailable) {
-        this.name = name;
+    public Book(){     //TODO Is it necessary? Why?
+        super();
+    }
+
+    public Book(String name, String author, String year, boolean isAvailable, String userId) {
+        super(name, year, isAvailable, userId);
         this.author = author;
-        this.year = year;
-        this.isAvailable = isAvailable;
     }
 
     @Override
     public String toString(){
-        return String.format("%s / %s% / %d / %s",name,author, year);
-    }
-
-    public boolean getIsAvailable() {
-        return this.isAvailable;
+        return String.format("%s / %s% / %d / %s",super.getName(),author, super.getYear());
     }
 
     @Override
@@ -36,42 +30,19 @@ public class Book implements Item {
         }
 
         Book otherBook = (Book) otherObject;
-        return name.equals(otherBook.name) &&
+        return super.getName().equals(otherBook.getName()) &&
                 author.equals(otherBook.author) &&
-                year.equals(otherBook.year);
+                super.getYear().equals(otherBook.getYear());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, author, year);
-    }
-
-    public void makeItUnavailable(String userId) {
-        isAvailable = false;
-        this.userId = userId;
-    }
-
-    public void makeItAvailable(){
-        isAvailable = true;
-        this.userId = null;
-    }
-
-    public String getName() {
-        return name;
+        return Objects.hash(super.getName(), author, super.getYear());
     }
 
     public String getAuthor() {
         return author;
     }
-
-    public String getYear() {
-        return year;
-    }
-
-    public String getUserId (){
-        return userId;
-    }
-
 
 }
 

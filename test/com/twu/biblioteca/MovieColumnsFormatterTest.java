@@ -9,10 +9,10 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class MovieColumnsFormatterTest {
-    List<Movie> MOVIES = List.of(new Movie("Name 1", "Director Movie 1", "1980","8.1" ,true),
-            new Movie("Name Movie", "Director 2","2003","none",false),
-            new Movie("Name 3", "Director Movie", "1970","9", false),
-            new Movie("Name","Director","1999","none",true));
+    List<Movie> MOVIES = List.of(new Movie("Name 1", "Director Movie 1", "1980","8.1" ,true, null),
+            new Movie("Name Movie", "Director 2","2003","none",false, null),
+            new Movie("Name 3", "Director Movie", "1970","9", false, null),
+            new Movie("Name","Director","1999","none",true, null));
 
     @Test
     public void shouldFindTheSizeOfTheBiggestItem() {
@@ -26,7 +26,8 @@ public class MovieColumnsFormatterTest {
     @Test
     public void shouldFormatColumnsForMoviesList() {
         MovieColumnsFormatter formatter = new MovieColumnsFormatter(MOVIES);
-        List<String> RETURN_LIST_EXPECTED = List.of("Name 1         Director Movie 1     8.1      1980     ",
+        List<String> RETURN_LIST_EXPECTED = List.of("NAME           DIRECTOR             RATING   YEAR     USER ID",
+                "Name 1         Director Movie 1     8.1      1980     ",
                 "Name Movie     Director 2           none     2003     ",
                 "Name 3         Director Movie       9        1970     ",
                 "Name           Director             none     1999     ");

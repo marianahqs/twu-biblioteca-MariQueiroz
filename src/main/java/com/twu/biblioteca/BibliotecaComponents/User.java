@@ -40,7 +40,8 @@ public class User {
                 name.equals(otherUser.name) &&
                 password.equals(otherUser.password) &&
                 phoneNumber.equals(otherUser.phoneNumber)&&
-                emailAddress.equals(otherUser.emailAddress);
+                emailAddress.equals(otherUser.emailAddress)&&
+                userPrivileges.equals(otherUser.userPrivileges);
     }
 
     @Override
