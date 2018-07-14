@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.UserIntarface.ColumnsFormatter.MovieColumnsFormatter;
+import com.twu.biblioteca.UserIntarface.ColumnsFormatter.MoviesColumnsFormatter;
 import com.twu.biblioteca.BibliotecaComponents.Movie;
 import org.junit.Test;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class MovieColumnsFormatterTest {
+public class MoviesColumnsFormatterTest {
     List<Movie> MOVIES = List.of(new Movie("Name 1", "Director Movie 1", "1980","8.1" ,true, null),
             new Movie("Name Movie", "Director 2","2003","none",false, null),
             new Movie("Name 3", "Director Movie", "1970","9", false, null),
@@ -16,7 +16,7 @@ public class MovieColumnsFormatterTest {
 
     @Test
     public void shouldFindTheSizeOfTheBiggestItem() {
-        MovieColumnsFormatter formatter = new MovieColumnsFormatter(MOVIES);
+        MoviesColumnsFormatter formatter = new MoviesColumnsFormatter(MOVIES);
         int SIZE_EXPECTED = 15;
         List<String> LIST_TO_TEST = List.of("small","big" ,"really big name");
 
@@ -25,7 +25,7 @@ public class MovieColumnsFormatterTest {
 
     @Test
     public void shouldFormatColumnsForMoviesList() {
-        MovieColumnsFormatter formatter = new MovieColumnsFormatter(MOVIES);
+        MoviesColumnsFormatter formatter = new MoviesColumnsFormatter(MOVIES);
         List<String> RETURN_LIST_EXPECTED = List.of("NAME           DIRECTOR             RATING   YEAR     USER ID",
                 "Name 1         Director Movie 1     8.1      1980     ",
                 "Name Movie     Director 2           none     2003     ",

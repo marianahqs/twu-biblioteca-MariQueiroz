@@ -1,9 +1,10 @@
 package com.twu.biblioteca.UserIntarface;
 
-import com.twu.biblioteca.BibliotecaControl.Biblioteca;
+import com.twu.biblioteca.BibliotecaControl.BooksControl;
+import com.twu.biblioteca.BibliotecaControl.MoviesControl;
 import com.twu.biblioteca.BibliotecaControl.UserManager;
 import com.twu.biblioteca.UserIntarface.ColumnsFormatter.BooksColumnsFormatter;
-import com.twu.biblioteca.UserIntarface.ColumnsFormatter.MovieColumnsFormatter;
+import com.twu.biblioteca.UserIntarface.ColumnsFormatter.MoviesColumnsFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.NoSuchElementException;
 public class MainMenu {
 
     private static final String LIST_BOOKS = "List Books";
-    private static final String LIST_MOVIES = "List Movies";
+    private static final String LIST_MOVIES = "List MoviesControl";
     private static final String QUIT = "Quit";
     private static final String CHECKOUT_BOOK = "Checkout Book";
     private static final String RETURN_BOOK = "Return Book";
@@ -23,12 +24,12 @@ public class MainMenu {
     private static final String USER_INFORMATION = "User Information";
     private static final String MAIN_MENU_HEADER = "\n\n---- MAIN MENU ---- \n(choose an option and insert its number)\n";
     private static final List<String> MENU_LOGGED_OUT_OPTIONS = List.of("List Books",
-            "List Movies",
+            "List MoviesControl",
             "Login",
             "Quit");
 
     private static final List<String> MENU_LOGGED_IN_OPTIONS = List.of("List Books",
-            "List Movies",
+            "List MoviesControl",
             "Checkout Book",
             "Return Book",
             "Checkout Movie",
@@ -38,12 +39,14 @@ public class MainMenu {
             "Quit");
 
     private final UserInputScanner scanner;
-    private final Biblioteca biblioteca;
+    private final BooksControl booksControl;
+    private final MoviesControl moviesControl;
     private final UserManager userManager;
 
-    public MainMenu(Biblioteca biblioteca, UserInputScanner scanner, UserManager userManager) {
-        this.biblioteca = biblioteca;
+    public MainMenu(BooksControl booksControl, MoviesControl moviesControl, UserInputScanner scanner, UserManager userManager) {
+        this.booksControl = booksControl;
         this.scanner = scanner;
+        this.moviesControl = moviesControl;
         this.userManager = userManager;
     }
 
@@ -55,20 +58,20 @@ public class MainMenu {
             switch (userSelection) {
                 case (LIST_BOOKS):
                     if (userManager.getUserLoggedPrivilege()=="librarian") {
-                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(biblioteca.listAllBooks());
+                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(booksControl.listAllBooks());
                         System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
                     } else {
-                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(biblioteca.listAvailableBooks());
+                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(booksControl.listAvailableBooks());
                         System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
                     }
                     break;
 
                 case (LIST_MOVIES):
                     if (userManager.getUserLoggedPrivilege()=="librarian") {
-                        MovieColumnsFormatter moviesListFormatter = new MovieColumnsFormatter(biblioteca.listAllMovies());
+                        MoviesColumnsFormatter moviesListFormatter = new MoviesColumnsFormatter(moviesControl.listAllMovies());
                         System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
                     } else {
-                        MovieColumnsFormatter moviesListFormatter = new MovieColumnsFormatter(biblioteca.listAvailableMovies());
+                        MoviesColumnsFormatter moviesListFormatter = new MoviesColumnsFormatter(moviesControl.listAvailableMovies());
                         System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
                     }
                     break;
@@ -77,25 +80,25 @@ public class MainMenu {
                     System.exit(0);
 
                 case (CHECKOUT_BOOK):
-                    if (biblioteca.checkoutBook(askForInput("Enter the name of a book to checkout:"), userManager.getUserLoggedID())) {
+                    if (booksControl.checkoutBook(askForInput("Enter the name of a book to checkout:"), userManager.getUserLoggedID())) {
                         System.out.println("Thank you! Enjoy the book!");
                     }
                     break;
 
                 case (RETURN_BOOK):
-                    if (biblioteca.returnBook(askForInput("Enter the name of a book to return:"))) {
+                    if (booksControl.returnBook(askForInput("Enter the name of a book to return:"))) {
                         System.out.println("Thank you for returning the book!");
                     }
                     break;
 
                 case (CHECKOUT_MOVIE):
-                    if (biblioteca.checkoutMovie(askForInput("Enter the name of a movie to checkout:"), userManager.getUserLoggedID())) {
+                    if (moviesControl.checkoutMovie(askForInput("Enter the name of a movie to checkout:"), userManager.getUserLoggedID())) {
                         System.out.println("Thank you! Enjoy the movie!");
                     }
                     break;
 
                 case (RETURN_MOVIE):
-                    if (biblioteca.returnMovie(askForInput("Enter the name of a movie to return:"))) {
+                    if (moviesControl.returnMovie(askForInput("Enter the name of a movie to return:"))) {
                         System.out.println("Thank you for returning the movie!");
                     }
                     break;
@@ -137,7 +140,6 @@ public class MainMenu {
 
     private List<String> getCurrentMenu(){
         List<String> returnListCurrentMenu = new ArrayList<>();
-      //  returnListCurrentMenu.clear();  ?????
 
         if (userManager.isLoggedIn()){
             returnListCurrentMenu.addAll(MENU_LOGGED_IN_OPTIONS);

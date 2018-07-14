@@ -3,7 +3,8 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.BibliotecaComponents.Book;
 import com.twu.biblioteca.BibliotecaComponents.Movie;
 import com.twu.biblioteca.BibliotecaComponents.User;
-import com.twu.biblioteca.BibliotecaControl.Biblioteca;
+import com.twu.biblioteca.BibliotecaControl.BooksControl;
+import com.twu.biblioteca.BibliotecaControl.MoviesControl;
 import com.twu.biblioteca.BibliotecaControl.UserManager;
 import com.twu.biblioteca.UserIntarface.MainMenu;
 import com.twu.biblioteca.UserIntarface.UserInputScanner;
@@ -43,10 +44,11 @@ public class BibliotecaApp {
     }
 
     public static void main(String[] args) {
-        Biblioteca biblioteca = new Biblioteca(BOOKS,MOVIES);
+        BooksControl booksControl = new BooksControl(BOOKS);
+        MoviesControl moviesControl = new MoviesControl(MOVIES);
         UserInputScanner scanner = new UserInputScanner();
         UserManager userManager = new UserManager(USERS);
-        MainMenu menu = new MainMenu(biblioteca,scanner, userManager);
+        MainMenu menu = new MainMenu(booksControl,moviesControl,scanner, userManager);
 
         showWelcomeMessage();
 

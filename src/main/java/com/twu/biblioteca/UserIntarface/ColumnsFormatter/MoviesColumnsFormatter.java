@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 
 import static java.util.Optional.ofNullable;
 
-public class MovieColumnsFormatter {
+public class MoviesColumnsFormatter {
 
     private static List<Movie> movies;
 
-    public MovieColumnsFormatter(List<Movie> movies) {
+    public MoviesColumnsFormatter(List<Movie> movies) {
         this.movies = movies;
     }
 
@@ -63,7 +63,7 @@ public class MovieColumnsFormatter {
 
             return maxString.length();
         }catch (NoSuchElementException noItem){
-            throw new NoSuchElementException("Movies list is empty");
+            throw new NoSuchElementException("MoviesControl list is empty");
         }
     }
 }
