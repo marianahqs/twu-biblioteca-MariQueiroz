@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.BibliotecaComponents.Item;
 import com.twu.biblioteca.BibliotecaComponents.Movie;
 import com.twu.biblioteca.BibliotecaControl.MoviesControl;
 import org.junit.Test;
@@ -21,19 +20,6 @@ public class MoviesControlTest {
 
     MoviesControl moviesControl = new MoviesControl(MOVIES);
     String USER_ID_TEST = "222-3344";
-
-    private Item findItem(String nameOfItem, List<? extends Item> listToSearch) throws NoSuchElementException {
-        try {
-            return listToSearch.stream()
-                    .filter(p -> p.getName().equals(nameOfItem))
-                    .findFirst()
-                    .get();
-        } catch (NoSuchElementException nexc) {
-            String message = String.format("That is not a valid %s name",
-                    listToSearch.get(0).getClass().getSimpleName().toLowerCase());
-            throw new NoSuchElementException(message);
-        }
-    }
 
 
 // List
@@ -59,9 +45,9 @@ public class MoviesControlTest {
 
     @Test
     public void shouldUpdateUserIdForCheckedOutMovie(){
-        assertEquals(null,findItem("Name Movie 4",MOVIES).getUserId());
+        assertEquals(null, MethodsForTests.findItem("Name Movie 4", MOVIES).getUserId());
         moviesControl.checkoutMovie("Name Movie 4",USER_ID_TEST);
-        assertEquals(USER_ID_TEST,findItem("Name Movie 4",MOVIES).getUserId());
+        assertEquals(USER_ID_TEST, MethodsForTests.findItem("Name Movie 4", MOVIES).getUserId());
     }
 
     @Test
@@ -94,9 +80,9 @@ public class MoviesControlTest {
     @Test
     public void shouldClearUserIdForReturnedMovie(){
         moviesControl.checkoutMovie("Name Movie 4",USER_ID_TEST);
-        assertEquals(USER_ID_TEST,findItem("Name Movie 4",MOVIES).getUserId());
+        assertEquals(USER_ID_TEST, MethodsForTests.findItem("Name Movie 4", MOVIES).getUserId());
         moviesControl.returnMovie("Name Movie 4");
-        assertEquals(null,findItem("Name Movie 4",MOVIES).getUserId());
+        assertEquals(null, MethodsForTests.findItem("Name Movie 4", MOVIES).getUserId());
     }
 
     @Test

@@ -128,8 +128,8 @@ public class MainMenu {
     public void showMenuOptions() {
         System.out.println(MAIN_MENU_HEADER);
         List<String> currentMenuList = getCurrentMenu();
-        for (int index = 0; index<currentMenuList.size();index++){
-            System.out.println(index+" - "+ currentMenuList.get(index));
+        for (int index = 0; index < currentMenuList.size(); index++) {
+            System.out.println(index + " - " + currentMenuList.get(index));
         }
     }
 

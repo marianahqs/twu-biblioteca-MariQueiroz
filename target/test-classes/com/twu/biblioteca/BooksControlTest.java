@@ -22,19 +22,6 @@ public class BooksControlTest {
     BooksControl booksControl = new BooksControl(BOOKS);
     String USER_ID_TEST = "222-3344";
 
-    private Item findItem(String nameOfItem, List<? extends Item> listToSearch) throws NoSuchElementException {
-        try {
-            return listToSearch.stream()
-                    .filter(p -> p.getName().equals(nameOfItem))
-                    .findFirst()
-                    .get();
-        } catch (NoSuchElementException nexc) {
-            String message = String.format("That is not a valid %s name",
-                    listToSearch.get(0).getClass().getSimpleName().toLowerCase());
-            throw new NoSuchElementException(message);
-        }
-    }
-
 
 //List
     @Test
@@ -59,9 +46,9 @@ public class BooksControlTest {
 
     @Test
     public void shouldUpdateUserIdForCheckedOutBook() {
-        assertEquals(null, findItem("Name Book 1",BOOKS).getUserId());
+        assertEquals(null, MethodsForTests.findItem("Name Book 1",BOOKS).getUserId());
         booksControl.checkoutBook("Name Book 1", USER_ID_TEST);
-        assertEquals(USER_ID_TEST, findItem("Name Book 1",BOOKS).getUserId());
+        assertEquals(USER_ID_TEST, MethodsForTests.findItem("Name Book 1",BOOKS).getUserId());
     }
 
     @Test
@@ -94,9 +81,9 @@ public class BooksControlTest {
     @Test
     public void shouldClearUserIdForReturnedBook() {
         booksControl.checkoutBook("Name Book 1", USER_ID_TEST);
-        assertEquals(USER_ID_TEST, findItem("Name Book 1",BOOKS).getUserId());
+        assertEquals(USER_ID_TEST, MethodsForTests.findItem("Name Book 1",BOOKS).getUserId());
         booksControl.returnBook("Name Book 1");
-        assertEquals(null, findItem("Name Book 1",BOOKS).getUserId());
+        assertEquals(null, MethodsForTests.findItem("Name Book 1",BOOKS).getUserId());
     }
 
     @Test

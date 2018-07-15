@@ -1,7 +1,6 @@
 package com.twu.biblioteca.UserIntarface.ColumnsFormatter;
 
 import com.twu.biblioteca.BibliotecaComponents.Book;
-import com.twu.biblioteca.BibliotecaComponents.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +10,11 @@ import java.util.stream.Collectors;
 
 import static java.util.Optional.ofNullable;
 
-public class BooksColumnsFormatter {
+public class BooksColumnsFormatter{
 
-    private static List<Book> books;
+    private List<Book> books;
 
-    public BooksColumnsFormatter(List<Book> books) {
+    public BooksColumnsFormatter(List<Book> books){
         this.books = books;
     }
 
