@@ -2,37 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05a63112-a3a4-45c3-b049-2a3fdc5369d3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaComponents/ItemInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaComponents/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaComponents/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaComponents/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaComponents/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaComponents/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaComponents/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/BooksControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/BooksControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/ItemsControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/ItemsControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/MoviesControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/MoviesControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter/BooksColumnsFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/Unused/BooksColumnsFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter/MoviesColumnsFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/Unused/MoviesColumnsFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaComponents/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaComponents/Book.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaComponents/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaComponents/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaComponents/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaComponents/Movie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaControl/BooksControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaControl/BooksControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaControl/ItemsControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaControl/ItemsControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaControl/MoviesControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaControl/MoviesControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/UserIntarface/ColumnsFormatter/BooksColumnsFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/UserIntarface/ColumnsFormatter/MoviesColumnsFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/UserIntarface/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/UserIntarface/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksColumnsFormatterTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksColumnsFormatterTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksColumnsFormatterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksColumnsFormatterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksControlTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksControlTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksControlTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksControlTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MoviesColumnsFormatterTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MoviesColumnsFormatterTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MoviesColumnsFormatterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MoviesColumnsFormatterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/BooksColumnsFormatterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/BooksColumnsFormatterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/MoviesColumnsFormatterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/MoviesColumnsFormatterTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -57,7 +29,71 @@
     </SUITE>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ColumnsFormatter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-32">
+              <caret line="95" column="91" selection-start-line="95" selection-start-column="91" selection-end-line="95" selection-end-column="91" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#ColumnsFormatter#0;class#ColumnsFormatter#0" />
+                <element signature="method#formatColumns#0;class#ColumnsFormatter#0" />
+                <element signature="method#buildFormattedTableToReturn#0;class#ColumnsFormatter#0" />
+                <element signature="method#buildListOfSizesOfColumns#0;class#ColumnsFormatter#0" />
+                <element signature="method#buildHeader#0;class#ColumnsFormatter#0" />
+                <element signature="method#buildLineStringWithAllColumns#0;class#ColumnsFormatter#0" />
+                <element signature="method#buildListToCheckLongestItem#0;class#ColumnsFormatter#0" />
+                <element signature="method#getSizeOfLongestItem#0;class#ColumnsFormatter#0" />
+                <element signature="e#2925#3068#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BibliotecaApp.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MoviesColumnsFormatterTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/MoviesColumnsFormatterTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="111">
+              <caret line="34" column="76" selection-start-line="34" selection-start-column="76" selection-end-line="34" selection-end-column="76" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BooksColumnsFormatterTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BooksColumnsFormatterTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="32" column="65" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="String.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/String.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="591">
+              <caret line="2631" column="18" selection-start-line="2631" selection-start-column="18" selection-end-line="2631" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -94,7 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/Book.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/Movie.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/ColumnsFormatterTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/Biblioteca.java" />
@@ -127,7 +162,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/Biblioteca.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/BibliotecaControl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/Movies.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/ItemControl.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/MothodsForTests.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/MoviesControlTest.java" />
@@ -143,8 +177,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/MoviesControl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/BooksControl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaControl/ItemsControl.java" />
-        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/BooksColumnsFormatterTest.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/MoviesColumnsFormatterTest.java" />
+        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/BooksColumnsFormatterTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java" />
       </list>
     </option>
   </component>
@@ -164,11 +200,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="65" />
-    <option name="y" value="54" />
-    <option name="width" value="1076" />
-    <option name="height" value="741" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="77" />
+    <option name="y" value="58" />
+    <option name="width" value="1269" />
+    <option name="height" value="831" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -245,6 +281,16 @@
             <path>
               <item name="biblioteca" type="b2602c69:ProjectViewProjectNode" />
               <item name="TWU_Biblioteca-master" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioteca" type="462c0819:PsiDirectoryNode" />
+              <item name="UserIntarface" type="462c0819:PsiDirectoryNode" />
+              <item name="Unused" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioteca" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TWU_Biblioteca-master" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -315,7 +361,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList">
+  <component name="RunManager" selected="Application.BibliotecaApp">
     <configuration name="BibliotecaApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.BibliotecaApp" />
       <module name="biblioteca" />
@@ -469,10 +515,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" />
-        <item itemvalue="JUnit.BooksColumnsFormatterTest.shouldFormatColumnsForBooksList" />
         <item itemvalue="Application.BibliotecaApp" />
         <item itemvalue="JUnit.com.twu.biblioteca in biblioteca" />
+        <item itemvalue="JUnit.BooksColumnsFormatterTest.shouldFormatColumnsForBooksList" />
+        <item itemvalue="JUnit.MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" />
         <item itemvalue="JUnit.MainMenuTest" />
       </list>
     </recent_temporary>
@@ -488,44 +534,44 @@
       <option name="presentableId" value="Default" />
       <updated>1529674198706</updated>
       <workItem from="1531411687488" duration="10012000" />
-      <workItem from="1531610739227" duration="23457000" />
+      <workItem from="1531610739227" duration="25774000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="com_twu_biblioteca_in_biblioteca - 2018.07.15 at 22h 40m 17s.xml">
-      <configuration name="com.twu.biblioteca in biblioteca" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="com_twu_biblioteca_in_biblioteca - 2018.07.15 at 22h 43m 05s.xml">
-      <configuration name="com.twu.biblioteca in biblioteca" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="com_twu_biblioteca_in_biblioteca - 2018.07.15 at 22h 44m 23s.xml">
-      <configuration name="com.twu.biblioteca in biblioteca" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BooksColumnsFormatterTest_shouldFormatColumnsForBooksList - 2018.07.15 at 23h 27m 40s.xml">
-      <configuration name="BooksColumnsFormatterTest.shouldFormatColumnsForBooksList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BooksColumnsFormatterTest_shouldFormatColumnsForBooksList - 2018.07.15 at 23h 28m 01s.xml">
-      <configuration name="BooksColumnsFormatterTest.shouldFormatColumnsForBooksList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BooksColumnsFormatterTest_shouldFormatColumnsForBooksList - 2018.07.15 at 23h 29m 04s.xml">
-      <configuration name="BooksColumnsFormatterTest.shouldFormatColumnsForBooksList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MoviesColumnsFormatterTest_shouldFormatColumnsForMoviesList - 2018.07.15 at 23h 32m 05s.xml">
-      <configuration name="MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MoviesColumnsFormatterTest_shouldFormatColumnsForMoviesList - 2018.07.15 at 23h 32m 20s.xml">
-      <configuration name="MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MoviesColumnsFormatterTest_shouldFormatColumnsForMoviesList - 2018.07.15 at 23h 33m 50s.xml">
       <configuration name="MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" configurationId="JUnit" />
     </history-entry>
     <history-entry file="MoviesColumnsFormatterTest_shouldFormatColumnsForMoviesList - 2018.07.15 at 23h 34m 09s.xml">
       <configuration name="MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="com_twu_biblioteca_in_biblioteca - 2018.07.16 at 00h 13m 08s.xml">
+      <configuration name="com.twu.biblioteca in biblioteca" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MoviesColumnsFormatterTest_shouldFormatColumnsForMoviesList - 2018.07.16 at 00h 14m 00s.xml">
+      <configuration name="MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MoviesColumnsFormatterTest_shouldFormatColumnsForMoviesList - 2018.07.16 at 00h 15m 10s.xml">
+      <configuration name="MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MoviesColumnsFormatterTest_shouldFormatColumnsForMoviesList - 2018.07.16 at 00h 16m 01s.xml">
+      <configuration name="MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_twu_biblioteca_in_biblioteca - 2018.07.16 at 00h 16m 08s.xml">
+      <configuration name="com.twu.biblioteca in biblioteca" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BooksColumnsFormatterTest_shouldFormatColumnsForBooksList - 2018.07.16 at 00h 16m 53s.xml">
+      <configuration name="BooksColumnsFormatterTest.shouldFormatColumnsForBooksList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BooksColumnsFormatterTest_shouldFormatColumnsForBooksList - 2018.07.16 at 00h 17m 10s.xml">
+      <configuration name="BooksColumnsFormatterTest.shouldFormatColumnsForBooksList" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_twu_biblioteca_in_biblioteca - 2018.07.16 at 00h 17m 40s.xml">
+      <configuration name="com.twu.biblioteca in biblioteca" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77696000" />
+    <option name="totallyTimeSpent" value="80013000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -537,11 +583,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <frame x="77" y="58" width="1269" height="831" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.08454426" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.20607662" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.20534459" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -549,13 +595,13 @@
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32893" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.17040952" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24894515" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32893" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25035766" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27057865" />
       <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.18890357" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.5527426" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -643,11 +689,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="105" />
+      <option name="time" value="106" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/junit-4.11.jar!/org/junit/internal/runners/model/ReflectiveCallable.class" />
     <entry file="jar://$PROJECT_DIR$/lib/junit-4.11.jar!/org/junit/internal/runners/statements/RunAfters.class" />
     <entry file="jar://$PROJECT_DIR$/lib/junit-4.11.jar!/org/junit/runners/BlockJUnit4ClassRunner.class" />
     <entry file="jar://$PROJECT_DIR$/lib/junit-4.11.jar!/org/junit/runners/ParentRunner.class" />
@@ -886,13 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="42" column="47" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaComponents/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
@@ -975,33 +1013,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="43" column="60" selection-start-line="43" selection-start-column="60" selection-end-line="43" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#buildLineStringWithAllColumns#0;class#ColumnsFormatter#0" />
-            <element signature="method#buildListToCheckLongestItem#0;class#ColumnsFormatter#0" />
-            <element signature="method#getSizeOfLongestItem#0;class#ColumnsFormatter#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BooksColumnsFormatterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/MoviesColumnsFormatterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/Unused/BooksColumnsFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1016,6 +1027,59 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="2631" column="18" selection-start-line="2631" selection-start-column="18" selection-end-line="2631" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/MoviesColumnsFormatterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="34" column="76" selection-start-line="34" selection-start-column="76" selection-end-line="34" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BooksColumnsFormatterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="32" column="65" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-32">
+          <caret line="95" column="91" selection-start-line="95" selection-start-column="91" selection-end-line="95" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#ColumnsFormatter#0;class#ColumnsFormatter#0" />
+            <element signature="method#formatColumns#0;class#ColumnsFormatter#0" />
+            <element signature="method#buildFormattedTableToReturn#0;class#ColumnsFormatter#0" />
+            <element signature="method#buildListOfSizesOfColumns#0;class#ColumnsFormatter#0" />
+            <element signature="method#buildHeader#0;class#ColumnsFormatter#0" />
+            <element signature="method#buildLineStringWithAllColumns#0;class#ColumnsFormatter#0" />
+            <element signature="method#buildListToCheckLongestItem#0;class#ColumnsFormatter#0" />
+            <element signature="method#getSizeOfLongestItem#0;class#ColumnsFormatter#0" />
+            <element signature="e#2925#3068#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
         </state>
       </provider>
     </entry>

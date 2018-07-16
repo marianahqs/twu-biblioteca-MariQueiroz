@@ -28,10 +28,11 @@ public class MoviesColumnsFormatterTest {
     @Test
     public void shouldFormatColumnsForMoviesList() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         ColumnsFormatter<Movie> formatter = new ColumnsFormatter<>(MOVIES,listFields);
-        List<String> RETURN_LIST_EXPECTED = List.of("Name 1         Director Movie 1     8.1      1980          ",
-                "Name Movie     Director 2           none     2003          ",
-                "Name 3         Director Movie       9        1970          ",
-                "Name           Director             none     1999          ");
+        List<String> RETURN_LIST_EXPECTED = List.of("NAME           DIRECTOR             RATING     YEAR     USERID     ",
+                "Name 1         Director Movie 1     8.1        1980                ",
+                "Name Movie     Director 2           none       2003                ",
+                "Name 3         Director Movie       9          1970                ",
+                "Name           Director             none       1999                ");
 
         assertEquals(RETURN_LIST_EXPECTED,formatter.formatColumns());
     }

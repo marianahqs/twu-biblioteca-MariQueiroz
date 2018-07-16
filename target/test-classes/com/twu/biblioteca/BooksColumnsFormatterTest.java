@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.UserIntarface.ColumnsFormatter;
-import com.twu.biblioteca.UserIntarface.Unused.BooksColumnsFormatter;
 import com.twu.biblioteca.BibliotecaComponents.Book;
 import org.junit.Test;
 
@@ -28,9 +27,10 @@ public class BooksColumnsFormatterTest {
     @Test
     public void shouldFormatColumnsForBooksList() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         ColumnsFormatter<Book> formatter = new ColumnsFormatter<>(BOOKS,listFields);
-        List<String> RETURN_LIST_EXPECTED = List.of("small               author small     1988          ",
-                "big                 author           1987          ",
-                "really big name     author           1987          ");
+        List<String> RETURN_LIST_EXPECTED = List.of("NAME                AUTHOR           YEAR     USERID     ",
+                "small               author small     1988                ",
+                "big                 author           1987                ",
+                "really big name     author           1987                ");
 
         assertEquals(RETURN_LIST_EXPECTED,formatter.formatColumns());
     }
