@@ -1,4 +1,4 @@
-package com.twu.biblioteca.UserIntarface.ColumnsFormatter;
+package com.twu.biblioteca.UserIntarface.Unused;
 
 import com.twu.biblioteca.BibliotecaComponents.Book;
 
@@ -19,8 +19,9 @@ public class BooksColumnsFormatter{
     }
 
     public List<String> formatColumns(){
-        int COLUMN_DISTANCE = 5;
         List<String > returnList = new ArrayList<>();
+        int COLUMN_DISTANCE = 5;
+
 
         int nameColumnSize = getColumnSize(COLUMN_DISTANCE, Book::getName);
         int authorColumnSize = getColumnSize(COLUMN_DISTANCE, Book::getAuthor);
@@ -31,7 +32,6 @@ public class BooksColumnsFormatter{
                 "s%-" + yearColumnSize + "s%s","NAME","AUTHOR","YEAR","USER ID"));
 
         for (Book book : books) {
-
             returnList.add(String.format("%-" + nameColumnSize +
                             "s%-" + authorColumnSize +
                             "s%-" + yearColumnSize + "s%s",
@@ -40,7 +40,6 @@ public class BooksColumnsFormatter{
                     book.getYear(),
                     ofNullable(book.getUserId()).orElse("")));
         }
-
         return returnList;
     }
 

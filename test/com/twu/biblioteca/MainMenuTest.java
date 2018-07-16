@@ -56,7 +56,7 @@ public class MainMenuTest {
                 "(choose an option and insert its number)\n" +
                 "\n" +
                 "0 - List Books\n" +
-                "1 - List MoviesControl\n" +
+                "1 - List Movies\n" +
                 "2 - Login\n" +
                 "3 - Quit\n";
         MainMenu mainMenu = new MainMenu(mockBooksControl,mockMoviesControl, mockScanner,mockUserManager);
@@ -77,7 +77,7 @@ public class MainMenuTest {
                 "(choose an option and insert its number)\n" +
                 "\n" +
                 "0 - List Books\n" +
-                "1 - List MoviesControl\n" +
+                "1 - List Movies\n" +
                 "2 - Checkout Book\n" +
                 "3 - Return Book\n" +
                 "4 - Checkout Movie\n" +
@@ -137,11 +137,11 @@ public class MainMenuTest {
 
         mainMenu.handleUserOption("0");
 
-        assertEquals("Books list is empty\n",systemOutRule.getLog());
+        assertEquals("List is empty\n",systemOutRule.getLog());
     }
 
 
-    // List MoviesControl Tests
+    // List Movies Tests
     @Test
     public void shouldHandleListAvailableMoviesOption() {
         MainMenu mainMenu = new MainMenu(mockBooksControl,mockMoviesControl, mockScanner,mockUserManager);
@@ -170,7 +170,7 @@ public class MainMenuTest {
 
         mainMenu.handleUserOption("1");
 
-        assertEquals("MoviesControl list is empty\n",systemOutRule.getLog());
+        assertEquals("List is empty\n",systemOutRule.getLog());
     }
 
 
@@ -411,7 +411,7 @@ public class MainMenuTest {
 
 
 
-    // Return MoviesControl Tests
+    // Return Movies Tests
     @Test
     public void shouldHandleReturnMovieOption() {
         MainMenu mainMenu = new MainMenu(mockBooksControl,mockMoviesControl, mockScanner,mockUserManager);

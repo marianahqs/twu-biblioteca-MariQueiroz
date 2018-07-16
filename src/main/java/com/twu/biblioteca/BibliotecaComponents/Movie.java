@@ -1,8 +1,9 @@
 package com.twu.biblioteca.BibliotecaComponents;
 
+import java.util.List;
 import java.util.Objects;
 
-public class Movie extends Item {
+public class Movie extends Item implements ItemInterface{
     private String director;
     private String rating;
 
@@ -50,5 +51,10 @@ public class Movie extends Item {
 
     public String getRating() {
         return rating;
+    }
+
+    @Override
+    public List<String> getFieldsList() {
+        return List.of("getName","getDirector","getRating","getYear","getUserId");
     }
 }

@@ -1,11 +1,12 @@
 package com.twu.biblioteca.UserIntarface;
 
+import com.twu.biblioteca.BibliotecaComponents.Book;
+import com.twu.biblioteca.BibliotecaComponents.Movie;
 import com.twu.biblioteca.BibliotecaControl.BooksControl;
 import com.twu.biblioteca.BibliotecaControl.MoviesControl;
 import com.twu.biblioteca.BibliotecaControl.UserManager;
-import com.twu.biblioteca.UserIntarface.ColumnsFormatter.BooksColumnsFormatter;
-import com.twu.biblioteca.UserIntarface.ColumnsFormatter.MoviesColumnsFormatter;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -13,7 +14,7 @@ import java.util.NoSuchElementException;
 public class MainMenu {
 
     private static final String LIST_BOOKS = "List Books";
-    private static final String LIST_MOVIES = "List MoviesControl";
+    private static final String LIST_MOVIES = "List Movies";
     private static final String QUIT = "Quit";
     private static final String CHECKOUT_BOOK = "Checkout Book";
     private static final String RETURN_BOOK = "Return Book";
@@ -24,12 +25,12 @@ public class MainMenu {
     private static final String USER_INFORMATION = "User Information";
     private static final String MAIN_MENU_HEADER = "\n\n---- MAIN MENU ---- \n(choose an option and insert its number)\n";
     private static final List<String> MENU_LOGGED_OUT_OPTIONS = List.of("List Books",
-            "List MoviesControl",
+            "List Movies",
             "Login",
             "Quit");
 
     private static final List<String> MENU_LOGGED_IN_OPTIONS = List.of("List Books",
-            "List MoviesControl",
+            "List Movies",
             "Checkout Book",
             "Return Book",
             "Checkout Movie",
@@ -57,21 +58,27 @@ public class MainMenu {
 
             switch (userSelection) {
                 case (LIST_BOOKS):
-                    if (userManager.getUserLoggedPrivilege()=="librarian") {
-                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(booksControl.listAllBooks());
+
+                    if (userManager.getUserLoggedPrivilege()=="librarian") {  //TODO remove old code commented
+                       // BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(booksControl.listAllBooks());
+                        ColumnsFormatter<Book> booksListFormatter = new ColumnsFormatter<>(booksControl.listAllBooks(),booksControl.getListFields());
                         System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
                     } else {
-                        BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(booksControl.listAvailableBooks());
+                       // BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(booksControl.listAvailableBooks());
+                        ColumnsFormatter<Book> booksListFormatter = new ColumnsFormatter<>(booksControl.listAvailableBooks(),booksControl.getListFields());
                         System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
                     }
                     break;
 
                 case (LIST_MOVIES):
+
                     if (userManager.getUserLoggedPrivilege()=="librarian") {
-                        MoviesColumnsFormatter moviesListFormatter = new MoviesColumnsFormatter(moviesControl.listAllMovies());
+                      //  MoviesColumnsFormatter moviesListFormatter = new MoviesColumnsFormatter(moviesControl.listAllMovies());
+                        ColumnsFormatter<Movie> moviesListFormatter = new ColumnsFormatter<>(moviesControl.listAllMovies(),moviesControl.getListFields());
                         System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
                     } else {
-                        MoviesColumnsFormatter moviesListFormatter = new MoviesColumnsFormatter(moviesControl.listAvailableMovies());
+                      //  MoviesColumnsFormatter moviesListFormatter = new MoviesColumnsFormatter(moviesControl.listAvailableMovies());
+                        ColumnsFormatter<Movie> moviesListFormatter = new ColumnsFormatter<>(moviesControl.listAvailableMovies(),moviesControl.getListFields());
                         System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
                     }
                     break;
@@ -122,6 +129,8 @@ public class MainMenu {
             System.out.println("Select a valid option");
         } catch (NoSuchElementException | IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
+        } catch (NoSuchMethodException | IllegalAccessException |InvocationTargetException | NullPointerException exp){
+            System.out.println("Column Formatter error"); //TODO same message inside ColumnsFormatter class
         }
     }
 

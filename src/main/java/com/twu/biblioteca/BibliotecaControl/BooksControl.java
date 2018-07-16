@@ -22,6 +22,10 @@ public class BooksControl extends ItemsControl {
         return books;
     }
 
+    public List<String > getListFields(){
+        return books.get(0).getFieldsList(); //TODO Gambiarra: what if the list is empty?
+    }
+
     public boolean checkoutBook(String nameOfBookToCheckout, String loggedUserId) throws NoSuchElementException, IllegalArgumentException {
         return checkoutItem(loggedUserId, findItem(nameOfBookToCheckout, books));
     }

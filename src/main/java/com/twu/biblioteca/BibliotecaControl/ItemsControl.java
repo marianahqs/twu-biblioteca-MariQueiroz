@@ -16,12 +16,12 @@ public class ItemsControl {
                     .get();
         } catch (NoSuchElementException nexc) {
             String message = String.format("That is not a valid %s name",
-                    listToSearch.get(0).getClass().getSimpleName().toLowerCase());
+                    listToSearch.get(0).getClass().getSimpleName().toLowerCase()); //TODO Gambiarra
             throw new NoSuchElementException(message);
         }
     }
 
-    protected boolean returnItem(Item itemToReturn) {
+    protected boolean returnItem(Item itemToReturn) throws IllegalArgumentException {
         if (itemToReturn.isAvailable()){
             String message = String.format("That is not a valid %s to return", itemToReturn.getClass().getSimpleName().toLowerCase());
             throw new IllegalArgumentException(message);
@@ -30,7 +30,7 @@ public class ItemsControl {
         return true;
     }
 
-    protected boolean checkoutItem(String loggedUserId, Item itemToCheckout) {
+    protected boolean checkoutItem(String loggedUserId, Item itemToCheckout) throws IllegalArgumentException  {
         if (!itemToCheckout.isAvailable()){
             String message = String.format("That %s is not available", itemToCheckout.getClass().getSimpleName().toLowerCase());
             throw new IllegalArgumentException(message);

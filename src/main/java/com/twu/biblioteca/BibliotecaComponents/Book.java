@@ -1,8 +1,9 @@
 package com.twu.biblioteca.BibliotecaComponents;
 
+import java.util.List;
 import java.util.Objects;
 
-public class Book extends Item{
+public class Book extends Item implements ItemInterface{
     private String author;
 
     public Book(){     //TODO Is it necessary? Why?
@@ -44,5 +45,9 @@ public class Book extends Item{
         return author;
     }
 
+    @Override
+    public List<String> getFieldsList() {
+        return List.of("getName","getAuthor","getYear","getUserId");
+    }
 }
 
