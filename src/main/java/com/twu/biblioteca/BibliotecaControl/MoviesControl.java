@@ -27,11 +27,11 @@ public class MoviesControl extends ItemsControl {
     }
 
     public boolean checkoutMovie(String nameOfMovieToCheckout, String loggedUserId) throws NoSuchElementException, IllegalArgumentException {
-        return checkoutItem(loggedUserId, findItem(nameOfMovieToCheckout,movies));
+        return checkoutItem(loggedUserId, getItem(nameOfMovieToCheckout,movies));
     }
 
     public boolean returnMovie(String nameOfMovieToReturn) throws NoSuchElementException, IllegalArgumentException {
-        return returnItem(findItem(nameOfMovieToReturn,movies));
+        return returnItem(getItem(nameOfMovieToReturn,movies));
     }
 
 }

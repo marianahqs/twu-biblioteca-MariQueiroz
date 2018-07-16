@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Optional.ofNullable;
 
-public class MoviesColumnsFormatter {
+public class MoviesColumnsFormatter {   //TODO Unused: Delete
 
     private static List<Movie> movies;
 

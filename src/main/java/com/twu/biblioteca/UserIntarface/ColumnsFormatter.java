@@ -27,7 +27,7 @@ public class ColumnsFormatter <T> {
 
     public List<String> formatColumns() throws NoSuchMethodException, IllegalAccessException,InvocationTargetException, NullPointerException{
         try {
-            buildListOfSizesOfColumns();
+            buildListWithSizesOfColumns();
 
             buildHeader(sizeOfColumns, lineString);
             returnList.add(lineString.toString());  //TODO should put it inside the method???
@@ -47,9 +47,9 @@ public class ColumnsFormatter <T> {
         }
     }
 
-    private void buildListOfSizesOfColumns() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    private void buildListWithSizesOfColumns() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         for(String field : fields){
-            buildListToCheckLongestItem(listToCheckLongestItem, field);
+            buildListToCheckLongestItem(listToCheckLongestItem, field); // TODO It was done by map before generalize
             sizeOfColumns.add(getSizeOfLongestItem(listToCheckLongestItem)+COLUMN_DISTANCE);
         }
     }

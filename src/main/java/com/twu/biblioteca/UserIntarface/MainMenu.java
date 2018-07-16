@@ -61,6 +61,7 @@ public class MainMenu {
 
                     if (userManager.getUserLoggedPrivilege()=="librarian") {  //TODO remove old code commented
                        // BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(booksControl.listAllBooks());
+                        //TODO Is it right to instantiate the same class a lot of times??
                         ColumnsFormatter<Book> booksListFormatter = new ColumnsFormatter<>(booksControl.listAllBooks(),booksControl.getListFields());
                         System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
                     } else {

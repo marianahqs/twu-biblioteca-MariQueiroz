@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 public class ItemsControl {
 
 
-    protected Item findItem(String nameOfItem, List<? extends Item> listToSearch) throws NoSuchElementException {
+    protected Item getItem(String nameOfItem, List<? extends Item> listToSearch) throws NoSuchElementException {
         try {
             return listToSearch.stream()
                     .filter(p -> p.getName().equals(nameOfItem))

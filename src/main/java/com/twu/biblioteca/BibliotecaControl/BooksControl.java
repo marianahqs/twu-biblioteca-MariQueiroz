@@ -27,10 +27,10 @@ public class BooksControl extends ItemsControl {
     }
 
     public boolean checkoutBook(String nameOfBookToCheckout, String loggedUserId) throws NoSuchElementException, IllegalArgumentException {
-        return checkoutItem(loggedUserId, findItem(nameOfBookToCheckout, books));
+        return checkoutItem(loggedUserId, getItem(nameOfBookToCheckout, books));
     }
 
     public boolean returnBook(String nameOfBookToReturn) throws NoSuchElementException, IllegalArgumentException {
-        return returnItem(findItem(nameOfBookToReturn, books));
+        return returnItem(getItem(nameOfBookToReturn, books));
     }
 }

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Optional.ofNullable;
 
-public class BooksColumnsFormatter{
+public class BooksColumnsFormatter{ //TODO Unused: Delete
 
     private List<Book> books;
 
