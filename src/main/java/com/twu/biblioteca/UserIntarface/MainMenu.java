@@ -5,6 +5,9 @@ import com.twu.biblioteca.BibliotecaComponents.Movie;
 import com.twu.biblioteca.BibliotecaControl.BooksControl;
 import com.twu.biblioteca.BibliotecaControl.MoviesControl;
 import com.twu.biblioteca.BibliotecaControl.UserManager;
+import com.twu.biblioteca.UserIntarface.ColumnsFormatter.BooksColumnsFormatter;
+import com.twu.biblioteca.UserIntarface.ColumnsFormatter.ItemsColumnsFormatter;
+import com.twu.biblioteca.UserIntarface.ColumnsFormatter.MoviesColumnsFormatter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -111,37 +114,37 @@ public class MainMenu {
             System.out.println("Select a valid option");
         } catch (NoSuchElementException | IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
-        } catch (NoSuchMethodException | IllegalAccessException |InvocationTargetException | NullPointerException exp){
-            System.out.println("Column Formatter error"); //TODO same message inside ColumnsFormatter class
+        } catch (NoSuchMethodException | IllegalAccessException  | NullPointerException exp){
+            System.out.println("Column Formatter error");
         }
     }
 
-    private void listMovies() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    private void listMovies() throws NoSuchMethodException, IllegalAccessException {
         List<Movie> movies = moviesControl.listAvailableMovies();
 
         if (userManager.isLibrarian()) {
             movies = moviesControl.listAllMovies();
         }
-            ColumnsFormatter<Movie> moviesListFormatter = new ColumnsFormatter<>(movies,Movie.FIELD_LIST);
-            System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
+            ItemsColumnsFormatter<Movie> moviesListFormatter = new MoviesColumnsFormatter(movies);
+            System.out.println("\n" + String.join("\n", moviesListFormatter.createTable()));
     }
 
-    private void listBooks() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    private void listBooks() throws NoSuchMethodException, IllegalAccessException {
         List<Book> books = booksControl.listAvailableBooks();
 
         if (userManager.isLibrarian()) {
             books = booksControl.listAllBooks();
         }
 
-        ColumnsFormatter<Book> booksListFormatter = new ColumnsFormatter<>(books, Book.FIELDS_LIST);
-        System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
+        ItemsColumnsFormatter<Book> booksListFormatter = new BooksColumnsFormatter(books);
+        System.out.println("\n" + String.join("\n", booksListFormatter.createTable()));
     }
 
     public void showMenuOptions() {
         System.out.println(MAIN_MENU_HEADER);
         List<String> currentMenuList = getCurrentMenu();
         for (int index = 0; index < currentMenuList.size(); index++) {
-            System.out.println(index + " - " + currentMenuList.get(index));
+            System.out.format("%d - %s\n",index, currentMenuList.get(index));
         }
     }
 
@@ -151,14 +154,14 @@ public class MainMenu {
     }
 
     private List<String> getCurrentMenu(){
-        List<String> returnListCurrentMenu = new ArrayList<>();
+        List<String> currentMenu = new ArrayList<>();
 
         if (userManager.isLoggedIn()){
-            returnListCurrentMenu.addAll(MENU_LOGGED_IN_OPTIONS);
+            currentMenu.addAll(MENU_LOGGED_IN_OPTIONS);
 
         } else {
-            returnListCurrentMenu.addAll(MENU_LOGGED_OUT_OPTIONS);
+            currentMenu.addAll(MENU_LOGGED_OUT_OPTIONS);
         }
-        return returnListCurrentMenu;
+        return currentMenu;
     }
 }

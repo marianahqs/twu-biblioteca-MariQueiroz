@@ -138,7 +138,7 @@ public class MainMenuTest {
 
         mainMenu.handleUserOption("0");
 
-        assertEquals("List is empty\n",systemOutRule.getLog());
+        assertEquals("\nNAME     AUTHOR     YEAR     USER ID     \n",systemOutRule.getLog());
     }
 
 
@@ -166,12 +166,12 @@ public class MainMenuTest {
     }
 
     @Test
-    public void shouldPrintErrorIfMoviesListEmpty() {
+    public void shouldPrintOnlyHeaderIfMoviesListEmpty() {
         MainMenu mainMenu = new MainMenu(mockBooksControl,mockMoviesControl, mockScanner, mockUserManager);
 
         mainMenu.handleUserOption("1");
 
-        assertEquals("List is empty\n",systemOutRule.getLog());
+        assertEquals("\nNAME     DIRECTOR     RATING     YEAR     USER ID     \n",systemOutRule.getLog());
     }
 
 
@@ -332,7 +332,7 @@ public class MainMenuTest {
     @Test
     public void shouldPrintErrorMessageWhenTryCheckoutUnavailableMovie() {
         MainMenu mainMenu = new MainMenu(mockBooksControl,mockMoviesControl, mockScanner, mockUserManager);
-        IllegalArgumentException movieIsNotAvailable = new IllegalArgumentException("different error message");
+        IllegalArgumentException movieIsNotAvailable = new IllegalArgumentException("not available");
         String OUTPUT_EXPECTED = "\nEnter the name of a movie to checkout:\n"
                 +movieIsNotAvailable.getMessage()+
                 "\n";

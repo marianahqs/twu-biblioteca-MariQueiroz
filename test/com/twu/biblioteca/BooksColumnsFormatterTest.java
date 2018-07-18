@@ -1,7 +1,8 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.UserIntarface.ColumnsFormatter;
+import com.twu.biblioteca.UserIntarface.ColumnsFormatter.ItemsColumnsFormatter;
 import com.twu.biblioteca.BibliotecaComponents.Book;
+import com.twu.biblioteca.UserIntarface.ColumnsFormatter.BooksColumnsFormatter;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
@@ -18,21 +19,19 @@ public class BooksColumnsFormatterTest {
 
   //  @Test
     public void shouldFindTheSizeOfTheBiggestItem() {
-        ColumnsFormatter<Book> formatter = new ColumnsFormatter<>(BOOKS,listFields);
+        ItemsColumnsFormatter<Book> formatter = new BooksColumnsFormatter(BOOKS);
         int SIZE_EXPECTED = 15;
         List<String> LIST_TO_TEST = Arrays.asList("small","big" ,"really big name");
-
-     //   assertEquals(formatter.getSizeOfLongestItem(LIST_TO_TEST), SIZE_EXPECTED); TODO became private, can't test anymore
     }
 
     @Test
     public void shouldFormatColumnsForBooksList() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        ColumnsFormatter<Book> formatter = new ColumnsFormatter<>(BOOKS,listFields);
-        List<String> RETURN_LIST_EXPECTED = Arrays.asList("NAME                AUTHOR           YEAR     USERID     ",
-                "small               author small     1988                ",
-                "big                 author           1987                ",
-                "really big name     author           1987                ");
+        ItemsColumnsFormatter<Book> formatter = new BooksColumnsFormatter(BOOKS);
+        List<String> RETURN_LIST_EXPECTED = Arrays.asList("NAME                AUTHOR           YEAR     USER ID     ",
+                "small               author small     1988                 ",
+                "big                 author           1987                 ",
+                "really big name     author           1987                 ");
 
-        assertEquals(RETURN_LIST_EXPECTED,formatter.formatColumns());
+        assertEquals(RETURN_LIST_EXPECTED,formatter.createTable());
     }
 }

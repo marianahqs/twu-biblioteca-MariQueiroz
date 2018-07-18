@@ -8,9 +8,6 @@ public class Movie extends Item implements ItemInterface{
     private String rating;
     public static final List<String> FIELD_LIST = List.of("getName", "getDirector", "getRating", "getYear", "getUserId");
 
-    public Movie() {
-    }
-
     public Movie(String name, String director, String year, String rating, boolean isAvailable, String userId) {
         super(name, year, isAvailable,userId );
         this.director = director;

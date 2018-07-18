@@ -1,7 +1,8 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.UserIntarface.ColumnsFormatter;
+import com.twu.biblioteca.UserIntarface.ColumnsFormatter.ItemsColumnsFormatter;
 import com.twu.biblioteca.BibliotecaComponents.Movie;
+import com.twu.biblioteca.UserIntarface.ColumnsFormatter.MoviesColumnsFormatter;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
@@ -19,22 +20,20 @@ public class MoviesColumnsFormatterTest {
 
  //   @Test
     public void shouldFindTheSizeOfTheBiggestItem() {
-        ColumnsFormatter<Movie> formatter = new ColumnsFormatter<>(MOVIES,listFields);
+        ItemsColumnsFormatter<Movie> formatter = new MoviesColumnsFormatter(MOVIES);
         int SIZE_EXPECTED = 15;
         List<String> LIST_TO_TEST = Arrays.asList("small","big" ,"really big name");
-
-     //   assertEquals(formatter.getSizeOfLongestItem(LIST_TO_TEST), SIZE_EXPECTED);  TODO became private, can't test anymore
     }
 
     @Test
     public void shouldFormatColumnsForMoviesList() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        ColumnsFormatter<Movie> formatter = new ColumnsFormatter<>(MOVIES,listFields);
-        List<String> RETURN_LIST_EXPECTED = Arrays.asList("NAME           DIRECTOR             RATING     YEAR     USERID     ",
-                "Name 1         Director Movie 1     8.1        1980                ",
-                "Name Movie     Director 2           none       2003                ",
-                "Name 3         Director Movie       9          1970                ",
-                "Name           Director             none       1999                ");
+        ItemsColumnsFormatter<Movie> formatter = new MoviesColumnsFormatter(MOVIES);
+        List<String> RETURN_LIST_EXPECTED = Arrays.asList("NAME           DIRECTOR             RATING     YEAR     USER ID     ",
+                "Name 1         Director Movie 1     8.1        1980                 ",
+                "Name Movie     Director 2           none       2003                 ",
+                "Name 3         Director Movie       9          1970                 ",
+                "Name           Director             none       1999                 ");
 
-        assertEquals(RETURN_LIST_EXPECTED,formatter.formatColumns());
+        assertEquals(RETURN_LIST_EXPECTED,formatter.createTable());
     }
 }
