@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05a63112-a3a4-45c3-b049-2a3fdc5369d3" name="Default" comment="Columns Formatter restructure.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter/BooksColumnsFormatter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter/MoviesColumnsFormatter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaComponents/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaComponents/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/ColumnsFormatter/ItemsColumnsFormatter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/Unused/BooksColumnsFormatter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/Unused/MoviesColumnsFormatter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaComponents/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/BibliotecaComponents/Movie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/UserIntarface/ColumnsFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/UserIntarface/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/UserIntarface/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/UserIntarface/Unused/BooksColumnsFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/UserIntarface/Unused/MoviesColumnsFormatter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksColumnsFormatterTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksColumnsFormatterTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksColumnsFormatterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/BooksColumnsFormatterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MoviesColumnsFormatterTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MoviesColumnsFormatterTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MoviesColumnsFormatterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MoviesColumnsFormatterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/BooksColumnsFormatterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/BooksColumnsFormatterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/MoviesColumnsFormatterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/MoviesColumnsFormatterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -296,7 +279,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="vcs.TFS" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -506,7 +489,7 @@
     </recent_temporary>
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -516,8 +499,16 @@
       <option name="presentableId" value="Default" />
       <updated>1529674198706</updated>
       <workItem from="1531411687488" duration="10012000" />
-      <workItem from="1531610739227" duration="53818000" />
+      <workItem from="1531610739227" duration="54495000" />
     </task>
+    <task id="LOCAL-00001" summary="Columns Formatter restructure.">
+      <created>1531944890601</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1531944890603</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -553,7 +544,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108057000" />
+    <option name="totallyTimeSpent" value="108734000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -566,7 +557,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.33333334" />
@@ -577,12 +567,12 @@
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3291536" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.2419128" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.12681638" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.24174373" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5363276" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32893" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2932761" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2932761" />
       <window_info anchor="right" id="Database" order="9" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.12285337" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
