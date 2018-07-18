@@ -24,20 +24,20 @@ public class MainMenu {
     private static final String LOGOUT = "Logout";
     private static final String USER_INFORMATION = "User Information";
     private static final String MAIN_MENU_HEADER = "\n\n---- MAIN MENU ---- \n(choose an option and insert its number)\n";
-    private static final List<String> MENU_LOGGED_OUT_OPTIONS = List.of("List Books",
-            "List Movies",
-            "Login",
-            "Quit");
+    private static final List<String> MENU_LOGGED_OUT_OPTIONS = List.of(LIST_BOOKS,
+            LIST_MOVIES,
+            LOGIN,
+            QUIT);
 
-    private static final List<String> MENU_LOGGED_IN_OPTIONS = List.of("List Books",
-            "List Movies",
-            "Checkout Book",
-            "Return Book",
-            "Checkout Movie",
-            "Return Movie",
-            "User Information",
-            "Logout",
-            "Quit");
+    private static final List<String> MENU_LOGGED_IN_OPTIONS = List.of(LIST_BOOKS,
+            LIST_MOVIES,
+            CHECKOUT_BOOK,
+            RETURN_BOOK,
+            CHECKOUT_MOVIE,
+            RETURN_MOVIE,
+            USER_INFORMATION,
+            LOGOUT,
+            QUIT);
 
     private final UserInputScanner scanner;
     private final BooksControl booksControl;
@@ -58,30 +58,11 @@ public class MainMenu {
 
             switch (userSelection) {
                 case (LIST_BOOKS):
-
-                    if (userManager.getUserLoggedPrivilege()=="librarian") {  //TODO remove old code commented
-                       // BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(booksControl.listAllBooks());
-                        //TODO Is it right to instantiate the same class a lot of times??
-                        ColumnsFormatter<Book> booksListFormatter = new ColumnsFormatter<>(booksControl.listAllBooks(),booksControl.getListFields());
-                        System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
-                    } else {
-                       // BooksColumnsFormatter booksListFormatter = new BooksColumnsFormatter(booksControl.listAvailableBooks());
-                        ColumnsFormatter<Book> booksListFormatter = new ColumnsFormatter<>(booksControl.listAvailableBooks(),booksControl.getListFields());
-                        System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
-                    }
+                    listBooks();
                     break;
 
                 case (LIST_MOVIES):
-
-                    if (userManager.getUserLoggedPrivilege()=="librarian") {
-                      //  MoviesColumnsFormatter moviesListFormatter = new MoviesColumnsFormatter(moviesControl.listAllMovies());
-                        ColumnsFormatter<Movie> moviesListFormatter = new ColumnsFormatter<>(moviesControl.listAllMovies(),moviesControl.getListFields());
-                        System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
-                    } else {
-                      //  MoviesColumnsFormatter moviesListFormatter = new MoviesColumnsFormatter(moviesControl.listAvailableMovies());
-                        ColumnsFormatter<Movie> moviesListFormatter = new ColumnsFormatter<>(moviesControl.listAvailableMovies(),moviesControl.getListFields());
-                        System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
-                    }
+                    listMovies();
                     break;
 
                 case (QUIT):
@@ -133,6 +114,27 @@ public class MainMenu {
         } catch (NoSuchMethodException | IllegalAccessException |InvocationTargetException | NullPointerException exp){
             System.out.println("Column Formatter error"); //TODO same message inside ColumnsFormatter class
         }
+    }
+
+    private void listMovies() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        List<Movie> movies = moviesControl.listAvailableMovies();
+
+        if (userManager.isLibrarian()) {
+            movies = moviesControl.listAllMovies();
+        }
+            ColumnsFormatter<Movie> moviesListFormatter = new ColumnsFormatter<>(movies,Movie.FIELD_LIST);
+            System.out.println("\n" + String.join("\n", moviesListFormatter.formatColumns()));
+    }
+
+    private void listBooks() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        List<Book> books = booksControl.listAvailableBooks();
+
+        if (userManager.isLibrarian()) {
+            books = booksControl.listAllBooks();
+        }
+
+        ColumnsFormatter<Book> booksListFormatter = new ColumnsFormatter<>(books, Book.FIELDS_LIST);
+        System.out.println("\n" + String.join("\n", booksListFormatter.formatColumns()));
     }
 
     public void showMenuOptions() {

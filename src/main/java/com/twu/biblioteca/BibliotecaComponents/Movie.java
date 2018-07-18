@@ -6,6 +6,7 @@ import java.util.Objects;
 public class Movie extends Item implements ItemInterface{
     private String director;
     private String rating;
+    public static final List<String> FIELD_LIST = List.of("getName", "getDirector", "getRating", "getYear", "getUserId");
 
     public Movie() {
     }
@@ -55,6 +56,6 @@ public class Movie extends Item implements ItemInterface{
 
     @Override
     public List<String> getFieldsList() {
-        return List.of("getName","getDirector","getRating","getYear","getUserId");
+        return FIELD_LIST;
     }
 }

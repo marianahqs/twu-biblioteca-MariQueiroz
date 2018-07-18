@@ -1,17 +1,18 @@
 package com.twu.biblioteca.BibliotecaControl;
 
 import com.twu.biblioteca.BibliotecaComponents.User;
+import com.twu.biblioteca.BibliotecaComponents.UserPrivilege;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import static com.twu.biblioteca.BibliotecaComponents.UserPrivilege.LIBRARIAN;
+
 public class UserManager {
 
     private String userLoggedID;
-    private String userLoggedPrivilege;
+    private UserPrivilege userLoggedPrivilege;
     private List<User> users;
-
-
 
     public UserManager(List<User> users) {
         this.users = users;
@@ -54,10 +55,14 @@ public class UserManager {
         return userLoggedIn.toString();
     }
 
-    public String getUserLoggedPrivilege() {
+    public UserPrivilege getUserLoggedPrivilege() {
         if (!isLoggedIn()){
             userLoggedPrivilege = null; // TODO Is it right to update it here???
         }
         return userLoggedPrivilege;
+    }
+
+    public boolean isLibrarian() {
+        return this.getUserLoggedPrivilege().equals(LIBRARIAN);
     }
 }

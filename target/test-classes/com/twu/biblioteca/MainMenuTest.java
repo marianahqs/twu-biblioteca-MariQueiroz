@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.BibliotecaComponents.UserPrivilege;
 import com.twu.biblioteca.BibliotecaControl.BooksControl;
 import com.twu.biblioteca.BibliotecaControl.MoviesControl;
 import com.twu.biblioteca.UserIntarface.MainMenu;
@@ -113,7 +114,7 @@ public class MainMenuTest {
     public void shouldHandleListAvailableBooksOption() {
         MainMenu mainMenu = new MainMenu(mockBooksControl,mockMoviesControl, mockScanner,mockUserManager);
 
-        when(mockUserManager.getUserLoggedPrivilege()).thenReturn("customer");
+        when(mockUserManager.getUserLoggedPrivilege()).thenReturn(UserPrivilege.CUSTOMER);
 
         mainMenu.handleUserOption("0");
 
@@ -124,7 +125,7 @@ public class MainMenuTest {
     public void shouldHandleListAllBooksOption() {
         MainMenu mainMenu = new MainMenu(mockBooksControl,mockMoviesControl, mockScanner,mockUserManager);
 
-        when(mockUserManager.getUserLoggedPrivilege()).thenReturn("librarian");
+        when(mockUserManager.isLibrarian()).thenReturn(true);
 
         mainMenu.handleUserOption("0");
 
@@ -146,7 +147,7 @@ public class MainMenuTest {
     public void shouldHandleListAvailableMoviesOption() {
         MainMenu mainMenu = new MainMenu(mockBooksControl,mockMoviesControl, mockScanner,mockUserManager);
 
-        when(mockUserManager.getUserLoggedPrivilege()).thenReturn("customer");
+        when(mockUserManager.isLibrarian()).thenReturn(false);
 
         mainMenu.handleUserOption("1");
 
@@ -157,7 +158,7 @@ public class MainMenuTest {
     public void shouldHandleListAllMoviesOption() {
         MainMenu mainMenu = new MainMenu(mockBooksControl,mockMoviesControl, mockScanner,mockUserManager);
 
-        when(mockUserManager.getUserLoggedPrivilege()).thenReturn("librarian");
+        when(mockUserManager.isLibrarian()).thenReturn(true);
 
         mainMenu.handleUserOption("1");
 

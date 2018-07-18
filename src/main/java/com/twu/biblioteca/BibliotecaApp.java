@@ -9,7 +9,11 @@ import com.twu.biblioteca.BibliotecaControl.UserManager;
 import com.twu.biblioteca.UserIntarface.MainMenu;
 import com.twu.biblioteca.UserIntarface.UserInputScanner;
 
+import java.util.Arrays;
 import java.util.List;
+
+import static com.twu.biblioteca.BibliotecaComponents.UserPrivilege.CUSTOMER;
+import static com.twu.biblioteca.BibliotecaComponents.UserPrivilege.LIBRARIAN;
 
 public class BibliotecaApp {
 
@@ -19,7 +23,7 @@ public class BibliotecaApp {
     private static List<User> USERS;
 
     static {
-        BOOKS = List.of(new Book("I Know Why The Caged Bird Sings", "Angelou, Maya", "1969", true, null),
+        BOOKS = Arrays.asList(new Book("I Know Why The Caged Bird Sings", "Angelou, Maya", "1969", true, null),
                 new Book("Parable of the Talents", "Butler, Octavia", "1998", true, null),
                 new Book("Ponciá Vicêncio", "Evaristo, Conceição", "2003", true, null),
                 new Book("Purple Hibiscus", "Adichie, Chimamanda Ngozi", "2003", false, "222-8765"),
@@ -29,7 +33,7 @@ public class BibliotecaApp {
                 new Book("The Meaning of Freedom: And Other Difficult Dialogues", "Davis, Angela", "2012", true, null),
                 new Book("Um Defeito de Cor", "Goncalves, Ana Maria", "2006", true, null));
 
-        MOVIES = List.of(new Movie("The Secret Life of Bees", "Gina Prince-Bythewood", "2008", "8.5", true, null),
+        MOVIES = Arrays.asList(new Movie("The Secret Life of Bees", "Gina Prince-Bythewood", "2008", "8.5", true, null),
                 new Movie("Selma", "Ava DuVernay", "2014", "9", false, "123-4567"),
                 new Movie("Twice as Nice", "Jessie Maple", "1989", "none", true, null),
                 new Movie("The Fantasia Barrino Story: Life Is Not a Fairy Tale", "Debbie Allen", "2006", "7.5", true, null),
@@ -37,10 +41,10 @@ public class BibliotecaApp {
                 new Movie("Down in the Delta", "Maya Angelou", "1998", "9", false, "123-4567"),
                 new Movie("Belle", "Amma Asante", "2013", "9", true, null));
 
-        USERS = List.of(new User("123-4567", "ITAsTeacher", "Sonia Guimaraes", "7655-3434", "sonia@mail.com","customer"),
-                new User("222-8765", "Astrophysicist", "Neil deGrasse Tyson", "3333-4456", "neil@email.com","customer"),
-                new User("345-9955", "PretaHacker", "Lorenna Villas Boas", "6565-0099", "lorenna@email.com", "customer"),
-                new User("345-8760", "librarian", "Librarian da Silva", "7655-7545", "librarian@email.com", "librarian"));
+        USERS = Arrays.asList(new User("123-4567", "ITAsTeacher", "Sonia Guimaraes", "7655-3434", "sonia@mail.com",CUSTOMER),
+                new User("222-8765", "Astrophysicist", "Neil deGrasse Tyson", "3333-4456", "neil@email.com",CUSTOMER),
+                new User("345-9955", "PretaHacker", "Lorenna Villas Boas", "6565-0099", "lorenna@email.com", CUSTOMER),
+                new User("345-8760", "librarian", "Librarian da Silva", "7655-7545", "librarian@email.com", LIBRARIAN));
     }
 
     public static void main(String[] args) {

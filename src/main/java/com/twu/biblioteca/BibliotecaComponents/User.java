@@ -8,9 +8,9 @@ public class User {
     private String name;
     private String phoneNumber;
     private String emailAddress;
-    private String userPrivileges;
+    private UserPrivilege userPrivileges;
 
-    public User(String userID, String password, String name, String phoneNumber, String emailAddress, String userPrivileges) {
+    public User(String userID, String password, String name, String phoneNumber, String emailAddress, UserPrivilege userPrivileges) {
         this.userID = userID;
         this.password = password;
         this.name = name;
@@ -62,7 +62,7 @@ public class User {
         return password;
     }
 
-    public String getUserPrivileges() {
+    public UserPrivilege getUserPrivileges() {
         return userPrivileges;
     }
 

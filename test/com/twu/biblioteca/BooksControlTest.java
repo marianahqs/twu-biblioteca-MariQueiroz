@@ -4,6 +4,7 @@ import com.twu.biblioteca.BibliotecaControl.BooksControl;
 import com.twu.biblioteca.BibliotecaComponents.Book;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class BooksControlTest {
-    List<Book> BOOKS = List.of(new Book("Name Book 1", "Author Book 1", "1980", true, null),
+    List<Book> BOOKS = Arrays.asList(new Book("Name Book 1", "Author Book 1", "1980", true, null),
             new Book("Name Book 2", "Author Book 2","2003",true, null),
             new Book("Name Book 3", "Author Book 3", "2017", false, null),
             new Book("Name Book 4","Author Book 4","1999",false, null));
@@ -25,7 +26,7 @@ public class BooksControlTest {
 //List
     @Test
     public void shouldReturnOnlyAvailableBooks(){
-        List<Book> EXPECTED_RETURN_LIST = List.of(new Book("Name Book 1", "Author Book 1", "1980", true, null),
+        List<Book> EXPECTED_RETURN_LIST = Arrays.asList(new Book("Name Book 1", "Author Book 1", "1980", true, null),
                 new Book("Name Book 2", "Author Book 2","2003",true, null));
 
         assertEquals(EXPECTED_RETURN_LIST, booksControl.listAvailableBooks());

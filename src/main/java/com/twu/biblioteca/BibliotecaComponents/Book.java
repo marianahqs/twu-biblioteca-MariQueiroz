@@ -1,14 +1,12 @@
 package com.twu.biblioteca.BibliotecaComponents;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class Book extends Item implements ItemInterface{
+    public static final List<String> FIELDS_LIST = Arrays.asList("getName", "getAuthor", "getYear", "getUserId");
     private String author;
-
-    public Book(){     //TODO Is it necessary? Why?
-        super();
-    }
 
     public Book(String name, String author, String year, boolean isAvailable, String userId) {
         super(name, year, isAvailable, userId);
@@ -47,7 +45,7 @@ public class Book extends Item implements ItemInterface{
 
     @Override
     public List<String> getFieldsList() {
-        return List.of("getName","getAuthor","getYear","getUserId");
+        return FIELDS_LIST;
     }
 }
 

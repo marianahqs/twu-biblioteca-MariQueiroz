@@ -23,8 +23,6 @@ public class ColumnsFormatter <T> {
         this.fields = fields;
     }
 
-    //TODO too many methods????
-
     public List<String> formatColumns() throws NoSuchMethodException, IllegalAccessException,InvocationTargetException, NullPointerException{
         try {
             buildListWithSizesOfColumns();

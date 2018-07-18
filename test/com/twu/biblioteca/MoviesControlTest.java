@@ -4,6 +4,7 @@ import com.twu.biblioteca.BibliotecaComponents.Movie;
 import com.twu.biblioteca.BibliotecaControl.MoviesControl;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class MoviesControlTest {
-    List<Movie> MOVIES = List.of(new Movie("Name Movie 1", "Director Movie 1", "1980","8.1" ,true, null),
+    List<Movie> MOVIES = Arrays.asList(new Movie("Name Movie 1", "Director Movie 1", "1980","8.1" ,true, null),
             new Movie("Name Movie 2", "Director Movie 2","2003","none",false, null),
             new Movie("Name Movie 3", "Director Movie 3", "2017","9", false, null),
             new Movie("Name Movie 4","Director Movie 4","1999","none",true, null));
@@ -25,7 +26,7 @@ public class MoviesControlTest {
 // List
     @Test
     public void shouldReturnOnlyAvailableMovies(){
-        List<Movie> EXPECTED_RETURN_LIST = List.of(new Movie("Name Movie 1", "Director Movie 1", "1980","8.1" ,true, null),
+        List<Movie> EXPECTED_RETURN_LIST = Arrays.asList(new Movie("Name Movie 1", "Director Movie 1", "1980","8.1" ,true, null),
                 new Movie("Name Movie 4","Director Movie 4","1999","none",true, null));
 
         assertEquals(EXPECTED_RETURN_LIST, moviesControl.listAvailableMovies());
