@@ -3,10 +3,9 @@ package com.twu.biblioteca.BibliotecaComponents;
 import java.util.List;
 import java.util.Objects;
 
-public class Movie extends Item implements ItemInterface{
+public class Movie extends Item{
     private String director;
     private String rating;
-    public static final List<String> FIELD_LIST = List.of("getName", "getDirector", "getRating", "getYear", "getUserId");
 
     public Movie(String name, String director, String year, String rating, boolean isAvailable, String userId) {
         super(name, year, isAvailable,userId );
@@ -17,7 +16,7 @@ public class Movie extends Item implements ItemInterface{
 
     @Override
     public String toString(){
-        return String.format("%s / %s% / %d / %s",super.getName(),director, super.getYear(),rating);
+        return String.format("%s / %s / %s / %s",super.getName(),director, super.getYear(),rating);
     }
 
     @Override
@@ -49,10 +48,5 @@ public class Movie extends Item implements ItemInterface{
 
     public String getRating() {
         return rating;
-    }
-
-    @Override
-    public List<String> getFieldsList() {
-        return FIELD_LIST;
     }
 }

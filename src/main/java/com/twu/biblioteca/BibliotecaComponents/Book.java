@@ -1,11 +1,9 @@
 package com.twu.biblioteca.BibliotecaComponents;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class Book extends Item implements ItemInterface{
-    public static final List<String> FIELDS_LIST = Arrays.asList("getName", "getAuthor", "getYear", "getUserId");
+public class Book extends Item{
     private String author;
 
     public Book(String name, String author, String year, boolean isAvailable, String userId) {
@@ -15,7 +13,7 @@ public class Book extends Item implements ItemInterface{
 
     @Override
     public String toString(){
-        return String.format("%s / %s% / %d / %s",super.getName(),author, super.getYear());
+        return String.format("%s / %s / %s",super.getName(),author, super.getYear());
     }
 
     @Override
@@ -43,9 +41,5 @@ public class Book extends Item implements ItemInterface{
         return author;
     }
 
-    @Override
-    public List<String> getFieldsList() {
-        return FIELDS_LIST;
-    }
 }
 
