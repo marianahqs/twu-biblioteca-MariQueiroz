@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05a63112-a3a4-45c3-b049-2a3fdc5369d3" name="Default" comment="Columns Formatter restructure.">
+    <list default="true" id="05a63112-a3a4-45c3-b049-2a3fdc5369d3" name="Default" comment="Remaining files from last commit.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/twu/biblioteca/MainMenuTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/UserIntarface/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/twu/biblioteca/UserIntarface/MainMenu.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -32,11 +31,20 @@
       <file leaf-file-name="MainMenu.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/MainMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8">
-              <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+            <state relative-caret-position="331">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BibliotecaApp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="46" column="47" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -314,7 +322,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.com.twu.biblioteca in biblioteca">
+  <component name="RunManager" selected="Application.BibliotecaApp">
+    <configuration name="BibliotecaApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.BibliotecaApp" />
+      <module name="biblioteca" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.twu.biblioteca.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -377,29 +396,6 @@
       <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.MainMenuTest" />
       <option name="METHOD_NAME" value="shouldPrintOnlyHeaderIfMoviesListEmpty" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="biblioteca" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.twu.biblioteca.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
-      <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.MoviesColumnsFormatterTest" />
-      <option name="METHOD_NAME" value="shouldFormatColumnsForMoviesList" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -473,18 +469,18 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.com.twu.biblioteca in biblioteca" />
-      <item itemvalue="JUnit.MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" />
       <item itemvalue="JUnit.MainMenuTest.shouldPrintOnlyHeaderIfMoviesListEmpty" />
       <item itemvalue="JUnit.MainMenuTest.shouldPrintErrorIfBooksListEmpty" />
       <item itemvalue="JUnit.MainMenuTest.shouldPrintErrorMessageWhenTryCheckoutUnavailableMovie" />
+      <item itemvalue="Application.BibliotecaApp" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BibliotecaApp" />
         <item itemvalue="JUnit.com.twu.biblioteca in biblioteca" />
         <item itemvalue="JUnit.MainMenuTest.shouldPrintErrorMessageWhenTryCheckoutUnavailableMovie" />
         <item itemvalue="JUnit.MainMenuTest.shouldPrintOnlyHeaderIfMoviesListEmpty" />
         <item itemvalue="JUnit.MainMenuTest.shouldPrintErrorIfBooksListEmpty" />
-        <item itemvalue="JUnit.MoviesColumnsFormatterTest.shouldFormatColumnsForMoviesList" />
       </list>
     </recent_temporary>
   </component>
@@ -499,7 +495,7 @@
       <option name="presentableId" value="Default" />
       <updated>1529674198706</updated>
       <workItem from="1531411687488" duration="10012000" />
-      <workItem from="1531610739227" duration="54495000" />
+      <workItem from="1531610739227" duration="55427000" />
     </task>
     <task id="LOCAL-00001" summary="Columns Formatter restructure.">
       <created>1531944890601</created>
@@ -508,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531944890603</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Remaining files from last commit.">
+      <created>1531945515604</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1531945515604</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -544,7 +547,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108734000" />
+    <option name="totallyTimeSpent" value="109666000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -557,6 +560,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.33333334" />
@@ -567,12 +571,12 @@
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3291536" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.24174373" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5363276" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.8996037" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.12945838" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32893" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2932761" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2932761" />
       <window_info anchor="right" id="Database" order="9" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.12285337" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -628,7 +632,8 @@
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="Columns Formatter restructure." />
-    <option name="LAST_COMMIT_MESSAGE" value="Columns Formatter restructure." />
+    <MESSAGE value="Remaining files from last commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remaining files from last commit." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -835,13 +840,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1057,10 +1055,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/BibliotecaApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="46" column="47" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/twu/biblioteca/UserIntarface/MainMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
-          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+        <state relative-caret-position="331">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
