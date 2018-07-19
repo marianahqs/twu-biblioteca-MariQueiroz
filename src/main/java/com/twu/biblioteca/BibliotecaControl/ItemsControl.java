@@ -16,9 +16,13 @@ public class ItemsControl {
                     .get();
         } catch (NoSuchElementException nexc) {
             String message = String.format("That is not a valid %s name",
-                    listToSearch.get(0).getClass().getSimpleName().toLowerCase()); //TODO Gambiarra
+                    getItemClassName());
             throw new NoSuchElementException(message);
         }
+    }
+
+    protected String getItemClassName() {
+        return "Item";
     }
 
     protected boolean returnItem(Item itemToReturn) throws IllegalArgumentException {

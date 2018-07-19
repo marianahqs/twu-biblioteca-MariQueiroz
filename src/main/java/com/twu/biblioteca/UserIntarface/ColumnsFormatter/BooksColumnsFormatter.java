@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.function.Function;
 
 public class BooksColumnsFormatter extends ItemsColumnsFormatter<Book> {
-    private static final LinkedHashMap<String, Function<Book, String>> COLUMNS = new LinkedHashMap<>() {{
+    private static final LinkedHashMap<String, Function<Book, String>> COLUMNS = new LinkedHashMap<String, Function<Book, String>>() {{
         put("NAME", (Book::getName));
         put("AUTHOR", (Book::getAuthor));
         put("YEAR", (Book::getYear));

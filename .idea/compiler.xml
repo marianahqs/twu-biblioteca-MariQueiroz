@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <option name="USE_RELEASE_OPTION" value="false" />
     <wildcardResourcePatterns>
       <entry name="?*.properties" />
       <entry name="?*.xml" />
@@ -21,13 +22,8 @@
         <module name="biblioteca" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="biblioteca" target="10" />
+    <bytecodeTargetLevel target="8">
+      <module name="biblioteca" target="8" />
     </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="biblioteca" options="--add-exports=jdk.internal.vm.compiler/org.graalvm.compiler.core=ALL-UNNAMED" />
-    </option>
   </component>
 </project>

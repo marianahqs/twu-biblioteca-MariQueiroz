@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import static com.twu.biblioteca.BibliotecaComponents.UserPrivilege.LIBRARIAN;
+import static com.twu.biblioteca.BibliotecaComponents.UserPrivilege.NOT_AUTHENTICATED;
 
 public class UserManager {
 
@@ -40,6 +41,7 @@ public class UserManager {
 
     public void logout(){
         userLoggedID = null;
+        userLoggedPrivilege = NOT_AUTHENTICATED;
     }
 
     public String getUserLoggedID() {
@@ -56,9 +58,6 @@ public class UserManager {
     }
 
     public UserPrivilege getUserLoggedPrivilege() {
-        if (!isLoggedIn()){
-            userLoggedPrivilege = null; // TODO Is it right to update it here???
-        }
         return userLoggedPrivilege;
     }
 

@@ -29,4 +29,9 @@ public class BooksControl extends ItemsControl {
     public boolean returnBook(String nameOfBookToReturn) throws NoSuchElementException, IllegalArgumentException {
         return returnItem(getItem(nameOfBookToReturn, books));
     }
+
+    @Override
+    protected String getItemClassName() {
+        return "book";
+    }
 }

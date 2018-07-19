@@ -2,5 +2,6 @@ package com.twu.biblioteca.BibliotecaComponents;
 
 public enum UserPrivilege {
     CUSTOMER,
-    LIBRARIAN;
+    LIBRARIAN,
+    NOT_AUTHENTICATED;
 }

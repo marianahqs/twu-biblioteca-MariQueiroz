@@ -30,4 +30,9 @@ public class MoviesControl extends ItemsControl {
         return returnItem(getItem(nameOfMovieToReturn,movies));
     }
 
+
+    @Override
+    protected String getItemClassName() {
+        return "movie";
+    }
 }

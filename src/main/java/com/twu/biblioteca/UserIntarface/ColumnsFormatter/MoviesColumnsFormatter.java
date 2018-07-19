@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class MoviesColumnsFormatter extends ItemsColumnsFormatter<Movie> {
-        private static final LinkedHashMap<String, Function<Movie, String>> COLUMNS = new LinkedHashMap<>() {{
+        private static final LinkedHashMap<String, Function<Movie, String>> COLUMNS = new LinkedHashMap<String, Function<Movie, String>>() {{
             put("NAME", (Movie::getName));
             put("DIRECTOR", (Movie::getDirector));
             put("RATING", (Movie::getRating));

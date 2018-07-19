@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import static java.util.Arrays.asList;
+
 public class MainMenu {
 
     private static final String LIST_BOOKS = "List Books";
@@ -27,12 +29,12 @@ public class MainMenu {
     private static final String LOGOUT = "Logout";
     private static final String USER_INFORMATION = "User Information";
     private static final String MAIN_MENU_HEADER = "\n\n---- MAIN MENU ---- \n(choose an option and insert its number)\n";
-    private static final List<String> MENU_LOGGED_OUT_OPTIONS = List.of(LIST_BOOKS,
+    private static final List<String> MENU_LOGGED_OUT_OPTIONS = asList(LIST_BOOKS,
             LIST_MOVIES,
             LOGIN,
             QUIT);
 
-    private static final List<String> MENU_LOGGED_IN_OPTIONS = List.of(LIST_BOOKS,
+    private static final List<String> MENU_LOGGED_IN_OPTIONS = asList(LIST_BOOKS,
             LIST_MOVIES,
             CHECKOUT_BOOK,
             RETURN_BOOK,
